@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="ch">
+<head>
+    <meta charset="UTF-8">
+    <title>集群服务器管理</title>
+
+    <!--全局通用!-->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/global.css">
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <!--全局通用end!-->
+
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv/html5shiv.js"></script>
+    <script src="js/respond/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+<div class="dsm-rightside home">
+    <div class="mainnav">
+        <div class="urlindex">
+            <i class="icon icon-home"></i>
+            <a class="name dsmfontblue" href="home.html">首页</a>
+            <i class="icon icon-right"></i>
+            <a class="name dsmfontblue" href="javascript:void(0);">策略管理</a>
+            <i class="icon icon-right"></i>
+            <a class="name dsmfontblue" href="PolicyManager-ClusterServer-List.html">集群服务器管理</a>
+            <i class="icon icon-curright"></i>
+            <span class="curname"></span>
+        </div>
+    </div>
+
+    <div class="maincontent">
+        <div class="mainbox clearfix">
+            <div class="card-info width100">
+                <div class="carditem">
+                    <div class="card-cont-w">
+                        <div class="dsmForms ">
+                            <div class="dsm-form-item">
+                                <div class="dsm-inline">
+                                    <label class="dsm-form-label ">名称：</label>
+                                    <div class="dsm-input-inline ">
+                                        <input id="firstDNS" autocomplete="off" placeholder="名称" value="" class="dsm-input w350">
+                                        <!--<div class="line-tip error"><i class="icon icon-error"></i>首选DNS服务器不能为空</div>-->
+                                    </div>
+                                    <!--<div class="desc"><em>*</em>必填</div>-->
+
+                                </div>
+                                <div class="dsm-inline">
+                                    <label class="dsm-form-label">协议类型：</label>
+                                    <div class="dsm-input-inline">
+                                        <select  class="dsm-select w350">
+                                            <option>http</option>
+                                            <option>https</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="dsm-inline">
+                                    <label class="dsm-form-label">分配策略：</label>
+                                    <div class="dsm-input-inline ">
+                                        <select id="ddl_allocation"  class="dsm-select w350">
+                                            <option value="1">轮询</option>
+                                            <option value="2">权重(weight)</option>
+                                            <option value="3">ip_hash</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="dsm-inline">
+                                    <label class="dsm-form-label">服务器列表：</label>
+                                    <div class="dsm-input-block box-wrapper ">
+                                        <div class="dsmForms subForms">
+                                            <div class="dsm-form-item">
+                                                <div class="dsm-inline">
+                                                    <div class="btn-toolbar">
+                                                        <button type="button" class="btn btn-primary whitebg js_add"><i class="btnicon icon icon-add-blue"></i>增加</button>
+                                                        <button type="button" class="btn btn-primary whitebg js_del"><i class="btnicon icon icon-del-blue"></i>删除</button>
+                                                    </div>
+                                                </div>
+                                                <div class="dsm-inline">
+                                                    <div class="dsm-input-block">
+                                                        <table  class="table" cellspacing="0" width="100%">
+                                                            <thead>
+                                                            <tr>
+                                                                <th class="w50">
+                                                                    <div class="dsmcheckbox">
+                                                                        <input type="checkbox" value="1" id="t2"  class="js_checkboxAll" data-allcheckfor="uids"  name="">
+                                                                        <label for="t2"></label>
+                                                                    </div>
+                                                                </th>
+                                                                <th class="w20p">服务器地址</th>
+                                                                <th>端口</th>
+                                                                <th>权重</th>
+                                                                <th>测试连接<i class="icon icon-reload p-l-20 p-r-20"></i></th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody id="table_IPset">
+                                                            <tr class="t_tr" data-id="1">
+                                                                <td>
+                                                                    <div class="dsmcheckbox">
+                                                                        <input type="checkbox" value="1" id="1" name="uids">
+                                                                        <label for="1"></label>
+                                                                    </div>
+                                                                </td>
+                                                                <td class="txt-blue">192.168.1.2</td>
+                                                                <td>80</td>
+                                                                <td>-</td>
+                                                                <td>
+                                                                    <span> <i class="icon icon-greenyes"></i></span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="t_tr" data-id="2">
+                                                                <td>
+                                                                    <div class="dsmcheckbox">
+                                                                        <input type="checkbox" value="2" id="2" name="uids">
+                                                                        <label for="2"></label>
+                                                                    </div>
+                                                                </td>
+                                                                <td class="txt-blue">192.168.1.2</td>
+                                                                <td>80</td>
+                                                                <td>-</td>
+                                                                <td>
+                                                                    <span> <i class="icon icon-redclose"></i></span>
+                                                                </td>
+                                                            </tr>
+
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-btns t-l">
+                                    <button type="button" class="btn btn-lg btn-primary js_save">确定</button>
+                                    <a href="PolicyManager-ClusterServer-List.html" class="btn btn-lg btn-primary">取消</a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--新增服务器-->
+<div  class="popForm" style="display: none">
+    <div class="dsmForms">
+        <div class="dsm-form-item">
+            <div class="dsm-inline">
+                <label class="dsm-form-label">服务器地址：</label>
+                <div class="dsm-input-inline w300">
+                    <input id="txt_server"type="text" class="dsm-input" autocomplete="off" placeholder="服务器地址">
+                </div>
+                <div class="desc"><em>*</em>必填</div>
+                <div class="line-tip error" ><i class="icon icon-error"></i>服务器地址不能为空</div>
+            </div>
+            <div class="dsm-inline">
+                <label class="dsm-form-label">端口：</label>
+                <div class="dsm-input-inline w300">
+                    <input id="txt_port" type="text" autocomplete="off" placeholder="端口" class="dsm-input">
+                </div>
+                <div class="desc"><em>*</em>必填</div>
+                <div class="line-tip error" ><i class="icon icon-error"></i>端口不能为空</div>
+            </div>
+            <div class="dsm-inline box_weight">
+                <label class="dsm-form-label">权重值：</label>
+                <div class="dsm-input-inline w300">
+                    <input id="txt_weight" type="text" autocomplete="off" placeholder="权重值" class="dsm-input">
+                </div>
+                <div class="desc"><em>*</em>必填</div>
+                <div class="line-tip error" ><i class="icon icon-error"></i>权重值不能为空</div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="js/site.js"></script>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        var id=getQueryStr("id");//集群服务器id 新增id=0
+        var type=getQueryStr("type");
+        if(type=="1"){
+            $(".curname").html("新增");
+        }
+        if(type=="2"){
+            $(".curname").html("修改");
+        }
+        //新增
+        $(document).on('click', '.js_add', function (e) {
+            var allocationPolicy=$("#ddl_allocation").val();
+            $(".popForm").attr('id',"addForm");
+            removeAllErrorTip();
+            if(allocationPolicy==1||allocationPolicy==3){
+                $(".box_weight").css('display','none');
+                dsmDialog.open({
+                    type: 1,
+                    area:['540px','400px'],
+                    btn:['增加','取消'],
+                    title:"增加服务器",
+                    content: $('#addForm'),
+                    yes: function(index, layero){
+                        var server=checkIsNull("#txt_server");
+                        var port=checkIsNull("#txt_port");
+                        if(server&&port){
+                        dsmDialog.msg('增加成功!');
+                        dsmDialog.close(index);
+                        clear();//初始化输入控件
+                        }
+
+                    }
+                });
+            }
+            if(allocationPolicy==2){
+                $(".box_weight").css('display','block');
+                dsmDialog.open({
+                    type: 1,
+                    area:['540px','400px'],
+                    btn:['增加','取消'],
+                    title:"增加服务器",
+                    content: $('#addForm'),
+                    yes: function(index, layero){
+                        var server=checkIsNull("#txt_server");
+                        var port=checkIsNull("#txt_port");
+                        var weight=checkIsNull("#txt_weight");
+                        if(server&&port&&weight){
+                        dsmDialog.msg('增加成功!');
+                        dsmDialog.close(index);
+                        clear();//初始化输入控件
+                        }
+                    }
+                });
+            }
+        });
+
+        //删除
+        $(document).on('click', '.js_del', function (e) {
+            var chkItem=itemSelected_check("uids");
+            if(chkItem.length==0){
+                dsmDialog.error('请先选择服务器！');
+                return;
+            }
+            showDelModel();
+        });
+
+        $(document).on('click','.js_save',function(e){
+            window.location.href='PolicyManager-ClusterServer-List.html';
+        });
+    })
+
+    $(document).on('blur','#txt_server',function(){
+        if(checkIsNull("#txt_server")){
+            removeErrorTip(this);
+        }
+    })
+    $(document).on('blur','#txt_weight',function(){
+        if(checkIsNull("#txt_weight")){
+            removeErrorTip(this);
+        }
+    })
+    $(document).on('blur','#txt_port',function(){
+        if(checkIsNull("#txt_port")){
+            removeErrorTip(this);
+        }
+    })
+    //新增-检查必填项
+    function checkIsNull(obj) {
+        var val=$.trim($(obj).val());
+        if(val==""){
+            $(obj).parent().next().next('.line-tip').css('display','block');
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+    //初始化输入控件
+    function clear(){
+        $(".dsm-input").val("");
+        $(".dsm-textarea").html("");
+        $(".dsm-select option:first").prop("selected", 'selected');
+        $('.line-tip').css('display','none');
+    }
+    //新增-移除错误提示
+    function removeErrorTip(obj) {
+        $(obj).parent().next().next('.line-tip').css('display','none');
+    }
+    function removeAllErrorTip() {
+        $('.line-tip').css('display','none');
+    }
+    //删除弹框
+    function showDelModel() {
+        dsmDialog.toComfirm("请确认是否删除当前集群服务器记录！", {
+            btn: ['确定','取消'],
+            title:"删除"
+        }, function(index){
+            //删除操作代码
+            dsmDialog.msg('删除成功！');
+            dsmDialog.close(index);
+        }, function(index){
+            dsmDialog.close(index);
+        });
+    }
+
+    //url传参-字符串处理
+    function getQueryStr(sArgName)
+    {
+        //var LocString=parent.document.getElementById('dsmmainIframe').src;//js
+        var LocString=$("#dsmmainIframe",parent.document).attr('src');//jquery
+//        var LocString=parent.document.URL;
+        var args = LocString.split('?');
+        var retval = "";
+        if(args[0] == LocString)
+        {
+            return retval;
+        }
+        var str = args[1];
+        args = str.split("&");
+        for(var i = 0; i < args.length; i ++)
+        {
+            str = args[i];
+            var arg = str.split("=");
+            if(arg.length <= 1) continue;
+            if(arg[0] == sArgName) retval = arg[1];
+        }
+        return retval;
+    }
+
+</script>
+</body>
+</html>

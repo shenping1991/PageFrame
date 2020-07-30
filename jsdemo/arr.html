@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数组的方法</title>
+    <script>
+        function show(a,b){
+            return a+b;
+        }
+        alert(show(1,2));
+        function sum(){
+            var result=0;
+            for(var i=0;i<arguments.length;i++){
+                result=result+arguments[i];
+            }
+            //alert(result);
+        }
+        alert(sum(2,3,4));
+        window.onload=function(){
+            var oDiv=document.getElementById('div1');
+            if(oDiv.currentStyle){
+                alert(oDiv.currentStyle.width);//IE
+            }
+            else{
+                alert(getComputedStyle(oDiv,false).width);//FF
+            }
+        }
+        var arr1=[1,2,3,4,5];
+        var arr2=new Array();
+        arr1.push(4);//往数组末尾添加数据
+        arr1.unshift(5);//从头部添加
+        arr1.pop();//从尾巴删除
+        arr1.shift();//从头部删除
+        //splice(起点，长度）
+        //splice(起点，长度，插入数据)
+        arr1.splice(2,0);
+        arr1.splice(2,0,'q','e');
+        arr1.splice(2,2,'k','r');
+        //concat链接数组
+        var arr3=[6,7];
+        alert(arr1.concat(arr3));
+        //sort排序 适用于字符串的排序
+        var arr4=[2.00,8,12,5.12,6.2];
+        alert(arr4.sort());
+    </script>
+</head>
+<body>
+    <div id="div1" style="width:200px;height: 200px;">
+
+    </div>
+</body>
+</html>

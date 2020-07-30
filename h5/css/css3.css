@@ -1,0 +1,51 @@
+﻿/*-----CSS3属性-----*/
+
+
+ /*边框属性*/
+div {
+   
+     /*圆角：*/
+    border-radius:20px;
+    -moz-border-radius:20px;/*火狐浏览器
+    边框投影：*/
+    box-shadow:10px 10px 5px  #888;
+    /*图片创建边框 
+    border-image ： none | <image> [ <number> | <percentage>]{1,4} [ / <border-width>{1,4} ]? [ stretch | repeat | round ]{0,2}
+    相关属性 ： border-image：border-top-image , border-right-image , border-bottom-image , border-left-image
+　　　　　　    border-corner-image：border-top-left-image , border-top-right-image , border-bottom-left-image , border-bottom-right-image
+    */
+    border-image:url(123.png) 30 30 round;
+    -moz-border-image:url(123.png) 30 30 round;/*旧版火狐*/
+    -webkit-border-image:url(123.png) 30 30 round;/*safari和Chrome*/
+    -o-border-image:url(123.png) 30 30 round;/*Opera*/
+
+}
+/*背景属性*/
+div {
+    background-image:url(123.png);/*可添加多个背景图 background-image:url(bg_flower.gif),url(bg_flower_2.gif);*/
+    background-size:120px 120px;/*百分比 background-size:40% 60%;*/
+    -moz-background-size:120px 120px;/*旧版火狐*/
+    background-origin:content-box;/*规定背景图片的定位区域 content-box/padding-box/border-box*/
+    -webkit-background-origin:content-box;
+    background-repeat:no-repeat;
+}
+/*文本效果*/
+p {
+    text-shadow:5px 5px 5px #ddd;/*文本投影*/
+    word-wrap:break-word;/*文本换行*/
+
+}
+/*自定义字体*/
+@font-face {
+    font-family:myFirstFont;
+    src:url('Sansation_Light.ttf'),url('Sansation_Light.eot');
+    
+}
+@font-face {
+    font-family:myFirstFont;
+    src:url('Sansation_Bold.ttf'),url('Sansation_Bold.eot');
+    font-weight:bold;
+}
+h1{
+    font-family:myFirstFont;
+}

@@ -1,0 +1,215 @@
+
+<!DOCTYPE html>
+<html lang="ch">
+<head>
+    <meta charset="UTF-8">
+    <title>新增用户</title>
+
+    <!--全局通用!-->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/global.css">
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <!--全局通用end!-->
+
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv/html5shiv.js"></script>
+    <script src="js/respond/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+<div class="dsm-rightside">
+    <div class="mainnav">
+        <div class="urlindex">
+            <i class="icon icon-home"></i>
+            <a class="name dsmfontblue" href="home.html">首页</a>
+            <i class="icon icon-right"></i>
+            <a class="name dsmfontblue" href="javascript:void(0);">组织架构管理</a>
+            <i class="icon icon-right"></i>
+            <a class="name dsmfontblue" href="Organizational-DepUsers-List.html">部门与用户管理</a>
+            <i class="icon icon-curright"></i>
+            <span class="curname">新增用户</span>
+        </div>
+    </div>
+    <div class="maincontent">
+
+        <div class="mainbox depusersform">
+            <div class="dsm-nav-tabs" >
+                <ul class="nav nav-tabs" role="tablist">
+                    <li class="active"><a href="#basicinfo" data-toggle="tab" aria-expanded="true">基本设置</a></li>
+                    <li class="">
+                        <a href="#highset"  data-toggle="tab" aria-expanded="false">高级设置</a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane fade active in" id="basicinfo" >
+                        <div class="dsmForms">
+                            <div class="dsm-form-item">
+
+                                <div class="dsm-inline">
+                                    <label class="dsm-form-label">账号：</label>
+                                    <div class="dsm-input-inline">
+                                        <input type="text" autocomplete="off" placeholder="账号" class="dsm-input">
+                                    </div>
+                                </div>
+                                <div class="dsm-inline">
+                                    <label class="dsm-form-label">姓名：</label>
+                                    <div class="dsm-input-inline">
+                                        <input type="text" autocomplete="off" placeholder="策略描述" class="dsm-input">
+                                    </div>
+                                </div>
+                                <div class="dsm-inline ">
+                                    <label class="dsm-form-label">密码验证类型</label>
+                                    <div class="dsm-input-inline">
+                                        <div class="dsm-radio-one">
+                                            <div class="dsm-radiobox">
+                                                <input type="radio" id="fqr" name="pwdauthtype" value="0" class="dsm-radio" checked>
+                                                <label for="fqr"></label>
+                                            </div>
+                                            <label class="radiolabel" for="fqr">系统验证</label>
+                                        </div>
+
+                                        <div class="dsm-radio-one">
+                                            <div class="dsm-radiobox">
+                                                <input type="radio" id="mbzd" name="pwdauthtype" value="1" class="dsm-radio" >
+                                                <label for="mbzd"></label>
+                                            </div>
+                                            <label  class="radiolabel" for="mbzd">域验证</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="dsm-inline">
+                                    <label class="dsm-form-label">密码：</label>
+                                    <div class="dsm-input-inline">
+                                        <input type="password" autocomplete="off" placeholder="" class="dsm-input">
+                                    </div>
+                                </div>
+                                <div class="dsm-inline">
+                                    <label class="dsm-form-label">确认密码：</label>
+                                    <div class="dsm-input-inline">
+                                        <input type="password" autocomplete="off" placeholder="" class="dsm-input">
+                                    </div>
+                                </div>
+                                <div class="dsm-inline">
+                                    <label class="dsm-form-label">允许用户修改密码：</label>
+                                    <div class="dsmcheckbox m-t-10p">
+                                        <input type="checkbox" value="1" id="ctf4" name="">
+                                        <label for="ctf4"></label>
+                                    </div>
+                                </div>
+                                <div class="dsm-inline">
+                                    <label class="dsm-form-label">首次登陆修改密码：</label>
+                                    <div class="dsmcheckbox m-t-10p">
+                                        <input type="checkbox" value="1" id="ff3" name="">
+                                        <label for="ff3"></label>
+                                    </div>
+                                </div>
+
+                                <div class="dsm-inline">
+                                    <label class="dsm-form-label">所属部门：</label>
+                                    <div class="dsm-input-inline">
+                                        <table class="table" cellspacing="0" width="100%">
+                                            <thead>
+                                            <tr>
+                                                <th>序号</th>
+                                                <th>部门</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <td>1</td>
+                                                <td>组织架构>研发部>开发一族</td>
+                                            </tr>
+                                            <tr>
+                                                <td>1</td>
+                                                <td>组织架构>技术部</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div role="tabpanel" class="tab-pane fade" id="highset" >
+                        <div class="dsmForms">
+                            <div class="dsm-form-item">
+                                <div class="dsm-inline">
+                                    <label class="dsm-form-label">所属安全域：</label>
+                                    <div class="dsm-input-inline">
+                                        <select  class="dsm-select"  data-live-search="true">
+                                            <option>研发域</option>
+                                            <option>技术域</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="dsm-inline">
+                                    <label class="dsm-form-label">所属密级：</label>
+                                    <div class="dsm-input-inline">
+                                        <select  class="dsm-select"  data-live-search="true">
+                                            <option>秘密</option>
+                                            <option>绝密</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="dsm-inline">
+                                    <label class="dsm-form-label">所属角色：</label>
+                                    <div class="dsm-input-inline">
+                                        <select  class="dsm-select"  data-live-search="true">
+                                            <option>普通角色</option>
+                                            <option>高级角色</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="dsm-inline">
+                                    <label class="dsm-form-label">安全策略设置：</label>
+                                    <div class="dsm-input-inline">
+                                        <select  class="dsm-select"  data-live-search="true">
+                                            <option>默认安全策略</option>
+                                            <option>安全策略1</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="dsm-inline">
+                                    <label class="dsm-form-label" for="cu12">是否禁用：</label>
+                                    <div class="dsmcheckbox m-t-10p">
+                                        <input type="checkbox" value="0" checked id="cu12" name="locksystem">
+                                        <label for="cu12"></label>
+                                    </div>
+                                    <label class="m-t-10p" for="cu12">域校验</label>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-btns t-l">
+                <button type="button" class="btn btn-lg btn-primary js_save">确定新增</button>
+                <a href="Organizational-DepUsers-List.html" class="btn btn-lg btn-primary">取消</a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script type="text/javascript" src="js/site.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+    });
+
+    //确定新增
+    $(document).on('click', '.js_save', function (e) {
+        $(this).attr("disabled","true");
+
+        dsmDialog.msg('新增成功');
+        setTimeout("window.location.href='Organizational-DepUsers-list.html'",1500)
+
+    });
+</script>
+</body>
+</html>

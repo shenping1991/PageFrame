@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="ch">
+<head>
+    <meta charset="UTF-8">
+    <title>Http策略管理</title>
+
+    <!--全局通用!-->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/global.css">
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <!--全局通用end!-->
+
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv/html5shiv.js"></script>
+    <script src="js/respond/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+<div class="dsm-rightside">
+    <div class="mainnav">
+        <div class="urlindex">
+            <i class="icon icon-home"></i>
+            <a class="name dsmfontblue" href="home.html">首页</a>
+            <i class="icon icon-right"></i>
+            <a class="name dsmfontblue" href="javascript:void(0);">策略管理</a>
+            <i class="icon icon-right"></i>
+            <a class="name dsmfontblue" href="PolicyManager-HttpStrategy-List.html">Http策略管理</a>
+            <i class="icon icon-curright"></i>
+            <span class="curname">新增</span>
+        </div>
+    </div>
+    <div class="maincontent">
+
+        <div class="mainbox setform">
+            <div class="btn-toolbar">
+                <a class="btn btn-primary btn-tool f-r js_cancel btn-big" href="PolicyManager-HttpStrategy-List.html" >取消<i class="icon icon-load hidden"></i></a>
+                <a class="btn btn-primary btn-tool f-r js_save btn-big" href="PolicyManager-HttpStrategy-List.html" >确定</a>
+            </div>
+            <div class="dsm-nav-tabs" >
+                <ul class="nav nav-tabs" role="tablist">
+                    <li class="active"><a href="#basicSet" data-toggle="tab" aria-expanded="true">基本设置</a></li>
+                    <li class="">
+                        <a href="#httpsStrategy"  data-toggle="tab" aria-expanded="false">Https策略</a>
+                    </li>
+                    <li class="">
+                        <a href="#DESStrategy"  data-toggle="tab" aria-expanded="false">加解密策略</a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane fade active in" id="basicSet" >
+                        <div class="dsmForms">
+                            <div class="dsm-form-item">
+                                <div class="dsm-inline ">
+                                    <label class="dsm-form-label">策略名称：</label>
+                                    <div class="dsm-input-inline">
+                                        <input id="txt_policyName" type="text" autocomplete="off" placeholder="策略名称" class="dsm-input">
+                                        <div class="line-tip error"><em>*</em>策略名称不能为空</div>
+                                    </div>
+                                    <div class="desc"><em>*</em>必填</div>
+
+                                </div>
+                                <div class="dsm-inline">
+                                    <label class="dsm-form-label">侦听IP地址：</label>
+                                    <div class="dsm-input-inline">
+                                        <select  class="dsm-select"  data-live-search="true">
+                                            <option>所有</option>
+                                            <option>eth0(192.168.1.1)</option>
+                                            <option>eth0:1(192.168.1.2)</option>
+                                            <option>eth1(192.168.2.1)</option>
+                                        </select>
+                                    </div>
+
+                                </div>
+                                <div class="dsm-inline">
+                                    <label class="dsm-form-label">侦听端口号：</label>
+                                    <div class="dsm-input-inline">
+                                        <input id="txt_localPort" type="text" autocomplete="off" placeholder="侦听端口号" class="dsm-input">
+                                        <div class="line-tip error"><em>*</em>侦听端口号不能为空</div>
+                                    </div>
+                                    <div class="desc"><em>*</em>必填&nbsp; &nbsp;注：用于设置侦听接收客户端请求信息的端口</div>
+
+                                </div>
+                                <div class="dsm-inline">
+                                    <label class="dsm-form-label">目标服务器：</label>
+                                    <div class="dsm-input-inline">
+                                        <select  class="dsm-select"  data-live-search="true">
+                                            <option>应用服务器-oa</option>
+                                            <option>负载均衡-CRM</option>
+                                        </select>
+                                    </div>
+                                    <div class="desc">注：列表数据将从“应用服务器与集群服务器”中提取；但“策略路由”部署模式将不显示集群服务器列表数据。
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div role="tabpanel" class="tab-pane fade" id="httpsStrategy" >
+                        <div class="dsmForms dsmForms-left">
+                            <div class="dsm-form-item">
+                                <div class="dsm-inline  ">
+                                    <label class="dsm-form-label">Https策略状态：</label>
+                                    <div class="dsm-input-inline">
+                                        <div class="dsm-radio-one">
+                                            <div class="dsm-radiobox">
+                                                <input type="radio" id="rdo_httpsstop" name="HttpsState" value="0" class="dsm-radio" checked>
+                                                <label for="rdo_httpsstop"></label>
+                                            </div>
+                                            <label class="radiolabel" for="rdo_httpsstop">停用</label>
+                                        </div>
+
+                                        <div class="dsm-radio-one">
+                                            <div class="dsm-radiobox">
+                                                <input type="radio" id="rdo_httpsstart" name="HttpsState" value="1" class="dsm-radio" >
+                                                <label for="rdo_httpsstart"></label>
+                                            </div>
+                                            <label  class="radiolabel" for="rdo_httpsstart">启用</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="dsm-inline ">
+                                    <label class="dsm-form-label">SSL侦听端口：</label>
+                                    <div class="dsm-input-inline">
+                                        <div class="dsm-radio-one">
+                                            <div class="dsm-radiobox">
+                                                <input type="radio" id="rdo_localport" name="SSLPort" value="0" class="dsm-radio" checked>
+                                                <label for="rdo_localport"></label>
+                                            </div>
+                                            <label class="radiolabel" for="rdo_localport">本地端口</label>
+                                        </div>
+
+                                        <div class="dsm-radio-one">
+                                            <div class="dsm-radiobox">
+                                                <input type="radio" id="rdo_customport" name="SSLPort" value="1" class="dsm-radio" >
+                                                <label for="rdo_customport"></label>
+                                            </div>
+                                            <label  class="radiolabel" for="rdo_customport">自定义端口</label>
+
+                                        </div>
+                                        <!--<div class="dsm-input-inline">-->
+                                            <input id="txt_customPort" type="text" autocomplete="off" placeholder="自定义端口" class="dsm-input dsm-input-r w150 hidden" >
+                                        <!--</div>-->
+
+                                    </div>
+                                </div>
+                                <div class="dsm-inline">
+                                    <label class="dsm-form-label">选择证书信息：</label>
+                                    <div class="dsm-input-inline">
+                                        <select class="dsm-select"  data-live-search="true">
+                                            <option>默认证书</option>
+                                            <option>用户证书</option>
+                                        </select>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div role="tabpanel" class="tab-pane fade" id="DESStrategy" >
+                        <div class="dsmForms dsmForms-l-s">
+                            <div class="dsm-form-item">
+                                <div class="dsm-inline ">
+                                    <label class="dsm-form-label">状态：</label>
+                                    <div class="dsm-input-inline">
+                                        <div class="dsm-radio-one">
+                                            <div class="dsm-radiobox">
+                                                <input type="radio" id="rdo_stop" name="ctrltype" value="0" class="dsm-radio" checked>
+                                                <label for="rdo_stop"></label>
+                                            </div>
+                                            <label class="radiolabel" for="rdo_stop">停用</label>
+                                        </div>
+
+                                        <div class="dsm-radio-one">
+                                            <div class="dsm-radiobox">
+                                                <input type="radio" id="rdo_start" name="ctrltype" value="1" class="dsm-radio" >
+                                                <label for="rdo_start"></label>
+                                            </div>
+                                            <label  class="radiolabel" for="rdo_start">启用</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="dsm-inline">
+                                    <label class="dsm-form-label">策略：</label>
+                                    <div class="dsm-input-block ">
+                                        <div class="dsm-nav-tabs" >
+                                            <ul class="nav nav-tabs nav-tabs-b" role="tablist">
+                                                <li class="active dropdown">
+                                                    <a href="#encrypolicy" data-toggle="tab" aria-expanded="true" class="btn-tab">加密策略</a>
+                                                    <em class="icon icon-list dropdown-toggle " data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></em>
+                                                    <ul class="dropdown-menu">
+                                                        <li><a href="#" class="js_encryadd">新增</a></li>
+                                                        <li><a href="#" class="js_encrydel">删除选中项</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li class="dropdown">
+                                                    <a href="#decrypolicy"  data-toggle="tab" aria-expanded="false" class="btn-tab">解密策略</a>
+                                                    <em class="icon icon-list dropdown-toggle hidden" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></em>
+                                                    <ul class="dropdown-menu">
+                                                        <li><a href="#" class="js_decryadd">新增</a></li>
+                                                        <li><a href="#" class="js_decrydel">删除选中项</a></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+
+                                            <div class="tab-content">
+                                                <div role="tabpanel" class="tab-pane fade active in" id="encrypolicy" >
+                                                    <div class="table-view">
+                                                        <table id="encrydatalist" class="table" cellspacing="0" width="100%">
+                                                            <thead>
+                                                            <tr>
+                                                                <th>
+                                                                    <div class="dsmcheckbox">
+                                                                        <input type="checkbox" value="1" id="checkboxencry"  class="js_checkboxAll" data-allcheckfor="euids"  name="">
+                                                                        <label for="checkboxencry"></label>
+                                                                    </div>
+                                                                </th>
+                                                                <th>策略名称</th>
+                                                                <th>策略状态</th>
+                                                                <th>文件类型</th>
+                                                                <th>查看</th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody>
+
+                                                            <tr>
+                                                                <td>
+                                                                    <div class="dsmcheckbox">
+                                                                        <input type="checkbox" value="1" id="checkboxencry1"  name="euids">
+                                                                        <label for="checkboxencry1"></label>
+                                                                    </div>
+                                                                </td>
+                                                                <td>--加密策略</td>
+                                                                <td class="txt-start">启用</td>
+                                                                <td>【包含】：doc,docx,ppt,pptx,pdf</td>
+                                                                <td><span class="listdetail bg-red js_showdetail"> <i class="icon icon-ddown"></i></span></td>
+
+                                                            </tr>
+                                                            <!--<tr class="detailtr">-->
+                                                                <!--<td colspan="7">-->
+                                                                    <!--<div class="detailbox clearfix">-->
+                                                                        <!--<div class="cont-detail cont-detail-l f-l" >-->
+                                                                            <!--<div class="dsm-inline">-->
+                                                                                <!--<label class="dsm-form-label" >URI参数:</label>-->
+                                                                                <!--<div class="dsm-form-content">-</div>-->
+                                                                            <!--</div>-->
+                                                                            <!--<div class="dsm-inline">-->
+                                                                                <!--<label class="dsm-form-label" >传输类型:</label>-->
+                                                                                <!--<div class="dsm-form-content">-</div>-->
+                                                                            <!--</div>-->
+                                                                            <!--<div class="dsm-inline">-->
+                                                                                <!--<label class="dsm-form-label" >安全域标识:</label>-->
+                                                                                <!--<div class="dsm-form-content">-</div>-->
+                                                                            <!--</div>-->
+                                                                            <!--<div class="dsm-inline">-->
+                                                                                <!--<label class="dsm-form-label" >文件类型:</label>-->
+                                                                                <!--<div class="dsm-form-content">-->
+
+                                                                                    <!--<ul>-->
+
+                                                                                        <!--<li>文件包含:-</li>-->
+                                                                                        <!--<li>文件排除:-</li>-->
+                                                                                    <!--</ul>-->
+                                                                                <!--</div>-->
+                                                                            <!--</div>-->
+
+                                                                        <!--</div>-->
+                                                                        <!--<div class="cont-detail f-r">-->
+                                                                            <!--<div class="dsm-inline">-->
+                                                                                <!--<label class="dsm-form-label" >URL过滤规则:</label>-->
+                                                                                <!--<div class="dsm-form-content">-</div>-->
+                                                                            <!--</div>-->
+                                                                            <!--<div class="dsm-inline">-->
+                                                                                <!--<label class="dsm-form-label" >传输类型过滤规则:</label>-->
+                                                                                <!--<div class="dsm-form-content">-</div>-->
+                                                                            <!--</div>-->
+                                                                            <!--<div class="dsm-inline">-->
+                                                                                <!--<label class="dsm-form-label" >文件名获取方式:</label>-->
+                                                                                <!--<div class="dsm-form-content">-->
+                                                                                    <!--<ul>-->
+                                                                                        <!--<li>响应的头部：-</li>-->
+                                                                                        <!--<li>请求的参数：-</li>-->
+                                                                                        <!--<li>请求的URI:-</li>-->
+                                                                                    <!--</ul>-->
+                                                                                <!--</div>-->
+                                                                            <!--</div>-->
+                                                                            <!--<div class="dsm-inline">-->
+                                                                                <!--<label class="dsm-form-label" >修改传输类型为OS:</label>-->
+                                                                                <!--<div class="dsm-form-content">-</div>-->
+                                                                            <!--</div>-->
+                                                                        <!--</div>-->
+                                                                        <!--<div class="custom-box">-->
+                                                                            <!--<label class="dsm-form-label" >自定义项:</label>-->
+                                                                            <!--<div class="dsm-form-content">-->
+                                                                                <!--&#45;&#45;&#45;&#45;&#45;&#45;<br/>-->
+                                                                                <!--&#45;&#45;&#45;&#45;&#45;&#45;<br/>-->
+                                                                                <!--&#45;&#45;&#45;&#45;&#45;&#45;<br/>-->
+                                                                            <!--</div>-->
+                                                                        <!--</div>-->
+                                                                    <!--</div>-->
+                                                                <!--</td>-->
+                                                            <!--</tr>-->
+                                                            <tr>
+                                                                <td>
+                                                                    <div class="dsmcheckbox">
+                                                                        <input type="checkbox" value="1" id="checkboxencry2"  name="euids">
+                                                                        <label for="checkboxencry2"></label>
+                                                                    </div>
+                                                                </td>
+                                                                <td>--加密策略</td>
+                                                                <td class="txt-stop">停用</td>
+                                                                <td>【排除】：doc,docx,ppt,pptx,pdf</td>
+                                                                <td><span class="listdetail bg-red  js_showdetail"> <i class="icon icon-ddown"></i></span></td>
+                                                            </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+
+                                                </div>
+                                                <div role="tabpanel" class="tab-pane fade" id="decrypolicy" >
+                                                    <div class="table-view">
+                                                        <table id="decrydatalist" class="table" cellspacing="0" width="100%">
+                                                            <thead>
+                                                            <tr>
+                                                                <th>
+                                                                    <div class="dsmcheckbox">
+                                                                        <input type="checkbox" value="1" id="checkboxdecry"  class="js_checkboxAll" data-allcheckfor="duids"  name="">
+                                                                        <label for="checkboxdecry"></label>
+                                                                    </div>
+                                                                </th>
+                                                                <th>策略名称</th>
+                                                                <th>策略状态</th>
+                                                                <th>文件类型</th>
+                                                                <th>查看</th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody>
+
+                                                            <tr>
+                                                                <td>
+                                                                    <div class="dsmcheckbox">
+                                                                        <input type="checkbox" value="1" id="checkboxdecry1"  name="duids">
+                                                                        <label for="checkboxdecry1"></label>
+                                                                    </div>
+                                                                </td>
+                                                                <td>--解密策略</td>
+                                                                <td class="txt-start">启用</td>
+                                                                <td>【包含】：doc,docx,ppt,pptx,pdf</td>
+                                                                <td><span class="listdetail bg-red js_showdecrydetail"> <i class="icon icon-ddown"></i></span></td>
+
+                                                            </tr>
+                                                            <!--<tr class="detailtr">-->
+                                                                <!--<td colspan="7">-->
+                                                                    <!--<div class="detailbox clearfix">-->
+                                                                        <!--<div class="cont-detail cont-detail-l f-l" >-->
+                                                                            <!--<div class="dsm-inline">-->
+                                                                                <!--<label class="dsm-form-label" >URI参数:</label>-->
+                                                                                <!--<div class="dsm-form-content">-</div>-->
+                                                                            <!--</div>-->
+
+                                                                            <!--<div class="dsm-inline">-->
+                                                                                <!--<label class="dsm-form-label" >文件类型:</label>-->
+                                                                                <!--<div class="dsm-form-content">-->
+
+                                                                                    <!--<ul>-->
+
+                                                                                        <!--<li>文件包含:-</li>-->
+                                                                                        <!--<li>文件排除:-</li>-->
+                                                                                    <!--</ul>-->
+                                                                                <!--</div>-->
+                                                                            <!--</div>-->
+
+                                                                        <!--</div>-->
+                                                                        <!--<div class="cont-detail f-r">-->
+                                                                            <!--<div class="dsm-inline">-->
+                                                                                <!--<label class="dsm-form-label" >URL过滤规则:</label>-->
+                                                                                <!--<div class="dsm-form-content">-</div>-->
+                                                                            <!--</div>-->
+                                                                            <!--<div class="dsm-inline">-->
+                                                                                <!--<label class="dsm-form-label" >字段名过滤规则:</label>-->
+                                                                                <!--<div class="dsm-form-content">-</div>-->
+                                                                            <!--</div>-->
+                                                                        <!--</div>-->
+                                                                        <!--<div class="custom-box">-->
+                                                                            <!--<label class="dsm-form-label" >自定义项:</label>-->
+                                                                            <!--<div class="dsm-form-content">-->
+                                                                                <!--&#45;&#45;&#45;&#45;&#45;&#45;<br/>-->
+                                                                                <!--&#45;&#45;&#45;&#45;&#45;&#45;<br/>-->
+                                                                                <!--&#45;&#45;&#45;&#45;&#45;&#45;<br/>-->
+                                                                            <!--</div>-->
+                                                                        <!--</div>-->
+                                                                    <!--</div>-->
+                                                                <!--</td>-->
+                                                            <!--</tr>-->
+
+                                                            <tr>
+                                                                <td>
+                                                                    <div class="dsmcheckbox">
+                                                                        <input type="checkbox" value="1" id="checkboxdecry2"  name="duids">
+                                                                        <label for="checkboxdecry2"></label>
+                                                                    </div>
+                                                                </td>
+                                                                <td>--解密策略</td>
+                                                                <td class="txt-stop">停用</td>
+                                                                <td>【排除】：doc,docx,ppt,pptx,pdf</td>
+                                                                <td><span class="listdetail bg-red  js_showdecrydetail"> <i class="icon icon-ddown"></i></span></td>
+                                                            </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<!--新增加密策略-->
+<div  class="popForm" style="display: none">
+    <div class="dsmForms dsmpopForms">
+        <div class="dsm-form-item">
+            <div class="dsm-inline">
+                <label class="dsm-form-label">策略名称：</label>
+                <div class="dsm-input-inline">
+                    <input type="text" class="dsm-input" autocomplete="off" placeholder="策略名称">
+                </div>
+            </div>
+            <div class="dsm-inline">
+                <label class="dsm-form-label">策略状态：</label>
+                <div class="dsm-input-inline">
+                    <div class="dsm-radio-one">
+                        <div class="dsm-radiobox">
+                            <input type="radio" id="rdo_policystop" name="SSLPort" value="0" class="dsm-radio" checked>
+                            <label for="rdo_policystop"></label>
+                        </div>
+                        <label class="radiolabel" for="rdo_policystop">停用</label>
+                    </div>
+
+                    <div class="dsm-radio-one">
+                        <div class="dsm-radiobox">
+                            <input type="radio" id="rdo_policystart" name="SSLPort" value="1" class="dsm-radio" >
+                            <label for="rdo_policystart"></label>
+                        </div>
+                        <label  class="radiolabel" for="rdo_policystart">启用</label>
+
+                    </div>
+                </div>
+            </div>
+            <div class="dsm-inline">
+                <label class="dsm-form-label">URI：</label>
+                <div class="dsm-input-inline">
+                    <input type="text" autocomplete="off" placeholder="URI" class="dsm-input">
+                </div>
+
+            </div>
+            <div class="dsm-inline">
+                <label class="dsm-form-label">安全域标识：</label>
+                <div class="dsm-input-inline">
+                    <input type="text" autocomplete="off" placeholder="安全域标识" class="dsm-input">
+                </div>
+            </div>
+            <div class="dsm-inline">
+                <label class="dsm-form-label">文件类型：</label>
+                <div class="dsm-input-inline">
+                    <select  class="dsm-select w100 f-l">
+                        <option value="http">文件包含</option>
+                        <option value="https">文件排除</option>
+                    </select>
+                    <input type="text" autocomplete="off" placeholder="doc,docx,ppt,pptx,xls,xlsx" class="dsm-input w230 f-r m-l-10">
+                </div>
+
+            </div>
+            <div class="dsm-inline t-r txt-blue m-r-50">
+               <span class="js_showAdvancedSet"><i class="icon icon-dbluedown-s"></i>高级设置</span>
+            </div>
+            <div class="AdvancedSet-box hidden">
+                <div class="dsm-inline">
+                    <label class="dsm-form-label">URL过滤规则：</label>
+                    <div class="dsm-input-inline">
+                        <input type="text" autocomplete="off" placeholder="URL过滤规则" class="dsm-input">
+                    </div>
+                </div>
+                <div class="dsm-inline">
+                    <label class="dsm-form-label">传输类型过滤规则：</label>
+                    <div class="dsm-input-inline">
+                        <input type="text" autocomplete="off" placeholder="传输类型过滤规则" class="dsm-input">
+                    </div>
+                </div>
+                <div class="dsm-inline">
+                    <label class="dsm-form-label">文件名获取方式：</label>
+                    <div class="dsm-input-inline">
+                        <select id="ddl_getType" class="dsm-select w150 f-l">
+                            <option value="0">请求的头部</option>
+                            <option value="1">请求的URI</option>
+                            <option value="2">请求的参数</option>
+                        </select>
+                        <input id="txt_fileNameGetType" type="text" autocomplete="off" placeholder="" class="dsm-input w180 f-r m-l-10 hidden">
+                    </div>
+
+                </div>
+
+                <div class="dsm-inline">
+                    <label class="dsm-form-label">修改传输类型为OS：</label>
+                    <div class="dsm-input-inline">
+                        <div class="dsm-radio-one">
+                            <div class="dsm-radiobox">
+                                <input type="radio" id="rdo_yestype" name="trantype" value="0" class="dsm-radio" checked>
+                                <label for="rdo_yestype"></label>
+                            </div>
+                            <label class="radiolabel" for="rdo_yestype">是</label>
+                        </div>
+                        <div class="dsm-radio-one">
+                            <div class="dsm-radiobox">
+                                <input type="radio" id="rdo_notype" name="trantype" value="1" class="dsm-radio" >
+                                <label for="rdo_notype"></label>
+                            </div>
+                            <label  class="radiolabel" for="rdo_notype">否</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="dsm-inline">
+                    <label class="dsm-form-label">自定义项：</label>
+                    <div class="dsm-input-inline">
+                        <input type="text" autocomplete="off" placeholder="自定义项" class="dsm-input dsm-input-line w300">
+                        <i class="icon icon-circle-add-n "></i>
+                    </div>
+                    <div id="encryCustom_box" class="m-t-10p">
+                        <div class="custom-item">
+                            <input type="text" autocomplete="off" placeholder="自定义项" class="dsm-input dsm-input-line w300">
+                            <i class="icon icon-circle-add-n"></i>
+                            <i class="icon icon-circle-del-n"></i>
+                        </div>
+                        <div class="custom-item">
+                            <input type="text" autocomplete="off" placeholder="自定义项" class="dsm-input dsm-input-line w300">
+                            <i class="icon icon-circle-add-n"></i>
+                            <i class="icon icon-circle-del-n"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--新增解密策略-->
+<div  class="popdecryForm" style="display: none">
+    <div class="dsmForms dsmpopForms">
+        <div class="dsm-form-item">
+            <div class="dsm-inline">
+                <label class="dsm-form-label">策略名称：</label>
+                <div class="dsm-input-inline">
+                    <input type="text" class="dsm-input" autocomplete="off" placeholder="策略名称">
+                </div>
+            </div>
+            <div class="dsm-inline">
+                <label class="dsm-form-label">策略状态：</label>
+                <div class="dsm-input-inline">
+                    <div class="dsm-radio-one">
+                        <div class="dsm-radiobox">
+                            <input type="radio" id="rdo_depolicystop" name="SSLPort" value="0" class="dsm-radio" checked>
+                            <label for="rdo_policystop"></label>
+                        </div>
+                        <label class="radiolabel" for="rdo_policystop">停用</label>
+                    </div>
+
+                    <div class="dsm-radio-one">
+                        <div class="dsm-radiobox">
+                            <input type="radio" id="rdo_depolicystart" name="SSLPort" value="1" class="dsm-radio" >
+                            <label for="rdo_policystart"></label>
+                        </div>
+                        <label  class="radiolabel" for="rdo_policystart">启用</label>
+
+                    </div>
+                </div>
+            </div>
+            <div class="dsm-inline">
+                <label class="dsm-form-label">URI：</label>
+                <div class="dsm-input-inline">
+                    <input  type="text" autocomplete="off" placeholder="URI" class="dsm-input">
+                </div>
+
+            </div>
+
+            <div class="dsm-inline">
+                <label class="dsm-form-label">文件类型：</label>
+                <div class="dsm-input-inline">
+                    <select  class="dsm-select w100 f-l">
+                        <option value="http">文件包含</option>
+                        <option value="https">文件排除</option>
+                    </select>
+                    <input type="text" autocomplete="off" placeholder="doc,docx,ppt,pptx,xls,xlsx" class="dsm-input w230 f-r m-l-10">
+                </div>
+
+            </div>
+            <div class="dsm-inline t-r txt-blue m-r-50">
+                <span class="js_showAdvancedSet"><i class="icon icon-dbluedown-s"></i>高级设置</span>
+            </div>
+            <div class="AdvancedSet-box hidden">
+                <div class="dsm-inline">
+                    <label class="dsm-form-label">URL过滤规则：</label>
+                    <div class="dsm-input-inline">
+                        <input type="text" autocomplete="off" placeholder="URL过滤规则" class="dsm-input">
+                    </div>
+                </div>
+                <div class="dsm-inline">
+                    <label class="dsm-form-label">字段名过滤规则：</label>
+                    <div class="dsm-input-inline">
+                        <input type="text" autocomplete="off" placeholder="字段名过滤规则" class="dsm-input">
+                    </div>
+                </div>
+
+                <div class="dsm-inline">
+                    <label class="dsm-form-label">自定义项：</label>
+                    <div class="dsm-input-inline">
+                        <input type="text" autocomplete="off" placeholder="自定义项" class="dsm-input dsm-input-line w300">
+                        <i class="icon icon-circle-add-n"></i>
+                    </div>
+                    <div id="decryCustom_box" class="m-t-10p">
+                        <div class="custom-item">
+                            <input type="text" autocomplete="off" placeholder="自定义项" class="dsm-input dsm-input-line w300">
+                            <i class="icon icon-circle-add-n"></i>
+                            <i class="icon icon-circle-del-n"></i>
+                        </div>
+                        <div class="custom-item">
+                            <input type="text" autocomplete="off" placeholder="自定义项" class="dsm-input dsm-input-line w300">
+                            <i class="icon icon-circle-add-n"></i>
+                            <i class="icon icon-circle-del-n"></i>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="js/site.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var id=getQueryStr("id");//集群服务器id 新增id=0
+        var type=getQueryStr("type");
+        if(type=="1"){
+            $(".curname").html("新增");
+        }
+        if(type=="2"){
+            $(".curname").html("修改");
+        }
+
+
+        $(document).on('click', '.btn-tab', function (e) {
+            if($(this).parent().hasClass("active")){
+                $(this).next(".icon").removeClass("hidden");
+                $(this).parent().siblings().children(".icon").addClass('hidden');
+            }
+            else{
+                $(this).next(".icon").addClass("hidden");
+            }
+        });
+
+        $(document).on('click', '.js_showAdvancedSet', function (e) {
+            if($(this).hasClass("active")){
+                $(this).removeClass("active");
+                $(".AdvancedSet-box").addClass('hidden');
+            }
+            else{
+                $(this).addClass('active');
+                $(".AdvancedSet-box").removeClass('hidden');
+            }
+        });
+        $(document).on('click', '.js_encryadd', function (e) {
+            clear();
+            $(".popForm").attr('id',"addEncryForm");
+            dsmDialog.open({
+                type: 1,
+                area:['580px','610px'],
+                btn:['确定','取消'],
+                title:"新增加密策略",
+                content: $('#addEncryForm'),
+                yes: function(index, layero){
+                    dsmDialog.msg('新增成功!');
+                    dsmDialog.close(index);
+                    clear();//初始化输入控件
+
+                }
+            });
+        });
+        $(document).on('click', '.js_decryadd', function (e) {
+            clear();
+            $(".popdecryForm").attr('id',"addDecryForm");
+            dsmDialog.open({
+                type: 1,
+                area:['580px','610px'],
+                btn:['确定','取消'],
+                title:"新增解密策略",
+                content: $('#addDecryForm'),
+                yes: function(index, layero){
+                    dsmDialog.msg('新增成功!');
+                    dsmDialog.close(index);
+                    clear();//初始化输入控件
+
+                }
+            });
+        });
+
+        $(document).on('click', '.js_showdetail', function (e) {
+            if($(this).hasClass("active")){
+                $(this).removeClass("active");
+                $(this).parent().parent().next().remove();
+            }
+            else{
+                var udetailHtml='<tr class="detailtr"> <td colspan="7"> <div class="detailbox clearfix">';
+
+                udetailHtml+='<div class="cont-detail cont-detail-l f-l" >';
+                udetailHtml+='<div class="dsm-inline">';
+                udetailHtml+='<label class="dsm-form-label" >URI参数:</label>';
+                udetailHtml+='<div class="dsm-form-content">-</div>';
+                udetailHtml+='</div>';
+                udetailHtml+='<div class="dsm-inline">';
+                udetailHtml+='<label class="dsm-form-label" >传输类型:</label>';
+                udetailHtml+='<div class="dsm-form-content">-</div>';
+                udetailHtml+='</div>';
+                udetailHtml+='<div class="dsm-inline">';
+                udetailHtml+='<label class="dsm-form-label" >安全域标识:</label>';
+                udetailHtml+='<div class="dsm-form-content">-</div>';
+                udetailHtml+='</div>';
+                udetailHtml+='<div class="dsm-inline">';
+                udetailHtml+='<label class="dsm-form-label" >文件类型:</label>';
+                udetailHtml+='<div class="dsm-form-content"><ul>';
+                udetailHtml+='<li>文件包含:-</li>';
+                udetailHtml+='<li>文件排除:-</li>';
+                udetailHtml+='</ul></div>';
+                udetailHtml+='</div>';
+                udetailHtml+='</div>';
+
+                udetailHtml+='<div class="cont-detail f-r" >';
+                udetailHtml+='<div class="dsm-inline">';
+                udetailHtml+='<label class="dsm-form-label" >URL过滤规则:</label>';
+                udetailHtml+='<div class="dsm-form-content">-</div>';
+                udetailHtml+='</div>';
+                udetailHtml+='<div class="dsm-inline">';
+                udetailHtml+='<label class="dsm-form-label" >传输类型过滤规则:</label>';
+                udetailHtml+='<div class="dsm-form-content">-</div>';
+                udetailHtml+='</div>';
+                udetailHtml+='<div class="dsm-inline">';
+                    udetailHtml+='<label class="dsm-form-label" >文件名获取方式:</label>';
+                    udetailHtml+='<div class="dsm-form-content">';
+                        udetailHtml+='<ul>';
+                        udetailHtml+=' <li>响应的头部：-</li>';
+                        udetailHtml+=' <li>请求的参数：-</li>';
+                        udetailHtml+=' <li>请求的URI:-</li>';
+                        udetailHtml+='</ul>';
+                    udetailHtml+='</div>';
+                udetailHtml+='</div>';
+
+                udetailHtml+='<div class="dsm-inline">';
+                udetailHtml+='<label class="dsm-form-label" >修改传输类型为OS:</label>';
+                udetailHtml+='<div class="dsm-form-content">-</div>';
+                udetailHtml+='</div>';
+                udetailHtml+='</div>';
+                udetailHtml+='<div class="custom-box">';
+                udetailHtml+='<label class="dsm-form-label" >自定义项:</label>';
+                udetailHtml+='<div class="dsm-form-content">';
+                udetailHtml+='------<br/>';
+                udetailHtml+='</div>';
+                udetailHtml+='</div>';
+
+                udetailHtml+='</div></td></tr>';
+
+                $(this).parent().parent().after(udetailHtml);
+                $(this).addClass('active');
+            }
+
+        });
+
+        $(document).on('click', '.js_showdecrydetail', function (e) {
+            if($(this).hasClass("active")){
+                $(this).removeClass("active");
+                $(this).parent().parent().next().remove();
+            }
+            else{
+                var udetailHtml='<tr class="detailtr"> <td colspan="7"> <div class="detailbox clearfix">';
+
+                udetailHtml+='<div class="cont-detail cont-detail-l f-l" >';
+                udetailHtml+='<div class="dsm-inline">';
+                udetailHtml+='<label class="dsm-form-label" >URI参数:</label>';
+                udetailHtml+='<div class="dsm-form-content">-</div>';
+                udetailHtml+='</div>';
+                udetailHtml+='<div class="dsm-inline">';
+                udetailHtml+='<label class="dsm-form-label" >文件类型:</label>';
+                udetailHtml+='<div class="dsm-form-content"><ul>';
+                udetailHtml+='<li>文件包含:-</li>';
+                udetailHtml+='<li>文件排除:-</li>';
+                udetailHtml+='</ul></div>';
+                udetailHtml+='</div>';
+                udetailHtml+='</div>';
+
+                udetailHtml+='<div class="cont-detail f-r" >';
+                udetailHtml+='<div class="dsm-inline">';
+                udetailHtml+='<label class="dsm-form-label" >URL过滤规则:</label>';
+                udetailHtml+='<div class="dsm-form-content">-</div>';
+                udetailHtml+='</div>';
+                udetailHtml+='<div class="dsm-inline">';
+                udetailHtml+='<label class="dsm-form-label" >字段名过滤规则:</label>';
+                udetailHtml+='<div class="dsm-form-content">-</div>';
+                udetailHtml+='</div>';
+                udetailHtml+='</div>';
+
+
+                udetailHtml+='<div class="custom-box">';
+                udetailHtml+='<label class="dsm-form-label" >自定义项:</label>';
+                udetailHtml+='<div class="dsm-form-content">';
+                udetailHtml+='------<br/>';
+                udetailHtml+='</div>';
+                udetailHtml+='</div>';
+
+                udetailHtml+='</div></td></tr>';
+
+                $(this).parent().parent().after(udetailHtml);
+                $(this).addClass('active');
+            }
+
+        });
+
+        //删除
+        $(document).on('click', '.js_decrydel', function (e) {
+            var chkItem=itemSelected_check("duids");
+            if(chkItem.length==0){
+                dsmDialog.error('请先选择策略！');
+                return;
+            }
+            showDelModel();
+        });
+        $(document).on('click', '.js_encrydel', function (e) {
+            var chkItem=itemSelected_check("euids");
+            if(chkItem.length==0){
+                dsmDialog.error('请先选择策略！');
+                return;en
+            }
+            showDelModel();
+        });
+    });
+    //验证超时时间
+    $(document).on('blur','#txt_timeOut',function(e){
+        isNum($(this));
+        var val=$(this).val();
+        if(parseInt(val) <=1 || parseInt(val)>=30){
+            dsmDialog.error('请输入1-30的数字!');
+            $(this).val("");
+        }
+    })
+    //确定新增
+    $(document).on('click', '.js_save', function (e) {
+        $(this).attr("disabled","true");
+        dsmDialog.msg('新增成功');
+        setTimeout("window.location.href='PolicyManager-GeneralSet-Form.html'",1500)
+
+    });
+    //https-SSL端口类型
+    $(document).on('click',"input[name='SSLPort']",function(e){
+        var portTypeVal = $("input[name='SSLPort']:checked").val();
+        if (portTypeVal == 1) {
+            $("#txt_customPort").removeClass('hidden');
+        }
+        if (portTypeVal == 0) {
+            $("#txt_customPort").addClass('hidden');
+        }
+    });
+    $(document).on('change',"#ddl_getType",function(e){
+        var type=$("#ddl_getType").val();
+        if(type==0||type==1){
+            $("#txt_fileNameGetType").addClass('hidden');
+        }
+        if(type==2){
+            $("#txt_fileNameGetType").removeClass('hidden');
+        }
+    })
+    //初始化输入控件
+    function clear(){
+        $(".dsm-input").val("");
+        $(".dsm-textarea").html("");
+        $(".dsm-select option:first").prop("selected", 'selected');
+        $('.line-tip').css('display','none');
+    }
+    function getQueryStr(sArgName)
+    {
+        //var LocString=parent.document.getElementById('dsmmainIframe').src;//js
+        var LocString=$("#dsmmainIframe",parent.document).attr('src');//jquery
+//        var LocString=parent.document.URL;
+        var args = LocString.split('?');
+        var retval = "";
+        if(args[0] == LocString)
+        {
+            return retval;
+        }
+        var str = args[1];
+        args = str.split("&");
+        for(var i = 0; i < args.length; i ++)
+        {
+            str = args[i];
+            var arg = str.split("=");
+            if(arg.length <= 1) continue;
+            if(arg[0] == sArgName) retval = arg[1];
+        }
+        return retval;
+    }
+    //删除弹框
+    function showDelModel() {
+        dsmDialog.toComfirm("请确认是否删除当前策略！", {
+            btn: ['确定','取消'],
+            title:"删除"
+        }, function(index){
+            //删除操作代码
+            dsmDialog.msg('删除成功！');
+            dsmDialog.close(index);
+        }, function(index){
+            dsmDialog.close(index);
+        });
+    }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="ch">        
+<head>
+	<meta charset="UTF-8">
+	<title>windows终端管理</title>
+
+	<!--全局通用!-->
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="css/global.css">
+	<script src="js/jquery.js"></script>
+	<script src="js/bootstrap.js"></script>
+	<!--全局通用end!-->
+	<!--此页面特有!-->
+	<link rel="stylesheet" type="text/css" href="css/zTreeStyle.css">
+	<script src="js/jquery.ztree.all.min.js"></script>
+	<!--全局通用end!-->
+	<!--[if lt IE 9]>
+      <script src="js/html5shiv/html5shiv.js"></script>
+      <script src="js/respond/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+	<div class="dsm-rightside dsm-rightside-nonav">		
+		<div class="maincontent">
+			<div class="mainbox clearfix">
+				<div class="main-left">
+					<div class="orglist">
+						<div class="treedata">
+							<ul id="dsmOrgTree" class="ztree"></ul>
+						</div>
+						<div class="zclosebtn js_showchartzree"><i class="icon icon-blue-s-left"></i></div>
+					</div>
+				</div>
+				<div class="main-right">
+					<div class="dsm-searchbar">
+						<div class="filter" id="search">
+
+						    <div id="fequipment" class="simulate-list ks-overlay ks-overlay-hidden">
+						        <div class="ks-popup-content">
+						            <input data-selected-desc="计算器名:" data-request="equipment" class="fiterpara" type="text" value="">
+						            <button class="subfiter" type="button">确定</button>
+						        </div>
+						    </div>
+						    <div id="fip" class="simulate-list ks-overlay ks-overlay-hidden">
+						        <div class="ks-popup-content">
+						            <input data-selected-desc="IP地址:" data-request="ip" class="fiterpara" type="text" value="">
+						            <button class="subfiter" type="button">确定</button>
+						        </div>
+						    </div>
+						    <div id="faccount" class="simulate-list ks-overlay ks-overlay-hidden">
+						        <div class="ks-popup-content">
+						            <input data-selected-desc="账号:" data-request="account" class="fiterpara" type="text" value="">
+						            <button class="subfiter" type="button">确定</button>
+						        </div>
+						    </div>
+						    <div id="fusername" class="simulate-list ks-overlay ks-overlay-hidden">
+						        <div class="ks-popup-content">
+						            <input data-selected-desc="姓名:" data-request="username" class="fiterpara" type="text" value="">
+						            <button class="subfiter" type="button">确定</button>
+						        </div>
+						    </div>		
+						    <div id="fsystemversion" class="simulate-list ks-overlay ks-overlay-hidden">
+						        <div class="ks-popup-content">
+						            <input data-selected-desc="系统版本:" data-request="systemversion" class="fiterpara" type="text" value="">
+						            <button class="subfiter" type="button">确定</button>
+						        </div>
+						    </div>
+						    <div id="fvisit_time" class="simulate-list ks-overlay ks-overlay-hidden" >
+						        <div class="ks-popup-content">
+						            <input class="Wdate fiterpara" type="text" data-selected-desc="最近访问时间:" data-request="visit_time" value="" onclick="WdatePicker()">-<input class="Wdate fiterpara" type="text" value="" data-request="visit_time" onclick="WdatePicker()">
+						            <button class="subfiter" type="button">确定</button>
+						        </div>
+						    </div>
+						    <div id="fconnectstate" class="simulate-list ks-overlay ks-overlay-hidden">
+						        <div class="ks-popup-content">
+						            <input data-selected-desc="连接状态:" data-request="connectstate" class="fiterpara" type="text" value="">
+						            <button class="subfiter" type="button">确定</button>
+						        </div>
+						    </div>
+						    <div id="finpolicy" class="simulate-list ks-overlay ks-overlay-hidden">
+						        <div class="ks-popup-content">
+						            <input data-selected-desc="智能机密策略:" data-request="inpolicy" class="fiterpara" type="text" value="">
+						            <button class="subfiter" type="button">确定</button>
+						        </div>
+						    </div>
+						    <div id="fclientstatute" class="simulate-list ks-overlay ks-overlay-hidden">
+						        <div class="ks-popup-content">
+						            <input data-selected-desc="扫描状态:" data-request="clientstatute" class="fiterpara" type="text" value="">
+						            <button class="subfiter" type="button">确定</button>
+						        </div>
+						    </div>
+
+						    <div class="clearfix">
+						        <dl>
+						            <dt>筛选条件：</dt>
+					            	<dd><span class="simulate-select" data-sim-obj="fequipment" data-sim-z="equipment"><span class="J_simulate_value">计算器名</span><em></em></span></dd>
+						            <dd><span class="simulate-select" data-sim-obj="fip" data-sim-z="ip"><span class="J_simulate_value">IP地址</span><em></em></span></dd>
+						            <dd><span class="simulate-select" data-sim-obj="fsystemversion" data-sim-z="systemversion"><span class="J_simulate_value">系统版本</span><em></em></span></dd>
+						            <dd><span class="simulate-select" data-sim-obj="faccount" data-sim-z="account"><span class="J_simulate_value">账号</span><em></em></span></dd>
+						            <dd><span class="simulate-select" data-sim-obj="fusername" data-sim-z="username"><span class="J_simulate_value">姓名</span><em></em></span></dd>	
+						            <dd><span class="simulate-select" data-sim-obj="fvisit_time" data-sim-z="visit_time"><span class="J_simulate_value">最近访问时间</span><em></em></span></dd>
+						            <dd><span class="simulate-select" data-sim-obj="fconnectstate" data-sim-z="connectstate"><span class="J_simulate_value">连接状态</span><em></em></span></dd>
+						            <dd><span class="simulate-select" data-sim-obj="finpolicy" data-sim-z="inpolicy"><span class="J_simulate_value">智能机密策略</span><em></em></span></dd>
+						            <dd><span class="simulate-select" data-sim-obj="fclientstatute" data-sim-z="clientstatute"><span class="J_simulate_value">扫描状态</span><em></em></span></dd>
+						        </dl>
+						    </div>
+						    <dl class="clearfix filter-selected-list">
+						        <dt>已选条件：</dt>
+						        <button type="button" class="btn btn-primary f-r whitebg js_clearall">清除全部</button>
+						    </dl>
+
+						</div>
+					</div>
+					<div class="btn-toolbar">
+						<button type="button" class="btn btn-primary whitebg js_setIntelligen" ><i class="btnicon icon icon-navsetblue"></i>设置智能加密策略</button>
+						<button type="button" class="btn btn-primary whitebg js_delIntelligen" ><i class="btnicon icon icon-del-blue"></i>删除智能加密策略</button>
+						<button type="button" class="btn btn-primary whitebg js_delTerInfo" ><i class="btnicon icon icon-del-blue"></i>删除终端信息</button>
+						<button type="button" class="btn btn-primary whitebg js_setAddmit hidden" ><i class="btnicon icon icon-navsetblue"></i>设置准入</button>
+						<div class="f-r w200 m-t-10p">
+							<span class="m-l-40">开启准入控制</span>
+							<div class="dsmcheckboxtwo f-r nochecked">
+						  		<input type="checkbox" class="js_enableAdd" value="1" id="c1" name="enableAdd">
+							  	<label for="c1"><i class="icon icon-tver"></i></label>
+						  	</div>
+						</div>
+					</div>
+					<div class="table-view">
+						<table class="table" cellspacing="0" width="100%">
+					        <thead>
+					            <tr>
+					                <th>
+						                <div class="dsmcheckbox">
+						                	<input type="checkbox" value="1" id="lcjk"  class="js_checkboxAll" data-allcheckfor="fids" name="">
+											<label for="lcjk"></label>
+										</div>
+									</th>
+					                <th>计算机名</th>
+					                <th>IP地址</th>
+					                <th>系统版本</th>
+					                <th>用户账号</th>
+					                <th>用户姓名</th>
+					                <th>终端版本</th>
+					                <th>最近访问时间</th>
+					                <th>连接状态</th>
+					                <th>智能加密策略</th>
+					                <th>扫描状态</th>
+					                <th>允许接入</th>
+					            </tr>
+					        </thead>
+					        <tbody>
+					            
+					            <tr>
+					                <td>
+					                	<div class="dsmcheckbox">
+						                	<input type="checkbox" value="1" id="m12" name="fids">
+											<label for="m12"></label>
+										</div>
+					                </td>
+					                <td>pc1</td>
+					                <td>192.168.1.21</td>
+					                <td>windows7</td>
+					                <td>test1</td>
+					                <td>测试账号</td>
+					                <td>5.0</td>
+					                <td>2017/03/21 15:22</td>
+					                <td><i class="icon icon-online"></i></td>
+					                <td>无</td>
+					                <td>未扫描</td>
+					                <td><i class="icon icon-redclose active"></i></td>
+					            </tr>
+					            <tr>
+					                <td>
+					                	<div class="dsmcheckbox">
+						                	<input type="checkbox" value="1" id="mm3" name="fids">
+											<label for="mm3"></label>
+										</div>
+					                </td>
+					                <td>pc1</td>
+					                <td>192.168.1.21</td>
+					                <td>windows7</td>
+					                <td>test1</td>
+					                <td>测试账号</td>
+					                <td>5.0</td>
+					                <td>2017/03/21 15:22</td>
+					                <td><i class="icon icon-offline"></i></td>
+					                <td>无</td>
+					                <td>
+										40%
+						                <div class="progress progress-striped active">
+											<div class="progress-bar progress-bar-warning" role="progressbar"
+												 aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"
+												 style="width: 40%;">
+												<span class="sr-only"></span>
+											</div>
+										</div>
+									</td>
+					                <td><i class="icon icon-redclose"></i></td>
+					            </tr>
+					            <tr>
+					                <td>
+					                	<div class="dsmcheckbox">
+						                	<input type="checkbox" value="1" id="nn4" name="fids">
+											<label for="nn4"></label>
+										</div>
+					                </td>
+					                <td>pc1</td>
+					                <td>192.168.1.21</td>
+					                <td>windows7</td>
+					                <td>test1</td>
+					                <td>测试账号</td>
+					                <td>5.0</td>
+					                <td>2017/03/21 15:22</td>
+					                <td><i class="icon icon-offline"></i></td>
+					                <td>无</td>
+					                <td class="hasscane">已扫描</td>
+					                <td><i class="icon icon-redclose active"></i></td>
+					            </tr>
+					            
+					        </tbody>
+					    </table>
+					    <div class="pagebox">
+					    	
+					    	<span class="showinfo">
+					    		<span class="lengthinput">
+						    		<select class="page-length">
+										<option>1</option>
+										<option>2</option>
+										<option>3</option>
+										<option>4</option>
+										<option>5</option>
+									</select>
+								</span>
+					    		<span class="lengthinfo">条/页</span>显示
+						    	<span class="start-index">1</span>-
+						    	<span class="end-index">5</span>条记录，共
+						    	<span class="total">5</span>条记录
+					    	</span>
+					    	<span class="buttoninfo">
+							    <div class="dsm-laypage" >
+							        <a href="javascript:;" class="dsm-laypage-prev" data-page="7">上一页</a>
+							        <a href="javascript:;" data-page="1">1</a><a href="javascript:;" data-page="2">2</a>
+							        <span class="dsm-laypage-curr"><em class="dsm-laypage-em"></em><em>3</em></span>
+							        <span>…</span>
+							        <a href="javascript:;" data-page="100">100</a>
+							        <a href="javascript:;" class="dsm-laypage-next" data-page="9">下一页</a>
+							        <span class="dsm-laypage-total">跳转到
+							            <input type="number" min="1" value="8" class="dsm-laypage-skip">页
+							            <button type="button" class="dsm-laypage-btn">确定</button>
+							        </span>
+							    </div>
+					    	</span>
+					    </div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--设置智能加密策略-->
+	<div id="setIntelligenForm" style="display: none">
+		<div class="dsmForms">
+	    	<div class="dsm-form-item">
+	            <div class="dsm-inline">
+	                <label class="dsm-form-label">选择策略：</label>
+	                <div class="dsm-input-block">
+						<select  class="dsm-select">
+							<option>策略1</option>
+							<option>策略2</option>
+							<option>策略3</option>
+							<option>策略4</option>
+							<option>策略5</option>
+						</select>
+	                </div>
+	            </div>
+	        </div>
+				        
+		</div>
+	</div>
+	
+	<!--设置准入-->
+	<div id="setAddmitForm" style="display: none">
+		<div class="dsmForms">
+	    	<div class="dsm-form-item">
+	            <div class="dsm-inline">
+	                <label class="dsm-form-label">允许接入：</label>
+	                <div class="dsm-input-block">
+                    	 <div class="dsm-radio-one">
+	                		<div class="dsm-radiobox">
+		                		<input type="radio" id="hq" name="recrivemodel" value="0" class="dsm-radio js_approvemodel" checked>
+		                		<label for="hq"></label>
+		                	</div>
+		                	<label class="radiolabel" for="hq">是</label>
+	                	</div>
+	                	
+	                	<div class="dsm-radio-one">
+		                	<div class="dsm-radiobox">
+		                		<input type="radio" id="bq" name="recrivemodel" value="1" class="dsm-radio js_approvemodel" >
+		                		<label for="bq"></label>
+		                	</div>
+		                	<label  class="radiolabel" for="bq">否</label>
+	                	</div>
+
+                    </div>
+
+	            </div>
+	        </div>
+				        
+		</div>
+	</div>
+		
+	<script type="text/javascript" src="js/site.js"></script>
+	<script src="js/My97DatePicker/WdatePicker.js"></script>
+	<script src="js/dsm-search.js"></script>
+	<script type="text/javascript">
+		var setting = {
+			data: {
+				simpleData: {
+					enable: true
+				}
+			}
+		};
+		var zNodes =[
+			{ id:1, pId:0, name:"组织架构", open:true},
+			{ id:11, pId:1, name:"研发部"},
+			{ id:111, pId:11, name:"DLP"},
+			{ id:112, pId:11, name:"DSM"},
+			{ id:113, pId:11, name:"WSG"},
+			{ id:114, pId:11, name:"客户端"},
+			{ id:12, pId:1, name:"测试部"},
+			{ id:121, pId:12, name:"测试部"},
+			{ id:122, pId:12, name:"测试部1"},
+			{ id:123, pId:12, name:"测试部2"},
+			{ id:124, pId:12, name:"测试部3"},
+			{ id:13, pId:1, name:"运维部", isParent:true}
+		];
+
+		$(document).ready(function(){
+			$.fn.zTree.init($("#dsmOrgTree"), setting, zNodes);
+		});
+		$(document).on("change", ".js_enableAdd", function(){
+			
+			var vchecked=this.checked;
+			if(vchecked){
+				$('.js_setAddmit').removeClass('hidden');
+			}else{
+				$('.js_setAddmit').addClass('hidden');
+			}
+			$('.dsmcheckboxtwo').toggleClass('nochecked');
+    	});
+    	//设置智能加密策略
+        $(document).on('click', '.js_setIntelligen', function (e) {
+        	dsmDialog.open({
+				type: 1,
+				shade:0,
+				area:['500px','300px'],
+				btn:['确定','取消'],
+				title:"设置智能加密策略",
+	            content: $('#setIntelligenForm'),
+	            yes: function(index, layero){
+	            	//执行确定操作 调用 iframe中的方法
+	            	
+					dsmDialog.msg('设置成功!');
+				    dsmDialog.close(index); 
+			  	}
+    		});
+
+        });
+    	//删除智能加密策略
+        $(document).on('click', '.js_delIntelligen', function (e) {
+            dsmDialog.toComfirm("是否智能加密策略？", {
+				btn: ['确定','取消'],
+				shade:0,
+				title:"删除策略"
+			}, function(index){
+				//删除操作代码
+
+				dsmDialog.msg('删除成功！');
+				dsmDialog.close(index);
+			}, function(index){						
+				dsmDialog.close(index);
+			});
+
+        });
+    	//删除终端
+        $(document).on('click', '.js_delTerInfo', function (e) {
+            dsmDialog.toComfirm("是否删除选中的终端？", {
+				btn: ['确定','取消'],
+				shade:0,
+				title:"删除终端"
+			}, function(index){
+				//删除操作代码
+
+				dsmDialog.msg('删除成功！');
+				dsmDialog.close(index);
+			}, function(index){						
+				dsmDialog.close(index);
+			});
+
+        });
+        //设置准入
+        $(document).on('click', '.js_setAddmit', function (e) {
+        	dsmDialog.open({
+				type: 1,
+				shade:0,
+				area:['500px','260px'],
+				btn:['确定','取消'],
+				title:"设置准入",
+	            content: $('#setAddmitForm'),
+	            yes: function(index, layero){
+	            	//执行确定操作 调用 iframe中的方法
+	            	
+					dsmDialog.msg('设置成功!');
+				    dsmDialog.close(index); 
+			  	}
+    		});
+
+        });
+        //搜索交互回调 每个报表搜索页面必须有这个fun
+		function filter(){
+			//传递参数至后台
+			//...代码
+			//刷新表格
+		}
+	</script>
+</body>
+</html>

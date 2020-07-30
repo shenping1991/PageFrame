@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>test1</title>
+	<style type="text/css">
+		ul,li{list-style: none;}
+		.box-wrapper,.box-wrapper2{ margin:0;padding: 0; }
+		.box1{ float:left; width:100px;height:200px;background-color: #ccc;}
+		.box2{ margin-left: 100px; height:200px;background-color: #999;}
+		.box-wrapper2{width:100%;height:300px;display:flex; flex-direction: row;}
+		.box3{flex-basis: 220px; -webkit-flex-basis:220px; height:100%;background-color: #ccc;}
+		.box4{flex-grow: 1; height:100%;background-color: #999;}
+		.box-wrapper3{width:400px; height:200px; display: flex;flex-direction: column; background-color: #eee;}
+		.box5{width:100%; height:100px;background-color: #ccc;}
+		.box6{width:100%; height:100px; background-color: #999;}
+		.list{width:200px;height: 200px; display: flex;display: -webkit-flex; flex-direction:row;}
+		.list>li{flex:1; width:100px;height:100px;background-color: blue; list-style: none; margin-left: 10px; justify-content: space-around;}
+		.note{width:1000px; display: flex; display: -webkit-flex;}
+		.note>li{display: block; width:500px;height:100px;margin-left:10px; background-color: orange; 
+		 flex-direction: row; flex-wrap: wrap;}
+	</style>
+</head>
+<body>
+	<div class="box-wrapper">
+		<div class="box1"></div>
+		<div class="box2"></div>
+	
+	</div>
+	<div class="box-wrapper2">
+		<div class="box3">3</div>
+		<div class="box4">4</div>
+	</div>
+	<div class="box-wrapper3">
+		<div class="box5">3</div>
+		<div class="box6">4</div>
+	</div>
+
+	<ul class="list">
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+		<li>5</li>
+	</ul>
+
+	<ul class="note">
+		<li>1</li>
+		<li>2</li>
+		<li>3</li>
+		<li>4</li>
+		<li>5</li>
+		<li>6</li>
+		<li>7</li>
+		<li>8</li>
+		<li>9</li>
+		<li>10</li>
+		
+	</ul>
+</body>
+</html>

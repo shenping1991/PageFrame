@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>toTop</title>
+	
+	<style type="text/css">
+		a{text-decoration: none;}
+       .content{width: 100%;height: 1000px;background-color: #1191e5;}
+       .content2{width: 100%;height: 1000px;background-color: #eee;}
+	   .backtoTop{position: fixed; right:20px; width:60px; height: 60px;line-height: 60px; background-color: #f8d206; color: #fff; text-align: center; font-weight: bolder; }
+	</style>
+	<script type="text/javascript" src="../h5/scripts/jquery-1.11.1.js"></script>
+</head> 
+<body>
+	<script type="text/javascript">
+	$(function(){
+		var flag = !0;
+	    var $toTop = $("a"), $win=$(window);
+	    var a_h = $toTop.height();
+	    var a_btm = 150;   
+	    var act_h = 250; 
+	    $toTop.css("bottom",-a_h); 
+	    
+	    var f1 = function(){
+	        $toTop.css({"bottom" : -a_h});
+	        flag = !0;
+	    }
+	    var f2 = function(){
+	        $win.off("scroll resize",scrollFun);
+	        $toTop.animate({"bottom":a_btm},400,function(){
+	            flag = !1;
+	            $toTop.css({"bottom":a_btm});
+	            $win.on("scroll resize",scrollFun);
+	            if($win.scrollTop()<act_h) f1();
+	        });
+	    }
+
+	    ////滚动条滚动事件
+	    scrollFun = function(){
+	        if($win.scrollTop()<act_h) f1();
+	        else if(flag) f2();
+	    }
+	    
+	    $win.on("scroll resize",scrollFun);
+	    $toTop.click(function(){
+	            $win.off("scroll resize",scrollFun);  //解绑scrollFun
+	            $toTop.stop().animate({bottom:$win.height()},500,function(){
+	                $win.on("scroll resize",scrollFun);  //重绑scrollFun
+	            });
+	            $('body,html').stop().animate({scrollTop:0},500);
+	    })
+		})
+	</script>
+	<a id="toTop" class="backtoTop" href="javascript:void(0);">Top</a>
+	<div class="content"></div>
+	<div class="content2"></div>
+</body>
+</html>

@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="ch">
+<head>
+    <meta charset="UTF-8">
+    <title>证书管理</title>
+
+    <!--全局通用!-->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/global.css">
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <!--全局通用end!-->
+
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv/html5shiv.js"></script>
+    <script src="js/respond/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+<div class="dsm-rightside ">
+    <div class="mainnav">
+        <div class="urlindex">
+            <i class="icon icon-home"></i>
+            <a class="name dsmfontblue" href="home.html">首页</a>
+            <i class="icon icon-right"></i>
+            <a class="name dsmfontblue" href="javascript:void(0);">系统管理</a>
+            <i class="icon icon-curright"></i>
+            <span class="curname">证书管理</span>
+        </div>
+    </div>
+    <div class="maincontent">
+        <div class="mainbox">
+            <div class="btn-toolbar">
+                <a class="btn btn-primary btn-tool js_add" ><i class="btnicon icon-toolbar icon-add"></i>新增</a>
+                <a class="btn btn-primary btn-tool js_del" ><i class="btnicon icon-toolbar icon-delete"></i>删除</a>
+
+            </div>
+            <div class="table-view">
+                <table id="datalist" class="table" cellspacing="0" width="100%">
+                    <thead>
+                    <tr>
+                        <th>
+                            <div class="dsmcheckbox">
+                                <input type="checkbox" value="1" id="t2"  class="js_checkboxAll" data-allcheckfor="uids"  name="">
+                                <label for="t2"></label>
+                            </div>
+                        </th>
+                        <th>证书名称</th>
+                        <th>描述</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>
+                            <i class="chk-disabled"></i>
+                        </td>
+                        <td class="txt-disable">默认证书</td>
+                        <td class="txt-disable">出厂默认证书</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="dsmcheckbox">
+                                <input type="checkbox" value="1" id="t22" name="uids">
+                                <label for="t22"></label>
+                            </div>
+                        </td>
+                        <td>用户证书</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="dsmcheckbox">
+                                <input type="checkbox" value="1" id="t23" name="uids">
+                                <label for="t23"></label>
+                            </div>
+                        </td>
+                        <td>用户证书</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="dsmcheckbox">
+                                <input type="checkbox" value="1" id="t24" name="uids">
+                                <label for="t24"></label>
+                            </div>
+                        </td>
+                        <td>用户证书</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="dsmcheckbox">
+                                <input type="checkbox" value="1" id="t25" name="uids">
+                                <label for="t25"></label>
+                            </div>
+                        </td>
+                        <td>用户证书</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="dsmcheckbox">
+                                <input type="checkbox" value="1" id="t26" name="uids">
+                                <label for="t26"></label>
+                            </div>
+                        </td>
+                        <td>用户证书</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="dsmcheckbox">
+                                <input type="checkbox" value="1" id="t27" name="uids">
+                                <label for="t27"></label>
+                            </div>
+                        </td>
+                        <td>用户证书</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="dsmcheckbox">
+                                <input type="checkbox" value="1" id="t28" name="uids">
+                                <label for="t28"></label>
+                            </div>
+                        </td>
+                        <td>用户证书</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="dsmcheckbox">
+                                <input type="checkbox" value="1" id="t29" name="uids">
+                                <label for="t29"></label>
+                            </div>
+                        </td>
+                        <td>用户证书</td>
+                        <td>-</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="pagebox">
+				    	<span class="showinfo">
+				    		<span class="lengthinput">
+					    		<select class="page-length">
+									<option>1</option>
+									<option>2</option>
+									<option>3</option>
+									<option>4</option>
+									<option>5</option>
+								</select>
+							</span>
+				    		<span class="lengthinfo">条/页</span>显示
+					    	<span class="start-index">1</span>-
+					    	<span class="end-index">5</span>条记录，共
+					    	<span class="total">5</span>条记录
+				    	</span>
+                    <span class="buttoninfo">
+						    <div class="dsm-laypage" >
+						        <a href="javascript:;" class="dsm-laypage-prev" data-page="7">上一页</a>
+						        <a href="javascript:;" data-page="1">1</a><a href="javascript:;" data-page="2">2</a>
+						        <span class="dsm-laypage-curr"><em class="dsm-laypage-em"></em><em>3</em></span>
+						        <span>…</span>
+						        <a href="javascript:;" data-page="100">100</a>
+						        <a href="javascript:;" class="dsm-laypage-next" data-page="9">下一页</a>
+						        <span class="dsm-laypage-total">跳转到
+						            <input type="number" min="1" value="8" class="dsm-laypage-skip">页
+						            <button type="button" class="dsm-laypage-btn">确定</button>
+						        </span>
+						    </div>
+				    	</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--新增证书-->
+<div id="addForm" style="display: none">
+    <div class="dsmForms">
+        <div class="dsm-form-item">
+            <div class="dsm-inline-block">
+                <label class="dsm-form-label w180">证书名称：</label>
+                <div class="dsm-input-block">
+                    <input type="text" class="dsm-input w300 certName" autocomplete="off" placeholder="证书名称">
+                </div>
+                <div class="line-tip error" style="margin-left: 180px"></div>
+            </div>
+            <div class="dsm-inline">
+                <label class="dsm-form-label w180">导入CRT证书文件：</label>
+                <div class="dsm-input-block">
+                    <div class="dsm-upload-button-blue f-l m-r-f10">
+                        <input type="file" name="file" class="dsm-upload-file js_fileCRT" data-fileid="fileInfo" accept=".crt">
+                        <span class="fbtname">请选择.CRT文件</span>
+                    </div>
+                    <div class="txt_select file_NameCRT "></div>
+                </div>
+            </div>
+            <div class="dsm-inline">
+                <label class="dsm-form-label w180">导入KEY证书文件：</label>
+                <div class="dsm-input-block">
+                    <div class="dsm-upload-button-blue f-l m-r-f10">
+                        <input type="file" name="file" class="dsm-upload-file js_fileKEY" data-fileid="fileInfo">
+                        <span class="fbtname ">请选择.KEY文件</span>
+                    </div>
+                    <div class="txt_select file_NameKEY "></div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript" src="js/site.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        //新增
+        $(document).on('click', '.js_add', function (e) {
+            dsmDialog.open({
+                type: 1,
+                area:['562px','420px'],
+                btn:['确定','取消'],
+                title:"导入新的证书文件",
+                content: $('#addForm'),
+                yes: function(index, layero){
+                    dsmDialog.msg('新增成功!');
+                    dsmDialog.close(index);
+                }
+            });
+
+        });
+        //删除
+        $(document).on('click', '.js_del', function (e) {
+            var chkItem=itemSelected_check("uids");
+            if(chkItem.length==0){
+                dsmDialog.error('请先选择证书！');
+                return;
+            }
+            showDelModel();
+        });
+        $(document).on('blur','.certName',function(e){
+            checkIsNull(this);
+        })
+    });
+    function checkIsNull(obj){
+        var val=$.trim($(obj).val());
+        if(val==""){
+            $(obj).parent().next(".line-tip").css('display','block');
+            $(obj).parent().next(".line-tip").html("证书名称不能为空");
+        }
+    }
+    //删除弹框
+    function showDelModel() {
+        dsmDialog.toComfirm("请确认是否删除当前证书！", {
+            btn: ['确定','取消'],
+            title:"删除",
+            icon:0
+        }, function(index){
+            //删除操作代码
+            dsmDialog.msg('删除成功！');
+            dsmDialog.close(index);
+        }, function(index){
+            dsmDialog.close(index);
+        });
+    }
+    $(document).on('change', '.js_fileCRT', function (e) {
+        $(".file_NameCRT").html(checkFileType($(this),"CRT"));
+    })
+
+    $(document).on('change', '.js_fileKEY', function (e) {
+        $(".file_NameKEY").html(checkFileType($(this),"KEY"));
+    })
+    //文件格式验证
+    function checkFileType(obj,typeVal){
+        var fileInfo=$(obj).data("fileid");
+        var $file = $(obj);
+        var fileObj = $file[0];
+        var fileName="";
+        var type="";
+        var result="";
+        if (fileObj && fileObj.files && fileObj.files[0]) {
+            fileName=fileObj.files[0].name;
+        }
+        else{
+            fileName= $file.val();
+        }
+        type= fileName.substring( fileName.lastIndexOf('.')+1 ).toLocaleUpperCase();
+        if(type!=typeVal)
+        {
+            result="格式不正确";
+        }
+        else{
+            result=fileName.substring( fileName.lastIndexOf('\\')+1 );
+        }
+        return result;
+    }
+
+</script>
+</body>
+</html>

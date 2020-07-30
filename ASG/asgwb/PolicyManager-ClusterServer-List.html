@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ch">
+<head>
+    <meta charset="UTF-8">
+    <title>集群服务器管理</title>
+
+    <!--全局通用!-->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/global.css">
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <!--全局通用end!-->
+
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv/html5shiv.js"></script>
+    <script src="js/respond/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+<div class="dsm-rightside ">
+    <div class="mainnav">
+        <div class="urlindex">
+            <i class="icon icon-home"></i>
+            <a class="name dsmfontblue" href="home.html">首页</a>
+            <i class="icon icon-right"></i>
+            <a class="name dsmfontblue" href="javascript:void(0);">策略管理</a>
+            <i class="icon icon-curright"></i>
+            <span class="curname">集群服务器管理</span>
+        </div>
+    </div>
+    <div class="maincontent">
+        <div class="mainbox">
+            <div class="btn-toolbar">
+                <a class="btn btn-primary btn-tool js_add" ><i class="btnicon icon-toolbar icon-add-white"></i>新增</a>
+                <a class="btn btn-primary btn-tool js_del" ><i class="btnicon icon-toolbar icon-delete"></i>删除</a>
+
+            </div>
+            <div class="table-view">
+                <table id="datalist" class="table" cellspacing="0" width="100%">
+                    <thead>
+                    <tr>
+                        <th class="w50">
+                            <div class="dsmcheckbox">
+                                <input type="checkbox" value="1" id="t2"  class="js_checkboxAll" data-allcheckfor="uids"  name="">
+                                <label for="t2"></label>
+                            </div>
+                        </th>
+                        <th>名称</th>
+                        <th class="w200">协议类型</th>
+                        <th>负载均衡分配策略</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>
+                            <div class="dsmcheckbox">
+                                <input type="checkbox" value="1" id="t21" name="uids">
+                                <label for="t21"></label>
+                            </div>
+                        </td>
+                        <td><a class="js_edit"  data-id="1" >OA</a></td>
+                        <td>http</td>
+                        <td>weight</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="dsmcheckbox">
+                                <input type="checkbox" value="1" id="t22" name="uids">
+                                <label for="t22"></label>
+                            </div>
+                        </td>
+                        <td><a class="js_edit" onclick="" data-id="2">ERP</a></td>
+                        <td>https</td>
+                        <td>weight</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="dsmcheckbox">
+                                <input type="checkbox" value="1" id="t23" name="uids">
+                                <label for="t23"></label>
+                            </div>
+                        </td>
+                        <td><a class="js_edit" data-id="3" >问题管理系统</a></td>
+                        <td>http</td>
+                        <td>weight</td>
+                    </tr>
+
+                    </tbody>
+                </table>
+                <div class="pagebox">
+				    	<span class="showinfo">
+				    		<span class="lengthinput">
+					    		<select class="page-length">
+									<option>1</option>
+									<option>2</option>
+									<option>3</option>
+									<option>4</option>
+									<option>5</option>
+								</select>
+							</span>
+				    		<span class="lengthinfo">条/页</span>显示
+					    	<span class="start-index">1</span>-
+					    	<span class="end-index">5</span>条记录，共
+					    	<span class="total">5</span>条记录
+				    	</span>
+                    <span class="buttoninfo">
+						    <div class="dsm-laypage" >
+						        <a href="javascript:;" class="dsm-laypage-prev" data-page="7">上一页</a>
+						        <a href="javascript:;" data-page="1">1</a><a href="javascript:;" data-page="2">2</a>
+						        <span class="dsm-laypage-curr"><em class="dsm-laypage-em"></em><em>3</em></span>
+						        <span>…</span>
+						        <a href="javascript:;" data-page="100">100</a>
+						        <a href="javascript:;" class="dsm-laypage-next" data-page="9">下一页</a>
+						        <span class="dsm-laypage-total">跳转到
+						            <input type="number" min="1" value="8" class="dsm-laypage-skip">页
+						            <button type="button" class="dsm-laypage-btn">确定</button>
+						        </span>
+						    </div>
+				    	</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript" src="js/site.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        //新增 type=1
+        $(document).on('click', '.js_add', function (e) {
+            //window.location.href='PolicyManager-ClusterServer-Add.html?id=0&type=1';
+            var link="PolicyManager-ClusterServer-Add.html?id=0&type=1";
+            //parent.document.getElementById('dsmmainIframe').src=link;
+            $("#dsmmainIframe",parent.document).attr('src',link);
+        });
+        //修改 type=2
+        $(document).on('click', '.js_edit', function (e) {
+            var id=$(this).data('id');
+            var link='PolicyManager-ClusterServer-Add.html?id='+id+'&type=2';
+            parent.document.getElementById('dsmmainIframe').src=link;
+        });
+        //删除
+        $(document).on('click', '.js_del', function (e) {
+            var chkItem=itemSelected_check("uids");
+            if(chkItem.length==0){
+                dsmDialog.error('请先选择集群服务器！');
+                return;
+            }
+            showDelModel();
+        });
+
+    });
+    //删除弹框
+    function showDelModel() {
+        dsmDialog.toComfirm("请确认是否删除当前集群服务器记录！", {
+            btn: ['确定','取消'],
+            title:"删除"
+        }, function(index){
+            //删除操作代码
+            dsmDialog.msg('删除成功！');
+            dsmDialog.close(index);
+        }, function(index){
+            dsmDialog.close(index);
+        });
+    }
+
+
+</script>
+</body>
+</html>

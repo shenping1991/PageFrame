@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js练习</title>
+    <script>
+        var a=12;
+        //alert(typeof a);//number
+        a="hshhs";
+        //alert(typeof a);//string
+        a=true;
+        //alert(typeof a);//boolean
+        a=function(){
+            alert ('b');
+        }
+        //alert(typeof a);//function
+        a=document;
+        //alert(typeof a);//object
+        var b;
+        //alert(typeof b);//undefined
+
+        var a="rere";
+        //alert(parseInt(a));//NaN not a number  两个同为NaN不相等
+        //alert(isNaN(a));
+        function AddNumb() {
+            var numb1=document.getElementById("txt_numb1").value;
+            var numb2=document.getElementById("txt_numb2").value;
+            if(isNaN(numb1)){
+                alert("非数字");
+            }
+            else if(isNaN(numb2)){
+                alert("非数字");
+            }
+            else{
+                alert(parseInt(numb1)+parseInt(numb2));
+            }
+        }
+        window.onload=function(){//闭包
+            var numb1=document.getElementById("txt_numb1");
+            var numb2=document.getElementById("txt_numb2");
+            var oAdd=document.getElementById("btn_add");
+            oAdd.onclick=function(){
+                var n1=parseInt(numb1);
+                var n2=parseInt(numb2);
+                if(isNaN(n1)){
+                    alert("非数字");
+                }
+                else if(isNaN(n2)){
+                    alert("非数字");
+                }
+                else{
+                    alert(parseInt(n1)+parseInt(n2));
+                }
+            }
+            //隔行变色
+            var aline=document.getElementsByTagName("li");
+            for(var i=0;i<aline.length;i++){
+                if(i%2==0){
+                    aline[i].style.backgroundColor="#999";
+                }
+            }
+        }
+
+        //闭包--子函数可以使用父函数的中的局部变量
+        function parentFun(){
+            var a=1;
+            function subFun(){
+                alert("闭包练习："+a);
+            }
+            subFun();
+        }
+        parentFun();
+
+        var json={a:12,b:5,c:2};
+        var arr=[12,5,2];
+//        alert("json"+json['a']);//下标字符串
+//        alert("arr:"+arr[0]);
+        alert(json.length);//json不支持length
+        alert(arr.length);
+//        for(var i=0;i<arr.length;i++){
+//            alert("第"+i+"："+arr[i]);
+//        }
+        for(var i in arr){
+            alert("第"+i+"："+arr[i]);
+        }
+        for(var i in json){
+            alert(+i+"："+json[i]);
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <input id="txt_numb1" type="text" value="" >
+        <input id="txt_numb2" type="text" value="" >
+        <input id="btn_add" type="button" value="+" onclick="AddNumb();">
+    </div>
+
+    <div>
+        <ul>
+            <li>隔行变色</li>
+            <li>隔行变色</li>
+            <li>隔行变色</li>
+            <li>隔行变色</li>
+            <li>隔行变色</li>
+        </ul>
+    </div>
+</body>
+</html>

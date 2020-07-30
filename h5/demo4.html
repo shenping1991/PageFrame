@@ -1,0 +1,161 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>demo04-inputtype</title>
+    <style type="text/css">
+    *{
+       margin: 0 auto;
+       padding: 0;
+       background-color: #f4f4f4;
+       color: #333;
+
+    }
+    ul,li{
+        list-style:none;
+    }
+    h1{
+         width: 100%;
+         height:80px;
+         line-height: 80px;
+         margin-bottom: :30px;
+         padding: 10px 10px;
+         background: #333;
+         color: #fff;
+         text-align:center;
+
+    }
+     div{
+        width: 50%;
+        margin-bottom: 20px;
+        padding: 10px 10px;
+        border: 1px solid #ddd;
+        box-shadow: 0px 2px rgba(0,0,0,0.1);
+     }
+     input{
+        width: 220px;
+        height: 30px;
+        border: 1px solid #ddd;
+        margin-bottom :10px;
+
+     }
+     input:hover{
+        border: 1px solid #ccc;
+
+     }
+     input:focus{
+        border: 1px solid #1b8afd;
+        outline: none;
+     }
+     input[type="radio"],input[type="checkbox"]{
+        width: 16px;
+        height: 16px;
+     }
+     label{
+        padding: 5px;
+        color: #999;
+     }
+     label:hover{
+        color: #333;
+
+     }
+     
+    </style>
+</head>
+<body>
+    <form action="#" method="get">
+         <h1>input控件类型</h1>
+        <div>
+            <input type="email"  placehoder="datetime" name="uer_email"/><br/>
+            <input type="url" name="uer_url"/><br/>
+            <input type="number" name="uer_number" value="1" min="1" max="100" step="2"/><br/>
+            <input type="range" name="range"  value="1" min="1" max="10" step="2"/><br/>
+            <input type="date" name="select_date"><br/>
+            <input type="month" name="select_month"><br/>
+            <input type="week" name="week"><br/>
+            <input type="time" name="select_time" value="12:10:10" max="20:00:00" min="01:00:00" step="2"><br/>
+            <input type="datetime" placehoder="datetime" name="select_datetime"><br/>
+            <input type="datetime-local" name="select_datetimeLocal"><br/>
+            <input type="search" name="select_search"><br/>
+            <input type="color" name="select_color"><br/>
+            <input type="tel" name="select_tel"><br/>
+            <hr/>
+        </div>
+        <div >
+             <!-- input属性 autocomplete自动完成，autofocus获取焦点-->
+            用户名<input type="text" name="uername" autocomplete="on"><br/>
+            密码<input type="text" name="uerpassword" autocomplete="off" autofocus="autofocus"><br/>
+
+        </div>
+        <div>
+            <label for="textnote">请仔细阅读许可协议</label><br/>
+            <textarea name="textarea1" id="textnote" cols="30" rows="10">许可协议</textarea><br/>
+        </div>
+        <div>
+            <!-- 点击文字选择radiobtn -->
+            请点击文字选择：<br/>
+            <label for="yes">是</label> <input type="radio" name="control" id="yes">
+            <label for="no">否</label> <input type="radio" name="control" id="no">
+        </div>
+        <div>
+            请选择要上传的图片(文件多选)：<br/>
+            select images:  <input type="file" name="img" multiple>
+
+        </div>
+        <div>
+            文本中正则表达式验证：
+            <input type="text" name="country_code" pattern="[A-Za-z]{3}" placeholder="请输入三个字母的国家代号">
+            <input type="text" name="zp_code" pattern="[0-9]{6}" placeholder="请输入6位邮政编码">
+            必填项：
+            <input type="text" name="uername" required><br/>
+            <p>
+                formmethod   表单提交方式 get post<br/>
+                formaction   表单提交到的页面<br/>
+                fromenctype="multipart/form-data"  包含文件的表单提交<br/>
+                formnovalidate="formnovalidate"   表单提交不验证<br/>
+                formtarget="_self"  表单提交修改url打开位置<br/>
+            </p>
+            <br/>
+            <input type="submit" value="submit"/>
+        </div>
+        
+
+    </form>
+    <div>
+        <p>
+            very <mark>important</mark> 
+            马上快到了<time datetime="2016-05-1">五一劳动节</time>
+            
+        </p>
+        <progress value="20" max="100"></progress>
+        <details >
+            <summary>标题</summary>
+            <p>具体内容</p>
+            <p>具体内容</p>
+        </details>
+    </div>
+    <div>
+        将下拉选项通过id归属于输入框
+        <input list="brow" />
+        <datalist id="brow">
+            <option label="说明" value="1">1</option>
+            <option label="说明" value="2">2</option>
+            <option label="说明" value="3">3</option>
+            <option label="说明" value="4">4</option>
+            <option label="说明" value="5">5</option>
+        </datalist>
+    </div>
+    <div>
+        <ruby>
+         文字
+            <rt>zhushi</rt>
+        </ruby>
+        <!-- menu，command暂不支持 -->
+        <menu>
+            <li><input type="checkbox" id="chk-first"/><label for="chk-first">1</label></li>
+            <li><input type="checkbox" id="chk-second"/><label for="chk-second">2</label></li>
+        </menu>
+        <!-- <command type="command" label="save" onclick="save()">save</command> -->
+    </div>
+</body>
+</html>

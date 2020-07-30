@@ -1,0 +1,23 @@
+10000000101101
+00000100000000
+00000000000100 
+00000010000000 128
+00000000001000 8
+00000000000000 1
+10000000000000 8192
+00000000100000 32
+
+strSourcePath c:\test\test\gh\test\test0525
+strTargetPath c:\test\test\gh\test
+strTargetFileName test0525_副本
+
+filePath   c:\test\test\gh\test\test0525.txt
+targetPath c:\test\test\gh\test\test0525_副本.txt
+result
+"SourceFile":"{39be3d30-ba10-4eac-98c9-796ea603e030}",
+"TargetFolder":"{099ecb67-f9e5-4020-a7e4-c3a9d13c020d}","TargetPath":"c:\test\test\gh\testtest0525_副本"
+
+{"status":true,
+"SourceFile":"{39be3d30-ba10-4eac-98c9-796ea603e030}",
+"TargetFolder":"{099ecb67-f9e5-4020-a7e4-c3a9d13c020d}",
+"TargetPath":"c:\test\test\gh\testtest0525_副本"}

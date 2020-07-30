@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ch">
+<head>
+    <meta charset="UTF-8">
+    <title>恢复出厂设置</title>
+
+    <!--全局通用!-->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/global.css">
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <!--全局通用end!-->
+
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv/html5shiv.js"></script>
+    <script src="js/respond/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+<div class="dsm-rightside home">
+    <div class="mainnav">
+        <div class="urlindex">
+            <i class="icon icon-home"></i>
+            <a class="name dsmfontblue" href="home.html">首页</a>
+            <i class="icon icon-right"></i>
+            <a class="name dsmfontblue" href="javascript:void(0);">系统管理</a>
+            <i class="icon icon-curright"></i>
+            <span class="curname">恢复出厂设置</span>
+        </div>
+    </div>
+    <div class="maincontent">
+        <div class="mainbox clearfix">
+            <div class="card-info width100">
+                <div class="carditem">
+                    <h5 class="card-info-header">恢复出厂设置</h5>
+                    <div class="card-info-body">
+                        <div class="info-contain ">
+                            <div class="info-side-bar">
+                                <img src="images/img-first.png" class="info-side-con"/>
+                            </div>
+                            <div class="info-cnt-list clearfix">
+                                <h5 class="info-title">恢复出厂设置</h5>
+                                <div class="button-container">
+                                    <button type="button" class="btn btn-primary btn-lg js_set">确定</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!--恢复出厂设置提示框-->
+<div  class="wornForm" style="display: none">
+    <div class="dsmForms wornForms m-t-30">
+        <div class="dsm-inline">
+            <i class="icon-b icon-warning f-l"></i>
+            <span class="worningCon">将系统恢复出厂设置吗？</span>
+        </div>
+        <div class="dsm-inline ">
+            <label class="label-title">输入管理员密码：</label>
+            <input type="password" autocomplete="off" placeholder="" class="dsm-input">
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="js/site.js"></script>
+<script type="text/javascript">
+
+    $(document).on('click', '.js_set', function (e) {
+
+        dsmDialog.open({
+            type: 1,
+            area:['360px','260px'],
+            btn:['确定','取消'],
+            title:"",
+            content: $('.wornForm'),
+            yes: function(index, layero){
+                dsmDialog.msg('已恢复出厂设置!');
+                dsmDialog.close(index);
+
+            }
+        });
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="ch">
+<head>
+    <meta charset="UTF-8">
+    <title>客户端连接设置</title>
+
+    <!--全局通用!-->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/global.css">
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <!--全局通用end!-->
+
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv/html5shiv.js"></script>
+    <script src="js/respond/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+<div class="dsm-rightside">
+    <div class="mainnav">
+        <div class="urlindex">
+            <i class="icon icon-home"></i>
+            <a class="name dsmfontblue" href="home.html">首页</a>
+            <i class="icon icon-right"></i>
+            <a class="name dsmfontblue" href="javascript:void(0);">系统设置</a>
+            <i class="icon icon-curright"></i>
+            <span class="curname">客户端连接设置</span>
+        </div>
+    </div>
+    <div class="maincontent">
+        <div class="mainbox clientconnect">
+            <div class="table-view">
+                <table class="table" cellspacing="0" width="100%">
+                    <thead>
+                    <tr>
+                        <th>服务器名称</th>
+                        <th>IP或域名</th>
+                        <th>连接端口</th>
+                        <th>连接状态</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>验证服务器</td>
+                        <td><span class="show">192.168.2.21</span> <input type="text" autocomplete="off" value="192.168.2.21" placeholder="IP或域名" class="dsm-input edit hidden ipordomain"></td>
+                        <td><span class="show">80</span> <input type="text" autocomplete="off" value="80" value="80" placeholder="端口" class="dsm-input edit hidden port"><button type="button" class="btn btn-primary f-l whitebg edit hidden js_submit">确定</button></td>
+                        <td><span> <i class="icon icon-redclose"></i></span></td>
+                        <td>
+                            <a class="listdetail bg-green js_showdedit"> <i class="icon icon-pen"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>备用验证服务器</td>
+                        <td><span class="show">192.168.2.21</span> <input type="text" autocomplete="off" value="192.168.2.21" placeholder="IP或域名" class="dsm-input edit hidden ipordomain"></td>
+                        <td><span class="show">80</span> <input type="text" autocomplete="off" value="80" placeholder="端口" class="dsm-input edit hidden port"><button type="button" class="btn btn-primary f-l whitebg edit hidden js_submit">确定</button></td>
+                        <td><span> <i class="active icon icon-redclose"></i></span></td>
+                        <td>
+                            <a class="listdetail bg-green js_showdedit"> <i class="icon icon-pen"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>更新服务器</td>
+                        <td><span class="show">192.168.2.21</span> <input type="text" autocomplete="off" value="192.168.2.21" placeholder="IP或域名" class="dsm-input edit hidden ipordomain"></td>
+                        <td><span class="show">80</span> <input type="text" autocomplete="off" value="80" placeholder="端口" class="dsm-input edit hidden port"><button type="button" class="btn btn-primary f-l whitebg edit hidden js_submit">确定</button></td>
+                        <td><span> <i class="activeing icon icon-redclose"></i></span></td>
+                        <td>
+                            <a class="listdetail bg-green js_showdedit"> <i class="icon icon-pen"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>备用更新服务器</td>
+                        <td><span class="show">192.168.2.21</span> <input type="text" autocomplete="off" value="192.168.2.21" placeholder="IP或域名" class="dsm-input edit hidden ipordomain"></td>
+                        <td><span class="show">80</span> <input type="text" autocomplete="off" value="80" placeholder="端口" class="dsm-input edit hidden port"><button type="button" class="btn btn-primary f-l whitebg edit hidden js_submit">确定</button></td>
+                        <td><span> <i class="active icon icon-redclose"></i></span></td>
+                        <td>
+                            <a class="listdetail bg-green js_showdedit"> <i class="icon icon-pen"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>审批服务器</td>
+                        <td><span class="show">192.168.2.21</span> <input type="text" autocomplete="off" value="192.168.2.21" placeholder="IP或域名" class="dsm-input edit hidden ipordomain"></td>
+                        <td><span class="show">80</span> <input type="text" autocomplete="off" value="80" placeholder="端口" class="dsm-input edit hidden port"><button type="button" class="btn btn-primary f-l whitebg edit hidden js_submit">确定</button></td>
+                        <td><span> <i class="icon icon-redclose"></i></span></td>
+                        <td>
+                            <a class="listdetail bg-green js_showdedit"> <i class="icon icon-pen"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>备用审批服务器</td>
+                        <td><span class="show">192.168.2.21</span> <input type="text" autocomplete="off" value="192.168.2.21" placeholder="IP或域名" class="dsm-input edit hidden ipordomain"></td>
+                        <td><span class="show">80</span> <input type="text" autocomplete="off" value="80" placeholder="端口" class="dsm-input edit hidden port"><button type="button" class="btn btn-primary f-l whitebg edit hidden js_submit">确定</button></td>
+                        <td><span> <i class="activeing icon icon-redclose"></i></span></td>
+                        <td>
+                            <a class="listdetail bg-green js_showdedit"> <i class="icon icon-pen"></i></a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript" src="js/site.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+
+        //点击名称弹框
+        $(document).on('click', '.js_showdedit', function (e) {
+            if($(this).hasClass('editing')){
+                noEditStyle(this);
+            }else{
+                editStyle(this);
+            }
+        });
+
+        $(document).on('click', '.js_submit', function (e) {
+            noEditStyle(this);
+        });
+
+        function editStyle(obj){
+            $(obj).parent().parent().find('.show').addClass('hidden');
+            $(obj).parent().parent().find('.edit').removeClass('hidden');
+            $(obj).addClass('editing');
+        }
+        function noEditStyle(obj){
+            $(obj).parent().parent().find('.show').removeClass('hidden');
+            $(obj).parent().parent().find('.edit').addClass('hidden');
+            $(obj).removeClass('editing');
+        }
+    });
+</script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ch">
+<head>
+    <meta charset="UTF-8">
+    <title>客户端连接设置</title>
+
+    <!--全局通用!-->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/global.css">
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <!--全局通用end!-->
+
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv/html5shiv.js"></script>
+    <script src="js/respond/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+<div class="dsm-rightside">
+    <div class="mainnav">
+        <div class="urlindex">
+            <i class="icon icon-home"></i>
+            <a class="name dsmfontblue" href="home.html">首页</a>
+            <i class="icon icon-right"></i>
+            <a class="name dsmfontblue" href="javascript:void(0);">系统设置</a>
+            <i class="icon icon-curright"></i>
+            <span class="curname">客户端连接设置</span>
+        </div>
+    </div>
+    <div class="maincontent">
+        <div class="mainbox clientconnect">
+            <div class="table-view">
+                <table class="table" cellspacing="0" width="100%">
+                    <thead>
+                    <tr>
+                        <th>服务器名称</th>
+                        <th>IP或域名</th>
+                        <th>连接端口</th>
+                        <th>连接状态</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>验证服务器</td>
+                        <td><span class="show">192.168.2.21</span> <input type="text" autocomplete="off" value="192.168.2.21" placeholder="IP或域名" class="dsm-input edit hidden ipordomain"></td>
+                        <td><span class="show">80</span> <input type="text" autocomplete="off" value="80" value="80" placeholder="端口" class="dsm-input edit hidden port"><button type="button" class="btn btn-primary f-l whitebg edit hidden js_submit">确定</button></td>
+                        <td><span> <i class="icon icon-redclose"></i></span></td>
+                        <td>
+                            <a class="listdetail bg-green js_showdedit"> <i class="icon icon-pen"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>备用验证服务器</td>
+                        <td><span class="show">192.168.2.21</span> <input type="text" autocomplete="off" value="192.168.2.21" placeholder="IP或域名" class="dsm-input edit hidden ipordomain"></td>
+                        <td><span class="show">80</span> <input type="text" autocomplete="off" value="80" placeholder="端口" class="dsm-input edit hidden port"><button type="button" class="btn btn-primary f-l whitebg edit hidden js_submit">确定</button></td>
+                        <td><span> <i class="active icon icon-redclose"></i></span></td>
+                        <td>
+                            <a class="listdetail bg-green js_showdedit"> <i class="icon icon-pen"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>更新服务器</td>
+                        <td><span class="show">192.168.2.21</span> <input type="text" autocomplete="off" value="192.168.2.21" placeholder="IP或域名" class="dsm-input edit hidden ipordomain"></td>
+                        <td><span class="show">80</span> <input type="text" autocomplete="off" value="80" placeholder="端口" class="dsm-input edit hidden port"><button type="button" class="btn btn-primary f-l whitebg edit hidden js_submit">确定</button></td>
+                        <td><span> <i class="activeing icon icon-redclose"></i></span></td>
+                        <td>
+                            <a class="listdetail bg-green js_showdedit"> <i class="icon icon-pen"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>备用更新服务器</td>
+                        <td><span class="show">192.168.2.21</span> <input type="text" autocomplete="off" value="192.168.2.21" placeholder="IP或域名" class="dsm-input edit hidden ipordomain"></td>
+                        <td><span class="show">80</span> <input type="text" autocomplete="off" value="80" placeholder="端口" class="dsm-input edit hidden port"><button type="button" class="btn btn-primary f-l whitebg edit hidden js_submit">确定</button></td>
+                        <td><span> <i class="active icon icon-redclose"></i></span></td>
+                        <td>
+                            <a class="listdetail bg-green js_showdedit"> <i class="icon icon-pen"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>审批服务器</td>
+                        <td><span class="show">192.168.2.21</span> <input type="text" autocomplete="off" value="192.168.2.21" placeholder="IP或域名" class="dsm-input edit hidden ipordomain"></td>
+                        <td><span class="show">80</span> <input type="text" autocomplete="off" value="80" placeholder="端口" class="dsm-input edit hidden port"><button type="button" class="btn btn-primary f-l whitebg edit hidden js_submit">确定</button></td>
+                        <td><span> <i class="icon icon-redclose"></i></span></td>
+                        <td>
+                            <a class="listdetail bg-green js_showdedit"> <i class="icon icon-pen"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>备用审批服务器</td>
+                        <td><span class="show">192.168.2.21</span> <input type="text" autocomplete="off" value="192.168.2.21" placeholder="IP或域名" class="dsm-input edit hidden ipordomain"></td>
+                        <td><span class="show">80</span> <input type="text" autocomplete="off" value="80" placeholder="端口" class="dsm-input edit hidden port"><button type="button" class="btn btn-primary f-l whitebg edit hidden js_submit">确定</button></td>
+                        <td><span> <i class="activeing icon icon-redclose"></i></span></td>
+                        <td>
+                            <a class="listdetail bg-green js_showdedit"> <i class="icon icon-pen"></i></a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript" src="js/site.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+
+        //点击名称弹框
+        $(document).on('click', '.js_showdedit', function (e) {
+            if($(this).hasClass('editing')){
+                noEditStyle(this);
+            }else{
+                editStyle(this);
+            }
+        });
+
+        $(document).on('click', '.js_submit', function (e) {
+            noEditStyle(this);
+        });
+
+        function editStyle(obj){
+            $(obj).parent().parent().find('.show').addClass('hidden');
+            $(obj).parent().parent().find('.edit').removeClass('hidden');
+            $(obj).addClass('editing');
+        }
+        function noEditStyle(obj){
+            $(obj).parent().parent().find('.show').removeClass('hidden');
+            $(obj).parent().parent().find('.edit').addClass('hidden');
+            $(obj).removeClass('editing');
+        }
+    });
+</script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ch">
+<head>
+    <meta charset="UTF-8">
+    <title>客户端连接设置</title>
+
+    <!--全局通用!-->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/global.css">
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <!--全局通用end!-->
+
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv/html5shiv.js"></script>
+    <script src="js/respond/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+<div class="dsm-rightside">
+    <div class="mainnav">
+        <div class="urlindex">
+            <i class="icon icon-home"></i>
+            <a class="name dsmfontblue" href="home.html">首页</a>
+            <i class="icon icon-right"></i>
+            <a class="name dsmfontblue" href="javascript:void(0);">系统设置</a>
+            <i class="icon icon-curright"></i>
+            <span class="curname">客户端连接设置</span>
+        </div>
+    </div>
+    <div class="maincontent">
+        <div class="mainbox clientconnect">
+            <div class="table-view">
+                <table class="table" cellspacing="0" width="100%">
+                    <thead>
+                    <tr>
+                        <th>服务器名称</th>
+                        <th>IP或域名</th>
+                        <th>连接端口</th>
+                        <th>连接状态</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>验证服务器</td>
+                        <td><span class="show">192.168.2.21</span> <input type="text" autocomplete="off" value="192.168.2.21" placeholder="IP或域名" class="dsm-input edit hidden ipordomain"></td>
+                        <td><span class="show">80</span> <input type="text" autocomplete="off" value="80" value="80" placeholder="端口" class="dsm-input edit hidden port"><button type="button" class="btn btn-primary f-l whitebg edit hidden js_submit">确定</button></td>
+                        <td><span> <i class="icon icon-redclose"></i></span></td>
+                        <td>
+                            <a class="listdetail bg-green js_showdedit"> <i class="icon icon-pen"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>备用验证服务器</td>
+                        <td><span class="show">192.168.2.21</span> <input type="text" autocomplete="off" value="192.168.2.21" placeholder="IP或域名" class="dsm-input edit hidden ipordomain"></td>
+                        <td><span class="show">80</span> <input type="text" autocomplete="off" value="80" placeholder="端口" class="dsm-input edit hidden port"><button type="button" class="btn btn-primary f-l whitebg edit hidden js_submit">确定</button></td>
+                        <td><span> <i class="active icon icon-redclose"></i></span></td>
+                        <td>
+                            <a class="listdetail bg-green js_showdedit"> <i class="icon icon-pen"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>更新服务器</td>
+                        <td><span class="show">192.168.2.21</span> <input type="text" autocomplete="off" value="192.168.2.21" placeholder="IP或域名" class="dsm-input edit hidden ipordomain"></td>
+                        <td><span class="show">80</span> <input type="text" autocomplete="off" value="80" placeholder="端口" class="dsm-input edit hidden port"><button type="button" class="btn btn-primary f-l whitebg edit hidden js_submit">确定</button></td>
+                        <td><span> <i class="activeing icon icon-redclose"></i></span></td>
+                        <td>
+                            <a class="listdetail bg-green js_showdedit"> <i class="icon icon-pen"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>备用更新服务器</td>
+                        <td><span class="show">192.168.2.21</span> <input type="text" autocomplete="off" value="192.168.2.21" placeholder="IP或域名" class="dsm-input edit hidden ipordomain"></td>
+                        <td><span class="show">80</span> <input type="text" autocomplete="off" value="80" placeholder="端口" class="dsm-input edit hidden port"><button type="button" class="btn btn-primary f-l whitebg edit hidden js_submit">确定</button></td>
+                        <td><span> <i class="active icon icon-redclose"></i></span></td>
+                        <td>
+                            <a class="listdetail bg-green js_showdedit"> <i class="icon icon-pen"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>审批服务器</td>
+                        <td><span class="show">192.168.2.21</span> <input type="text" autocomplete="off" value="192.168.2.21" placeholder="IP或域名" class="dsm-input edit hidden ipordomain"></td>
+                        <td><span class="show">80</span> <input type="text" autocomplete="off" value="80" placeholder="端口" class="dsm-input edit hidden port"><button type="button" class="btn btn-primary f-l whitebg edit hidden js_submit">确定</button></td>
+                        <td><span> <i class="icon icon-redclose"></i></span></td>
+                        <td>
+                            <a class="listdetail bg-green js_showdedit"> <i class="icon icon-pen"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>备用审批服务器</td>
+                        <td><span class="show">192.168.2.21</span> <input type="text" autocomplete="off" value="192.168.2.21" placeholder="IP或域名" class="dsm-input edit hidden ipordomain"></td>
+                        <td><span class="show">80</span> <input type="text" autocomplete="off" value="80" placeholder="端口" class="dsm-input edit hidden port"><button type="button" class="btn btn-primary f-l whitebg edit hidden js_submit">确定</button></td>
+                        <td><span> <i class="activeing icon icon-redclose"></i></span></td>
+                        <td>
+                            <a class="listdetail bg-green js_showdedit"> <i class="icon icon-pen"></i></a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript" src="js/site.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+
+        //点击名称弹框
+        $(document).on('click', '.js_showdedit', function (e) {
+            if($(this).hasClass('editing')){
+                noEditStyle(this);
+            }else{
+                editStyle(this);
+            }
+        });
+
+        $(document).on('click', '.js_submit', function (e) {
+            noEditStyle(this);
+        });
+
+        function editStyle(obj){
+            $(obj).parent().parent().find('.show').addClass('hidden');
+            $(obj).parent().parent().find('.edit').removeClass('hidden');
+            $(obj).addClass('editing');
+        }
+        function noEditStyle(obj){
+            $(obj).parent().parent().find('.show').removeClass('hidden');
+            $(obj).parent().parent().find('.edit').addClass('hidden');
+            $(obj).removeClass('editing');
+        }
+    });
+</script>
+</body>
+</html>

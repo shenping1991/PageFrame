@@ -1,0 +1,185 @@
+﻿/*禁用iPhone中Safari的字号自动调整*/
+html {
+-webkit-text-size-adjust:none;
+}
+/*设置HTML5元素为块元素*/
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+display:block;
+}
+/*设置图片等自适应*/
+img{
+    max-height:100%; height:auto;width:auto;
+}
+.video embed, .video object, .video iframe {
+    width:100%;height:auto;
+}
+
+body {
+    font:14px/22px"Georgia",Helvetica,Arial,sans-serif;
+    background:#fff;
+    color:#999;
+    overflow:hidden;
+}
+.Wrapper {
+    width:100%;
+    padding:0;
+    margin:0;
+}
+li {
+    list-style:none;
+}
+a{
+    color:#555;
+    text-decoration:none;
+    cursor:pointer;
+}
+a:hover {
+    color:#333;
+    text-decoration:none;
+}
+a img {
+    border:none;
+
+}
+a > img {
+    vertical-align:bottom;
+
+}
+.min-height {
+    min-height:0;
+    height:auto;
+    _height:0;
+    overflow:hidden;
+    _overflow:visible;
+
+}
+.position-absolute {
+    position:absolute;
+}
+.position-relative{
+    position:relative;
+}
+.verflow-hidden{
+    overflow:hidden;
+}
+
+.page-container{
+	max-width:640px;
+	margin:0 auto;
+	padding-bottom::60px;
+}
+#banner{
+	width:100%;
+	height:300px;
+	overflow:hidden;
+	position:relative;
+	background-color:#eaeaea;
+}
+#banner ul li{
+	display:none;
+	float:left;
+}
+#banner ul li:first-of-type{
+	display:block;
+}
+.menu a{
+	display:block;
+	float:left;
+	width:23.125%;
+	height:80px;
+	line-height:80px;
+	margin:5px 0 0 1.5%;
+	text-align:center;
+}
+.menu a span{
+	padding:5px;
+	color:#fff;
+	font-weight:bolder;
+	
+	
+}
+.menu a:nth-child(1) { background: #238acf; width: 47.75%; height: 165px; line-height:165px; }
+
+.menu a:nth-child(2) { background: #238acf; }
+
+.menu a:nth-child(3) { background: #238acf; }
+
+.menu a:nth-child(4) { background: #238acf; width: 47.75%; }
+
+.menu a:nth-child(5) { background: #238acf; }
+
+.menu a:nth-child(6) { background: #238acf; }
+
+.menu a:nth-child(7) { background: #238acf; }
+
+.menu a:nth-child(8) { background: #238acf; }
+
+.copyright{
+	width:100%;
+	height:40px;
+	margin-top:10px;
+	background-color:#e4e4e4;
+}
+
+#footer{
+	width:100%;
+	height:60px;
+	margin-top:10px;
+	background-color:#9CF;	
+	
+}
+
+
+
+
+
+
+
+
+
+/* 320-480 */
+@media only screen and (min-width:320px) and (max-width:480px) {
+}
+/* 321~ 宽大于321的设备*/
+@media only screen and (min-width:321px) {
+}
+/* ~320 宽小于320的设备*/
+@media only screen and (max-width:320px){
+
+}
+/* ~480 宽小于480的设备*/
+@media only screen and (max-width:480px) {
+}
+/*481-767 宽大于480且小于767的iPad和iPhone*/
+@media only screen and (min-width:480px) and (max-width:767px) {
+}
+/*768-1024 宽大于768且小于1024的iPad和iPhone*/
+@media only screen and (min-device-width:768px) and (max-device-width:1024px) {
+}
+/*768-1024 宽大于768且小于1024的iPad和iPhone,横屏*/
+@media only screen and (min-device-width:768px) and (max-device-width:1024px) and (orientation:landscape) {
+}
+/*768 ~ 1024  宽大于480且小于1024的iPad和iPhone,竖屏*/
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
+
+}
+/*1444 ~ 1824  宽大于1444且小于1824的设备*/
+@media only screen and (min-width: 1444px) and (max-width: 1824px) {
+
+}
+/*1824 ~  宽大于1824的设备*/
+@media only screen and (min-width: 1824px) {
+
+}
+/*2224 ~  宽大于2224的设备*/
+@media only screen and (min-width: 2224px) {
+
+}
+/*iphone 4 and high pixel ratio (1.5+) devices ; iphone4 ~ 像素比*/
+@media only screen and (-webkit-min-device-pixel-ratio : 1.5), only screen and (min-device-pixel-ratio : 1.5) {
+
+}
+/* iphone 4 and higher pixel ratio (2+) devices (retina) 像素比*/
+@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2) {
+
+}

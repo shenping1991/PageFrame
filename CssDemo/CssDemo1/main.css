@@ -1,0 +1,20 @@
+body {
+  font-size: 12px; }
+
+ul {
+  list-style: normal; }
+  ul li {
+    color: #333; }
+  ul a {
+    color: blue; }
+    ul a:hover {
+      color: red; }
+
+nav {
+  border-style: solid;
+  border-width: 1px;
+  border-color: #ddd; }
+nav{
+  
+}
+/*# sourceMappingURL=main.css.map */

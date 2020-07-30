@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="ch">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=8" >
+    <title>系统状态</title>
+
+    <!--全局通用!-->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/global.css">
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/echarts.min.js"></script>
+    <script src="js/walden.js"></script>
+
+    <!--全局通用end!-->
+
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv/html5shiv.js"></script>
+    <script src="js/respond/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+<div class="dsm-rightside asg-home home">
+    <!--<div class="mainnav">-->
+        <!--<div class="urlindex">-->
+            <!--<i class="icon icon-home"></i>-->
+            <!--<span class="curname">系统状态</span>-->
+        <!--</div>-->
+    <!--</div>-->
+    <div class="maincontent homebg">
+        <div class="mainbox clearfix">
+            <div class="card-info width100">
+                <div class="carditem">
+                    <h5 class="card-info-header">硬件信息</h5>
+                    <div class="card-info-body">
+                        <div class="countalllist clearfix" style="padding: 50px 100px;">
+                            <div class="infoItem">
+                                <div class="infoItem-title" >CPU利用率</div>
+                                <div class="infoItem-content " id="cpu_pie_chart">
+                                </div>
+                            </div>
+                            <div class="infoItem">
+                                <div class="infoItem-title">内存利用率</div>
+                                <div class="infoItem-content" id="memory_pie_chart">
+                                </div>
+                            </div>
+                            <div class="infoItem">
+                                <div class="infoItem-title">磁盘利用率</div>
+                                <div class="infoItem-content" id="disk_pie_chart">
+
+                                </div>
+                            </div>
+                            <div class="info-total">
+                                <div class="total-content" >本设备已运行
+                                    <span class="total-number time-d">7</span>天
+                                    <span class="total-number time-h">05</span>小时
+                                    <span class="total-number time-m">20</span>分
+                                    <span class="total-number time-s">12</span>秒
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript" src="js/site.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        //利用率图表
+        var cpu_pie_chart = echarts.init(document.getElementById('cpu_pie_chart'),'walden');
+        var memory_pie_chart = echarts.init(document.getElementById('memory_pie_chart'),'walden');
+        var disk_pie_chart = echarts.init(document.getElementById('disk_pie_chart'),'walden');
+        pieChart(cpu_pie_chart,'CPU利用率',getChartData(40,60));
+        pieChart(memory_pie_chart,'内存利用率',getChartData(20,80));
+        pieChart(disk_pie_chart,'磁盘利用率',getChartData(50,50));
+        //窗体大小改变图表自适应
+        setTimeout(function (){
+            $(window).resize(function () {
+                reChart(cpu_pie_chart);
+                reChart(memory_pie_chart);
+                reChart(disk_pie_chart);
+            })
+        },200)
+        //
+        getWorkedTime();
+        $(function(){
+            setInterval("getWorkedTime();",1000); //每隔一秒执行一次
+        })
+
+    })
+    //获取设备运行时间
+    function getWorkedTime(){
+        var date1= '2017/05/13 00:00:00';  //开始时间
+        var date2 = new Date();    //结束时间
+        var date3 = date2.getTime() - new Date(date1).getTime();   //时间差的毫秒数
+        //------------------------------
+        //计算出相差天数
+        var days=Math.floor(date3/(24*3600*1000))
+        //计算出小时数
+        var leave1=date3%(24*3600*1000)    //计算天数后剩余的毫秒数
+        var hours=Math.floor(leave1/(3600*1000))
+        //计算相差分钟数
+        var leave2=leave1%(3600*1000)        //计算小时数后剩余的毫秒数
+        var minutes=Math.floor(leave2/(60*1000))
+        //计算相差秒数
+        var leave3=leave2%(60*1000)      //计算分钟数后剩余的毫秒数
+        var seconds=Math.round(leave3/1000)
+        $(".time-d").html(days);
+        $(".time-h").html(hours);
+        $(".time-m").html(minutes);
+        $(".time-s").html(seconds);
+    }
+
+    //获取图标数据
+    function getChartData(firstData,secData){
+        var data="";
+        var result="";
+        data+="{\"value\":\""+firstData+"\",\"name\":\"空闲\"},";
+        data+="{\"value\":\""+secData+"\", \"name\":\"利用率\"},";
+        result="{\"datas\":["+data.substring(0,data.length-1)+"]}";
+        return result;
+    }
+    //图表自适应
+    function reChart(chartName) {
+        chartName.resize();
+    }
+    function pieChart(chartName,title,dataVal){
+        //var chartStr=id.split("_")[0];
+        //var chartName=chartStr+"_pie_chart";
+        //var chartName = echarts.init(document.getElementById(id),theme);
+        var chartOption={
+            tooltip: {
+                trigger: 'item',
+                formatter: "{a} <br/>{b}: {c} ({d}%)"
+            },
+            legend: {
+                orient: 'vertical',
+                x: 'left',
+                data:[JSON.parse(dataVal).datas[0].value,JSON.parse(dataVal).datas[1].value]
+            },
+            series: [
+                {
+                    name:title,
+                    type:'pie',
+                    radius: ['60%', '70%'],
+                    avoidLabelOverlap: false,
+                    label: {
+                        normal: {
+                            show: true,
+                            position: 'center',
+                            textStyle: {
+                                fontSize: '24',
+                                fontWeight: 'bold'
+                            },
+                            formatter : JSON.parse(dataVal).datas[1].value+"%"
+                        }
+
+//                        emphasis: {//提示是中间数字
+//                            show: true,
+//                            textStyle: {
+//                                fontSize: '20',
+//                                fontWeight: 'bold'
+//                            }
+//                        }
+                    },
+                    labelLine: {
+                        normal: {
+                            show: false
+                        }
+                    },
+                    data:JSON.parse(dataVal).datas
+                }
+            ]
+        };
+        chartName.setOption(chartOption, true);
+    }
+</script>
+</body>
+</html>

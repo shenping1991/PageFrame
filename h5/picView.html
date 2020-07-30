@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>picView</title>
+	<style type="text/css">
+		ul,li{
+			list-style: none;
+		}
+		a{
+			text-decoration: none;
+		}
+		ul>li{
+			display: inline-block;
+			padding: 4px 10px;
+			background: #ccc;
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<ul>
+			<li><a href="images/icon-store-h.png" onclick="showPic(this);return false;">pic1</a></li>
+			<li><a href="images/icon-see-h.png" onclick="showPic(this);return false;">pic2</a></li>
+			<li><a href="images/icon-file-h.png" onclick="showPic(this);return false;">pic3</a></li>
+		</ul>
+		<img id="placeholder" src="images/icon-file-h.png" alt="my pic"/>
+		<button onclick=""></button>
+	</div>
+</body>
+</html>
+<script type="text/javascript">
+
+	//alert(document.body.childNodes.length);
+	function showPic(obj){
+		var source=obj.getAttribute("href");
+		var text=obj.getAttribute("title");
+		var pic=document.getElementById("placeholder");
+		pic.setAttribute("src",source);
+	}
+</script>

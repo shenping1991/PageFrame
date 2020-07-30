@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="ch">
+<head>
+    <meta charset="UTF-8">
+    <title>路由设置</title>
+
+    <!--全局通用!-->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/global.css">
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <!--全局通用end!-->
+
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv/html5shiv.js"></script>
+    <script src="js/respond/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+<div class="dsm-rightside ">
+    <div class="mainnav">
+        <div class="urlindex">
+            <i class="icon icon-home"></i>
+            <a class="name dsmfontblue" href="home.html">首页</a>
+            <i class="icon icon-right"></i>
+            <a class="name dsmfontblue" href="javascript:void(0);">网络管理</a>
+            <i class="icon icon-curright"></i>
+            <span class="curname">路由设置</span>
+        </div>
+    </div>
+    <div class="maincontent">
+        <div class="mainbox">
+            <div class="btn-toolbar">
+                <a class="btn btn-primary btn-tool js_add" ><i class="btnicon icon-toolbar icon-add-white"></i>新增</a>
+                <a class="btn btn-primary btn-tool js_del" ><i class="btnicon icon-toolbar icon-delete"></i>删除</a>
+
+            </div>
+            <div class="table-view">
+                <table id="datalist" class="table" cellspacing="0" width="100%">
+                    <thead>
+                    <tr>
+                        <th>
+                            <div class="dsmcheckbox">
+                                <input type="checkbox" value="1" id="t2"  class="js_checkboxAll" data-allcheckfor="uids"  name="">
+                                <label for="t2"></label>
+                            </div>
+                        </th>
+                        <th>目的地址</th>
+                        <th>子网掩码</th>
+                        <th>下一跳网关</th>
+                        <th>描述</th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>
+                            <div class="dsmcheckbox">
+                                <input type="checkbox" value="1" id="t21" name="uids">
+                                <label for="t21"></label>
+                            </div>
+                        </td>
+                        <td><a href="javascript:void(0);" class="js_edit" data-id="dir1" >192.168.1.48</a></td>
+                        <td>255.255.255.0</td>
+                        <td>192.168.1.1</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="dsmcheckbox">
+                                <input type="checkbox" value="1" id="t22" name="uids">
+                                <label for="t22"></label>
+                            </div>
+                        </td>
+                        <td><a href="javascript:void(0);" class="js_edit" data-id="dir2">192.168.1.48</a></td>
+                        <td>255.255.255.0</td>
+                        <td>192.168.1.1</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="dsmcheckbox">
+                                <input type="checkbox" value="1" id="t23" name="uids">
+                                <label for="t23"></label>
+                            </div>
+                        </td>
+                        <td><a href="javascript:void(0);" class="js_edit" data-id="dir3">192.168.1.48</a></td>
+                        <td>255.255.255.0</td>
+                        <td>192.168.1.1</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="dsmcheckbox">
+                                <input type="checkbox" value="1" id="t24" name="uids">
+                                <label for="t24"></label>
+                            </div>
+                        </td>
+                        <td><a href="javascript:void(0);" class="js_edit" data-id="dir4">192.168.1.48</a></td>
+                        <td>255.255.255.0</td>
+                        <td>192.168.1.1</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="dsmcheckbox">
+                                <input type="checkbox" value="1" id="t25" name="uids">
+                                <label for="t25"></label>
+                            </div>
+                        </td>
+                        <td><a href="javascript:void(0);" class="js_edit" data-id="dir4">192.168.1.48</a></td>
+                        <td>255.255.255.0</td>
+                        <td>192.168.1.1</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="dsmcheckbox">
+                                <input type="checkbox" value="1" id="t26" name="uids">
+                                <label for="t26"></label>
+                            </div>
+                        </td>
+                        <td><a href="javascript:void(0);" class="js_edit" data-id="dir4">192.168.1.48</a></td>
+                        <td>255.255.255.0</td>
+                        <td>192.168.1.1</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="dsmcheckbox">
+                                <input type="checkbox" value="1" id="t27" name="uids">
+                                <label for="t27"></label>
+                            </div>
+                        </td>
+                        <td><a href="javascript:void(0);" class="js_edit" data-id="dir4">192.168.1.48</a></td>
+                        <td>255.255.255.0</td>
+                        <td>192.168.1.1</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="dsmcheckbox">
+                                <input type="checkbox" value="1" id="t28" name="uids">
+                                <label for="t28"></label>
+                            </div>
+                        </td>
+                        <td><a href="javascript:void(0);" class="js_edit" data-id="dir4">192.168.1.48</a></td>
+                        <td>255.255.255.0</td>
+                        <td>192.168.1.1</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="dsmcheckbox">
+                                <input type="checkbox" value="1" id="t29" name="uids">
+                                <label for="t29"></label>
+                            </div>
+                        </td>
+                        <td><a href="javascript:void(0);" class="js_edit" data-id="dir4">192.168.1.48</a></td>
+                        <td>255.255.255.0</td>
+                        <td>192.168.1.1</td>
+                        <td>-</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="pagebox">
+				    	<span class="showinfo">
+				    		<span class="lengthinput">
+					    		<select class="page-length">
+									<option>1</option>
+									<option>2</option>
+									<option>3</option>
+									<option>4</option>
+									<option>5</option>
+								</select>
+							</span>
+				    		<span class="lengthinfo">条/页</span>显示
+					    	<span class="start-index">1</span>-
+					    	<span class="end-index">5</span>条记录，共
+					    	<span class="total">5</span>条记录
+				    	</span>
+                    <span class="buttoninfo">
+						    <div class="dsm-laypage" >
+						        <a href="javascript:;" class="dsm-laypage-prev" data-page="7">上一页</a>
+						        <a href="javascript:;" data-page="1">1</a><a href="javascript:;" data-page="2">2</a>
+						        <span class="dsm-laypage-curr"><em class="dsm-laypage-em"></em><em>3</em></span>
+						        <span>…</span>
+						        <a href="javascript:;" data-page="100">100</a>
+						        <a href="javascript:;" class="dsm-laypage-next" data-page="9">下一页</a>
+						        <span class="dsm-laypage-total">跳转到
+						            <input type="number" min="1" value="8" class="dsm-laypage-skip">页
+						            <button type="button" class="dsm-laypage-btn">确定</button>
+						        </span>
+						    </div>
+				    	</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--新增/修改路由-->
+<div class="RouteForm" style="display: none">
+    <div class="dsmForms">
+        <div class="dsm-form-item">
+            <div class="dsm-inline">
+                <label class="dsm-form-label">目的地址：</label>
+                <div class="dsm-input-inline">
+                    <input type="text" class="dsm-input" autocomplete="off" placeholder="目的地址">
+                </div>
+            </div>
+            <div class="dsm-inline">
+                <label class="dsm-form-label">子网掩码：</label>
+                <div class="dsm-input-inline">
+                    <input type="text" autocomplete="off" placeholder="子网掩码" class="dsm-input">
+                </div>
+                <div class="desc"><em>*</em>必填</div>
+                <div class="line-tip error" ><i class="icon icon-error"></i>子网掩码不能为空</div>
+            </div>
+            <div class="dsm-inline">
+                <label class="dsm-form-label">下一跳网关：</label>
+                <div class="dsm-input-inline">
+                    <input type="text" autocomplete="off" placeholder="下一跳网关" class="dsm-input">
+                </div>
+                <div class="desc"><em>*</em>必填</div>
+                <div class="line-tip error" ><i class="icon icon-error"></i>下一跳地址不能为空</div>
+            </div>
+            <div class="dsm-inline">
+                <label class="dsm-form-label">描述：</label>
+                <div class="dsm-input-inline ">
+                    <textarea name="" id="txt_desc" cols="10" rows="2" class="dsm-textarea"></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="js/site.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        //新增
+        $(document).on('click', '.js_add', function (e) {
+            $(".RouteForm").attr('id',"addForm")
+            dsmDialog.open({
+                type: 1,
+                area:['560px','480px'],
+                btn:['新增','取消'],
+                title:"新增路由",
+                content: $('#addForm'),
+                yes: function(index, layero){
+                    dsmDialog.msg('新增成功!');
+                    dsmDialog.close(index);
+                }
+            });
+
+        });
+        //修改
+        $(document).on('click', '.js_edit', function (e) {
+            edit(this);
+        });
+        //删除
+        $(document).on('click', '.js_del', function (e) {
+            var chkItem=itemSelected_check("uids");
+            if(chkItem.length==0){
+                dsmDialog.error('请先选择路由！');
+                return;
+            }
+            showDelModel();
+        });
+
+    });
+    //删除弹框
+    function showDelModel() {
+        dsmDialog.toComfirm("请确认是否删除当前路由信息！", {
+            btn: ['确定','取消'],
+            title:"删除"
+        }, function(index){
+            //删除操作代码
+            dsmDialog.msg('删除成功！');
+            dsmDialog.close(index);
+        }, function(index){
+            dsmDialog.close(index);
+        });
+    }
+    //修改路由
+    function edit(obj){
+        var routeId=$(obj).data("id");
+        if(routeId!=""&&routeId!=undefined){
+            $(".RouteForm").attr('id',"editForm");
+        }
+        dsmDialog.open({
+            type: 1,
+            area:['560px','480px'],
+            btn:['修改','取消'],
+            title:"修改路由",
+            content: $('#editForm'),
+            yes: function(index, layero){
+                dsmDialog.msg('修改成功!');
+                dsmDialog.close(index);
+            }
+        });
+        var id=$(obj).data("id");
+    }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- IE8-不能识别HTML5的<hearder>、<article>、<footer>、<figure>等标签，可以通过 html5.js 来解决： -->
+    <!--[if lt IE 9]> <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script> <![endif]-->
+    <!-- 然后将下面代码写入你的base.css来格式化html5标签： article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display: block; }
+     IE8-不支持CSS3 media queries，即不支持"@media only screen"语法，可以通过 css3-mediaqueries.js 来解决：
+    -->
+    <!--[if lt IE 9]> <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script> <![endif]-->
+    <meta charset="UTF-8">
+
+    <!-- user-scalable=no ：禁用viewport缩放功能；width=device-width:定义可视区域大小为设备大小；innitial-scale:页面初始缩放比例；maximum-scale:最大缩放比例 -->
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <meta name="MobileOptimized" content="320">
+    <title>WenApp</title>
+    <!-- orientation判断设备方向；portrait:垂直模式；landscape:横向模式  常规不使用，用width=device-width代替 -->
+    <link rel="stylesheet" media="all and (orientation:portrait)" href="portrait.css">
+    <link rel="stylesheet" media="all and (orientation:landscape)" href="landscape.css">
+    <!-- ios -->
+    <!-- 允许全屏浏览页面的标签 -->
+    <meta name="apple=mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="blank"/><!-- 隐藏状态栏 -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" /><!-- 定义状态栏样式为暗黑色 -->
+    <meta name="format-detection" content="telephone=no"/><!-- 禁止把电话添加到联系人 -->
+    <link rel="apple-touch-icon-precomposed" href="apple-touch-icon.png/apple-touch-icon-precomposed.png"/><!-- 将图标创建快捷键前者：自动添加圆角、阴影和高亮覆盖层，后者不添加 -->
+    <style>
+        html, body { margin: 0;padding: 0;height:100%; font-size:1.2em;}
+        .wrap{ margin:2% auto 0 auto; width:95%;}
+        header { width:100%; height:5%;background-color:#FF9673;}
+        nav{ float:left; width:20%; min-height:600px;background-color:#FF9673;}
+        article{ background-color:#FFD24D;}
+        aside{ background-color:#73B9FF;}
+        @media only screen and (min-width:1000px){
+            nav{display:none;}
+            article{ float:left; margin-right:2%; width:70%; min-height:600px;}
+            aside{ float:left; width:28%; min-height:600px;}
+        }
+        @media only screen and (min-width:605.6px) and (max-width:999px){
+            header{display:none;}
+            article{ float:left; margin-left:2%; width:78%; min-height:600px;}
+            aside{ display:none;}
+        }
+        @media only screen and (max-width:600px){
+            nav{display:none;}
+            article{ width:100%; min-height:600px;}
+            aside{ display:none;}
+        }
+        @media only screen and(min-width:1000px) and(max-width: 1200px){
+
+        }
+    </style>
+</head>
+<body>
+<header>top-banner</header>
+<div class="wrap">
+    <nav>56565665</nav>
+    <article>
+        <p>the main area</p>
+    </article>
+    <aside>sth</aside>
+</div>
+</body>
+</html>

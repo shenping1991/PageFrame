@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Canvas</title>
+    <script type="text/javascript">
+        window.onload=(function(){
+
+            var canvas=document.getElementById("myCanvas");
+            var context=canvas.getContext("2d");
+            context.fillStyle="#000";
+            context.fillRect(50,25,100,50);
+
+            /*直销线绘制*/
+            var lineCanvas=document.getElementById("lineCanvas");
+            var contextLine=lineCanvas.getContext("2d");
+
+            contextLine.beginPath();
+            contextLine.moveTo(200,lineCanvas.height/2);
+            contextLine.lineTo(lineCanvas.width-200,lineCanvas.height/2);
+            contextLine.lineWidth=20;
+            contextLine.strokeStyle="#000";
+            contextLine.lineCap="round";
+            contextLine.stroke();
+
+
+            contextLine.beginPath();
+            contextLine.moveTo(200,lineCanvas.height/2+50);
+            contextLine.lineTo(lineCanvas.width-200,lineCanvas.height/2+50);
+            contextLine.lineWidth=20;
+            contextLine.strokeStyle="#000";
+            contextLine.lineCap="butt";
+            contextLine.stroke();
+
+            contextLine.beginPath();
+            contextLine.moveTo(200,lineCanvas.height/2+100);
+            contextLine.lineTo(lineCanvas.width-200,lineCanvas.height/2+100);
+            contextLine.lineWidth=20;
+            contextLine.strokeStyle="#000";
+            contextLine.lineCap="square";
+            contextLine.stroke();
+
+
+            /*曲线绘制*/
+            contextLine.beginPath();
+            contextLine.moveTo(20,20);
+            contextLine.lineTo(80,20);
+            contextLine.arcTo(150,20,150,70,70);
+            contextLine.lineTo(150,120);
+            contextLine.stroke();
+
+
+            /*二次贝塞尔曲线绘制*/
+            contextLine.beginPath();
+            contextLine.moveTo(20,200);
+            contextLine.quadraticCurveTo(80,200,150,100);
+            contextLine.lineWidth=5;
+            contextLine.strokeStyle="bule";
+            contextLine.stroke();
+
+
+            /*三次贝塞尔曲线绘制*/
+            contextLine.beginPath();
+            contextLine.moveTo(120,300);
+            contextLine.bezierCurveTo(80,200,300,600,320,100);
+            contextLine.lineWidth=5;
+            contextLine.strokeStyle="bule";
+            contextLine.stroke();
+
+
+            /*绘制矩形*/
+            context.beginPath();
+            context.rect(100,10,200,100);
+            context.lineWidth=5;
+            context.strokeStyle="black";
+            context.stroke();
+            context.fillStyle=="#00ff00";
+            context.fill();
+
+        })
+    </script>
+</head>
+<body>
+    <canvas id="myCanvas" width="100" height="100">
+        您的浏览器不支持canvas
+    </canvas>
+    <canvas id="lineCanvas" width="600" height="200">
+
+    </canvas>
+    <canvas id="blineCanvas" width="800" height="200">
+
+    </canvas>
+</body>
+</html>

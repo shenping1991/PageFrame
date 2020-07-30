@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="ch">
+<head>
+    <meta charset="UTF-8">
+    <title>应用服务器管理</title>
+
+    <!--全局通用!-->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/global.css">
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <!--全局通用end!-->
+
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv/html5shiv.js"></script>
+    <script src="js/respond/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+<div class="dsm-rightside ">
+    <div class="mainnav">
+        <div class="urlindex">
+            <i class="icon icon-home"></i>
+            <a class="name dsmfontblue" href="home.html">首页</a>
+            <i class="icon icon-right"></i>
+            <a class="name dsmfontblue" href="javascript:void(0);">策略管理</a>
+            <i class="icon icon-curright"></i>
+            <span class="curname">应用服务器管理</span>
+        </div>
+    </div>
+    <div class="maincontent">
+        <div class="mainbox">
+            <div class="btn-toolbar">
+                <a class="btn btn-primary btn-tool js_add" ><i class="btnicon icon-toolbar icon-add-white"></i>新增</a>
+                <a class="btn btn-primary btn-tool js_del" ><i class="btnicon icon-toolbar icon-delete"></i>删除</a>
+
+            </div>
+            <div class="table-view">
+                <table id="datalist" class="table" cellspacing="0" width="100%">
+                    <thead>
+                    <tr>
+                        <th>
+                            <div class="dsmcheckbox">
+                                <input type="checkbox" value="1" id="t2"  class="js_checkboxAll" data-allcheckfor="uids"  name="">
+                                <label for="t2"></label>
+                            </div>
+                        </th>
+                        <th>名称</th>
+                        <th>协议类型</th>
+                        <th>IP地址</th>
+                        <th>域名</th>
+                        <th>端口号</th>
+                        <th>测试连接 <i class="icon icon-reload p-l-20 p-r-20"></i></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>
+                            <div class="dsmcheckbox">
+                                <input type="checkbox" value="1" id="t21" name="uids">
+                                <label for="t21"></label>
+                            </div>
+                        </td>
+                        <td><a href="javascript:void(0);" class="js_edit" data-id="1" >OA</a></td>
+                        <td>http</td>
+                        <td>192.168.0.1</td>
+                        <td>-</td>
+                        <td>80</td>
+                        <td>
+                            <span> <i class="icon icon-greenyes"></i></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="dsmcheckbox">
+                                <input type="checkbox" value="1" id="t22" name="uids">
+                                <label for="t22"></label>
+                            </div>
+                        </td>
+                        <td><a href="javascript:void(0);" class="js_edit" data-id="2">ERP</a></td>
+                        <td>https</td>
+                        <td>192.168.0.2</td>
+                        <td>-</td>
+                        <td>8080</td>
+                        <td>
+                            <span> <i class="icon icon-redclose"></i></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="dsmcheckbox">
+                                <input type="checkbox" value="1" id="t23" name="uids">
+                                <label for="t23"></label>
+                            </div>
+                        </td>
+                        <td><a href="javascript:void(0);" class="js_edit" data-id="3">PDM</a></td>
+                        <td>tcp</td>
+                        <td>192.168.0.3</td>
+                        <td>-</td>
+                        <td>9555</td>
+                        <td>
+                            <span> <i class="icon icon-redclose"></i></span>
+                        </td>
+                    </tr>
+
+                    </tbody>
+                </table>
+                <div class="pagebox">
+				    	<span class="showinfo">
+				    		<span class="lengthinput">
+					    		<select class="page-length">
+									<option>1</option>
+									<option>2</option>
+									<option>3</option>
+									<option>4</option>
+									<option>5</option>
+								</select>
+							</span>
+				    		<span class="lengthinfo">条/页</span>显示
+					    	<span class="start-index">1</span>-
+					    	<span class="end-index">5</span>条记录，共
+					    	<span class="total">5</span>条记录
+				    	</span>
+                    <span class="buttoninfo">
+						    <div class="dsm-laypage" >
+						        <a href="javascript:;" class="dsm-laypage-prev" data-page="7">上一页</a>
+						        <a href="javascript:;" data-page="1">1</a><a href="javascript:;" data-page="2">2</a>
+						        <span class="dsm-laypage-curr"><em class="dsm-laypage-em"></em><em>3</em></span>
+						        <span>…</span>
+						        <a href="javascript:;" data-page="100">100</a>
+						        <a href="javascript:;" class="dsm-laypage-next" data-page="9">下一页</a>
+						        <span class="dsm-laypage-total">跳转到
+						            <input type="number" min="1" value="8" class="dsm-laypage-skip">页
+						            <button type="button" class="dsm-laypage-btn">确定</button>
+						        </span>
+						    </div>
+				    	</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--新增服务器-->
+<div  class="popForm" style="display: none">
+    <div class="dsmForms">
+        <div class="dsm-form-item">
+            <div class="dsm-inline">
+                <label class="dsm-form-label">名称：</label>
+                <div class="dsm-input-inline">
+                    <input type="text" class="dsm-input" autocomplete="off" placeholder="名称">
+                </div>
+            </div>
+            <div class="dsm-inline">
+                <label class="dsm-form-label">协议类型：</label>
+                <div class="dsm-input-inline w350">
+                    <select  class="dsm-select ">
+                        <option value="http">http</option>
+                        <option value="https">https</option>
+                        <option value="tcp">tcp</option>
+                    </select>
+                </div>
+            </div>
+            <div class="dsm-inline">
+                <label class="dsm-form-label">IP地址：</label>
+                <div class="dsm-input-inline">
+                    <input id="txt_IPAddress" type="text" autocomplete="off" placeholder="IP地址" class="dsm-input">
+                </div>
+                <div class="desc"><em>*</em>必填</div>
+                <div class="line-tip error" ><i class="icon icon-error"></i>IP地址不能为空</div>
+            </div>
+            <div class="dsm-inline">
+                <label class="dsm-form-label">域名信息：</label>
+                <div class="dsm-input-inline">
+                    <input type="text" autocomplete="off" placeholder="域名信息" class="dsm-input">
+                </div>
+            </div>
+            <div class="dsm-inline">
+                <label class="dsm-form-label">端口号：</label>
+                <div class="dsm-input-inline">
+                    <input id="txt_port" type="text" autocomplete="off" placeholder="端口号" class="dsm-input">
+                </div>
+                <div class="desc"><em>*</em>必填</div>
+                <div class="line-tip error" ><i class="icon icon-error"></i>端口不能为空</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript" src="js/site.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        //新增
+        $(document).on('click', '.js_add', function (e) {
+            clear();
+            $(".popForm").attr('id',"addForm");
+            dsmDialog.open({
+                type: 1,
+                area:['560px','480px'],
+                btn:['确定','取消'],
+                title:"新增服务器",
+                content: $('#addForm'),
+                yes: function(index, layero){
+                    var IPset=checkIsNull("#txt_IPAddress");
+                    var port=checkIsNull("#txt_port");
+                    if(IPset && port) {
+                        dsmDialog.msg('新增成功!');
+                        dsmDialog.close(index);
+                        clear();//初始化输入控件
+                    }
+                }
+            });
+        });
+        $(document).on('blur','#txt_IPAddress',function(){
+            if(checkIsNull("#txt_IPAddress")){
+                removeErrorTip(this);
+            }
+        })
+        $(document).on('blur','#txt_port',function(){
+            if(checkIsNull("#txt_port")){
+                removeErrorTip(this);
+            }
+        })
+
+        //修改
+        $(document).on('click', '.js_edit', function (e) {
+            edit(this);
+        });
+        //删除
+        $(document).on('click', '.js_del', function (e) {
+            var chkItem=itemSelected_check("uids");
+            if(chkItem.length==0){
+                dsmDialog.error('请先选择应用服务器！');
+                return;
+            }
+            showDelModel();
+        });
+
+    });
+    //删除弹框
+    function showDelModel() {
+        dsmDialog.toComfirm("请确认是否删除当前服务器记录！", {
+            btn: ['确定','取消'],
+            title:"删除"
+        }, function(index){
+            //删除操作代码
+            dsmDialog.msg('删除成功！');
+            dsmDialog.close(index);
+        }, function(index){
+            dsmDialog.close(index);
+        });
+    }
+    //修改
+    function edit(obj){
+        removeAllErrorTip();
+        var Id=$(obj).data("id");
+        if(Id!=""&&Id!=undefined){
+            $(".popForm").attr('id',"editForm");
+
+        }
+        dsmDialog.open({
+            type: 1,
+            area:['560px','480px'],
+            btn:['确定','取消'],
+            title:"修改服务器",
+            content: $('#editForm'),
+            yes: function(index, layero){
+                var IPset=checkIsNull("#txt_IPAddress");
+                var port=checkIsNull("#txt_port");
+                if(IPset && port) {
+                    dsmDialog.msg('修改成功!');
+                    dsmDialog.close(index);
+                    clear();
+                }
+            }
+        });
+
+    }
+    //新增-检查必填项
+    function checkIsNull(obj) {
+        var val=$.trim($(obj).val());
+        if(val==""){
+            $(obj).parent().next().next('.line-tip').css('display','block');
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+    //新增-移除错误提示
+    function removeErrorTip(obj) {
+        $(obj).parent().next().next('.line-tip').css('display','none');
+    }
+    function removeAllErrorTip() {
+        $('.line-tip').css('display','none');
+    }
+    //初始化输入控件
+    function clear(){
+        $(".dsm-input").val("");
+        $(".dsm-textarea").html("");
+        $(".dsm-select option:first").prop("selected", 'selected');
+        $('.line-tip').css('display','none');
+    }
+
+</script>
+</body>
+</html>

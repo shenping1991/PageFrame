@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图片滚动</title>
+    <style>
+        *{margin:0;padding:0;}
+        a{
+            text-decoration: none;
+        }
+        .wrapper{}
+        #scroll_wrapper{width:712px;height: 100px;margin: 0px auto;
+            position: relative; background: #333; overflow: hidden;}
+        #scroll_wrapper ul{
+            position:absolute;left:0;top:0;
+        }
+        #scroll_wrapper ul li{
+            float: left;width:178px;height: 100px;list-style: none; background: #999;
+            margin-right: 10px;
+        }
+        .btn{display: inline-block; width:20px; height: 100px;line-height: 100px; border: 1px solid #ddd; }
+    </style>
+    <script>
+        window.onload=function () {
+            var oDiv=document.getElementById('scroll_wrapper');
+            var oUl=oDiv.getElementsByTagName('ul')[0];
+            var oLi=oUl.getElementsByTagName('li');
+            var speed=2;
+
+            oUl.innerHTML=oUl.innerHTML+oUl.innerHTML;
+            oUl.style.width=oLi[0].offsetWidth*oLi.length+'px';
+            function move() {
+                if(oUl.offsetLeft<-oUl.offsetWidth/2){
+                    oUl.style.left='0';
+                }
+                if(oUl.offsetLeft>0){
+                    oUl.style.left=-oUl.offsetWidth/2+'px';
+                }
+                oUl.style.left=oUl.offsetLeft+speed+'px';
+            }
+            var timer=setInterval(move,30);
+            oDiv.onmouseover=function () {
+                clearInterval(timer);
+            }
+            oDiv.onmouseout=function(){
+                timer=setInterval(move,30);
+            }
+            document.getElementsByTagName('a')[0].onclick=function () {
+                speed=-2;
+            }
+            document.getElementsByTagName('a')[1].onclick=function () {
+                speed=2;
+            }
+        }
+    </script>
+</head>
+<body>
+<div class="wrapper">
+    <a class="btn" href="javascript:;">《</a>
+    <div id="scroll_wrapper">
+
+        <ul>
+            <li><img src="#" alt=""></li>
+            <li><img src="#" alt=""></li>
+            <li><img src="#" alt=""></li>
+            <li><img src="#" alt=""></li>
+            <li><img src="#" alt=""></li>
+        </ul>
+
+    </div>
+    <a class="btn" href="javascript:;">》</a>
+</div>
+</body>
+</html>

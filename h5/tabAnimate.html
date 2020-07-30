@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<style>
+	.stair_right{
+    width:1001px;
+    height:560px;
+    float:right;
+	}
+	.stair_right_navout{
+	    width:1001px;
+	    height:45px;
+	    position:relative;
+	    z-index:1;
+	}
+	.stair_right_nav0,.stair_right_nav1,.stair_right_nav2,.stair_right_nav3,.stair_right_nav4,.stair_right_nav5,.stair_right_nav6,
+	.stair_right_nav7,.stair_right_nav8,.stair_right_nav9,.stair_right_nav10{
+	    position:relative;
+	    z-index:1;
+	    width:143px;
+	    height:30px;
+	    padding-top:12px;
+	    float:left;
+	    text-align:center;
+	    font-size:16px;
+	    font-family:黑体;
+	    border-bottom:solid 3px #DDD;
+	    background-color:#F9F9F9;
+	}
+	.stair_right_nav_arrow0,.stair_right_nav_arrow1,.stair_right_nav_arrow2,.stair_right_nav_arrow3,.stair_right_nav_arrow4,.stair_right_nav_arrow5,
+	.stair_right_nav_arrow6,.stair_right_nav_arrow7,.stair_right_nav_arrow8,.stair_right_nav_arrow9,.stair_right_nav_arrow10{
+	    position:absolute;
+	    left:0px;
+	    z-index:2;
+	    width:143px;
+	    height:10px;
+	    margin-top:32px;_margin-top:23px;
+	    background:url(../img/body/stairs/arrow.jpg) bottom center no-repeat;
+	    border-bottom:solid 3px #ED1E24;
+	}
+	.stair_right_content0,.stair_right_content1,.stair_right_content2,.stair_right_content3,.stair_right_content4,.stair_right_content5,
+	.stair_right_content6,.stair_right_content7,.stair_right_content8,.stair_right_content9,.stair_right_content10{
+	    width:1001px;
+	    height:515px;
+	    display:none;
+	    overflow:hidden;
+	}
+	</style>
+	<script type="text/javascript" src="../h5/scripts/jquery-1.11.1.js"></script>
+</head>
+<body>
+<script>
+$(function(){
+ 
+     for(var i=0;i<=10;i++){     //遍历十个楼层
+     $(".stair_right_nav"+i+":first").css({"color":"red"});   //默认每个楼层的首个选项卡文字设为红色
+     $(".stair_right_content"+i+":first").show();          //默认每个楼层的首个内容展示DIV显示出来
+     $(".stair_right_nav"+i).each(function(index){       //遍历每个楼层的全部选项卡，并绑定mouseover事件
+         $(this).mouseover(function(){
+             var nav_classname=$(this).attr("class").toString();     //获取鼠标经过的选项卡的class名
+             var nav_l=nav_classname.length;                  //获取class名长度
+             var j=nav_classname.substring(15,nav_l);       //通过截取class名的数字部位来获得当前选项卡的索引值（注意这里index已经变为楼层的索引了，不再适用）
+             $(this).css({"color":"red"}).siblings().css({"color":"black"});  //鼠标经过的当前选项卡文本设为红色，兄弟元素文本设为黑色
+             $(".stair_right_content"+j).hide().eq(index).show();   //鼠标经过的当前选项卡对应的内容展示区域显示，该楼层兄弟元素隐藏
+             var slide_width=index*143;     //这个是红色色标要移动的距离
+             $(".stair_right_nav_arrow"+j).stop().animate({left:slide_width+"px"},500);    //让红色色标在半秒内移动到对应选项卡
+ 
+             })
+         })
+ 
+     }
+ //     $(".body_stairs").each(funtion(i){
+ //     $(".stair_right_nav"+i+":first").css({"color":"red"});   //默认每个楼层的首个选项卡文字设为红色
+ //     $(".stair_right_content"+i+":first").show();          //默认每个楼层的首个内容展示DIV显示出来
+ //     $(".stair_right_nav"+i).each(function(index){       //遍历每个楼层的全部选项卡，并绑定mouseover事件
+ //         $(this).mouseover(function(){
+ //             var nav_classname=$(this).attr("class").toString();     //获取鼠标经过的选项卡的class名
+ //             var nav_l=nav_classname.length;                  //获取class名长度
+ //             var j=nav_classname.substring(15,nav_l);       //通过截取class名的数字部位来获得当前选项卡的索引值（注意这里index已经变为楼层的索引了，不再适用）
+ //             $(this).css({"color":"red"}).siblings().css({"color":"black"});  //鼠标经过的当前选项卡文本设为红色，兄弟元素文本设为黑色
+ //             $(".stair_right_content"+j).hide().eq(index).show();   //鼠标经过的当前选项卡对应的内容展示区域显示，该楼层兄弟元素隐藏
+ //             var slide_width=index*143;     //这个是红色色标要移动的距离
+ //             $(".stair_right_nav_arrow"+j).stop().animate({left:slide_width+"px"},500);    //让红色色标在半秒内移动到对应选项卡
+	  
+	//              })
+	//          })
+	  
+	//      }
+	// });
+})
+</script>
+<div class="body_stairs">    
+ 
+    <div class="stair_left">
+        <div class="stair_left_title">
+            <span>模块区1</span>
+        </div>
+        <div class="stair_left_ad">
+        </div>
+    </div><!--stair_left结束-->
+ 
+ 
+    <div class="stair_right">
+        <div class="stair_right_navout">
+            <div><div class="stair_right_nav_arrow0"></div></div>
+ 
+<!--外部再加div是为兼容IE6-->
+            <div class="stair_right_nav0">item1</div>
+            <div class="stair_right_nav0">item1</div>
+            <div class="stair_right_nav0">item1</div>
+            <div class="stair_right_nav0">item1</div>
+            <div class="stair_right_nav0">item1</div>
+            <div class="stair_right_nav0">item1</div>
+            <div class="stair_right_nav0">item1</div>
+        </div> 
+        <div class="stair_right_content0">item1-1Content
+        </div>
+        <div class="stair_right_content0">2
+        </div>
+        <div class="stair_right_content0">3
+        </div>
+        <div class="stair_right_content0">4
+        </div>
+        <div class="stair_right_content0">5
+        </div>
+        <div class="stair_right_content0">6
+        </div>
+        <div class="stair_right_content0">7
+        </div>
+    </div><!--stair_right结束-->
+ 
+</div><!--body_stairs结束-->   
+ 
+ 
+<div class="body_stairs">    
+ 
+    <div class="stair_left">
+        <div class="stair_left_title">
+            <span>模块区2</span>
+        </div>
+        <div class="stair_left_ad">
+        </div>
+    </div><!--stair_left结束-->
+ 
+ 
+    <div class="stair_right">
+        <div class="stair_right_navout">
+            <div><div class="stair_right_nav_arrow1"></div></div>
+ 
+<!--外部再加div是为兼容IE6-->
+            <div class="stair_right_nav1">item1</div>
+            <div class="stair_right_nav1">item</div>
+            <div class="stair_right_nav1">item</div>
+            <div class="stair_right_nav1">item</div>
+            <div class="stair_right_nav1">item</div>
+            <div class="stair_right_nav1">item</div>
+            <div class="stair_right_nav1">item</div>
+        </div> 
+        <div class="stair_right_content1">item2-1Content
+        </div>
+        <div class="stair_right_content1">2
+        </div>
+        <div class="stair_right_content1">3
+        </div>
+        <div class="stair_right_content1">4
+        </div>
+        <div class="stair_right_content1">5
+        </div>
+        <div class="stair_right_content1">6
+        </div>
+        <div class="stair_right_content1">7
+        </div>
+    </div><!--stair_right结束-->
+ 
+</div><!--body_stairs结束-->   
+</body>
+</html>

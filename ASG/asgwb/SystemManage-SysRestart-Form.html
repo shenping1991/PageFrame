@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ch">
+<head>
+    <meta charset="UTF-8">
+    <title>系统重启</title>
+
+    <!--全局通用!-->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/global.css">
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <!--全局通用end!-->
+
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv/html5shiv.js"></script>
+    <script src="js/respond/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+<div class="dsm-rightside home">
+    <div class="mainnav">
+        <div class="urlindex">
+            <i class="icon icon-home"></i>
+            <a class="name dsmfontblue" href="home.html">首页</a>
+            <i class="icon icon-right"></i>
+            <a class="name dsmfontblue" href="javascript:void(0);">系统管理</a>
+            <i class="icon icon-curright"></i>
+            <span class="curname">系统重启</span>
+        </div>
+    </div>
+    <div class="maincontent">
+        <div class="mainbox clearfix">
+            <div class="card-info width100">
+                <div class="carditem">
+                    <h5 class="card-info-header">手动重启</h5>
+                    <div class="card-info-body">
+                        <div class="info-contain ">
+                            <div class="info-side-bar">
+                                <img src="images/img-restart-user.png" class="info-side-con"/>
+                            </div>
+                            <div class="info-cnt-list clearfix">
+                                <!--<h5 class="info-version">版本：ASG 2.0</h5>-->
+                                <!--<div class="select-updatePack ">-->
+                                    <!--<span class="info-l-txt">导入配置文件：</span><a href="" class="btn btn-default info-r-ctrl" >请选择配置文件</a>-->
+                                <!--</div>-->
+                                <div class="button-container " style="margin-top: 30px;">
+                                    <button type="button" class="btn btn-primary btn-lg js_manualRestart">重启</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-info width100">
+                <div class="carditem">
+                    <h5 class="card-info-header">定时重启</h5>
+                    <div class="card-info-body">
+                        <div class="info-contain ">
+                            <div class="info-side-bar">
+                                <img src="images/img-restart.png" class="info-side-con"/>
+                            </div>
+                            <div class="info-cnt-list clearfix">
+                                <div class="info-from-container">
+                                    <div class="dsmForms r-Froms">
+                                        <div class="dsm-form-item">
+                                    <div class="dsm-inline">
+                                        <div class="dsmcheckbox">
+                                            <input type="checkbox" value="1" id="p1" name="">
+                                            <label for="p1"></label>
+                                        </div>
+                                        <label for="p1">启动定时重启</label>
+                                    </div>
+                                    <div class="dsm-inline m-l-30">
+                                        <div class="dsm-radio-one">
+                                            <div class="dsm-radiobox">
+                                                <input type="radio" id="fqr" name="restartTimeType" value="0" class="dsm-radio" checked>
+                                                <label for="fqr"></label>
+                                            </div>
+                                            <label class="radiolabel" for="fqr">按每日</label>
+                                        </div>
+                                    </div>
+                                    <div class="dsm-inline m-l-30">
+
+                                        <div class="dsm-radio-one  w100 ">
+                                            <div class="dsm-radiobox">
+                                                <input type="radio" id="fqw" name="restartTimeType" value="0" class="dsm-radio" >
+                                                <label for="fqw"></label>
+                                            </div>
+                                            <label class="radiolabel" for="fqw">按每周</label>
+
+                                        </div>
+                                        <div class=" w200 ctrl">
+                                            <select id="ddl_Day" class="dsm-select "  data-live-search="true">
+                                                <option value="1">星期一</option>
+                                                <option value="2">星期二</option>
+                                                <option value="3">星期三</option>
+                                                <option value="4">星期四</option>
+                                                <option value="5">星期五</option>
+                                                <option value="6">星期六</option>
+                                                <option value="7">星期七</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="dsm-inline m-l-30 disabled-box" disabled>
+
+                                        <div class="dsm-radio-one  w100 ">
+                                            <div class="dsm-radiobox">
+                                                <input type="radio" id="fqm" name="restartTimeType" value="0" class="dsm-radio" disabled>
+                                                <label for="fqm"></label>
+                                            </div>
+                                            <label class="radiolabel" for="fqm">按每月</label>
+                                        </div>
+                                        <div class=" w200 ctrl">
+                                            <select  class="dsm-select " disabled data-live-search="true">
+                                                <option>一日</option>
+                                                <option>二日</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="dsm-inline m-l-30">
+                                    <span class="info-l-txt w100" style="margin-right: 5px;">重启时间：</span>
+                                        <!--<label class="dsm-form-label info-l-txt">重启时间：</label>-->
+                                        <!--<input type="text" class="info-r-ctrl w100 " value="00:00:00">-->
+                                        <div class="dsm-input-inline">
+                                            <input type="time" autocomplete="off" value="00:00:01" class="dsm-input w200">
+                                        </div>
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="button-container">
+                                    <button type="button" class="btn btn-primary btn-lg js_autoRestart">确定</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript" src="js/site.js"></script>
+<script type="text/javascript">
+    $(document).on('click', '.js_manualRestart', function (e) {
+        dsmDialog.msg('手动重启设置成功');
+    });
+    $(document).on('click', '.js_autoRestart', function (e) {
+        dsmDialog.msg('定时重启设置成功');
+    });
+</script>
+</body>
+</html>

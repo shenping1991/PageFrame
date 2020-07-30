@@ -1,0 +1,99 @@
+@import "compass/reset";
+@import "compass/css3";
+@import "compass/layout";
+@import "compass/css3/flexbox";
+@import "compass/css3/opacity";
+
+$value:12px;
+div{
+  font-size:$value;
+}
+div{
+  p{
+    font-size:$value;
+  }
+}
+$left:left;
+@mixin left($v){
+  float:left;
+  margin-#{$left}:$v;
+}
+.siderbar{
+  @include left(20px);
+  font-size: $value;
+  background: #fff;
+}
+
+.leftside{
+  @extend .siderbar;
+  color:#333;
+}
+
+$theme:#157ced;
+$bodyBg:#f4f4f4;
+$border:#ddd;
+$color:#fff;
+
+@mixin border{
+  border:1px solid $border;
+}
+@mixin border_big($width:2px,$border:#eaeaea){
+  border:$width solid $border;
+}
+body{
+  background: $theme;
+}
+.btn_normal{
+  @include border;
+  width:60px;
+  height:40px;
+  line-height: 40px;
+}
+.btn_big{
+  @include border_big(3px);
+  width:120px;
+  height:44px;
+  line-height:44px;
+}
+%btnHover{
+  @include border_big(2px);
+  color:$color;
+  &:hover{
+    background-color:$color;
+    border-color:$color;
+  }
+}
+$blue:#666;
+@mixin button($blue,$height:30px){
+  @include left(15px);
+  width:100px;
+  height:$height;
+  background-color: $blue;
+  border-radius: 2px;
+}
+.btn1{
+  @include button($theme);
+  @extend %btnHover;
+}
+.round{
+  @include border-radius(10px);
+}
+
+.row{
+  @include display-flex;
+  @include flex-direction(row);
+}
+.row1{
+  @include flexbox((
+      display:box,
+      box-orient:vertical
+  ),$version:1);
+  @include flexbox((
+      display:flexbox,
+      flex-direction:row
+  ),$version:2);
+  @include flexbox((
+      display:flex,
+      flex-direction:row
+  ));
+}

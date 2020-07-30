@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>flexTest</title>
+	<style type="text/css">
+		body{background-color: #111; padding: 300px;}
+		.bg_box{float: left;; width:100px;height:100px;padding:10px; margin-left: 40px; margin-top: 40px; background-color: #ddd;border-radius: 6px; }
+		.item{display: block; width:20px; height:20px;background-color: #222;border-radius: 10px;}
+		.box{display: flex;}
+		.box1{display: flex; justify-content: center;}
+		.box2{display: flex; justify-content: flex-end;}
+		.box3{display: flex; align-items: center;}
+		.box4{display: flex; align-items: center; justify-content: center;}
+		.box5{display: flex; align-items: flex-end; justify-content: center;}
+		.box6{display: flex;align-items: flex-end;justify-content: flex-end;}
+		.box7{display: flex; flex-direction: column;align-items: flex-end;justify-content: space-between;}
+	</style>
+</head>
+<body>
+	<div class="box bg_box">
+		<span class="item"></span>
+	</div>
+	<div class="box1 bg_box">
+		<span class="item"></span>
+
+	</div>
+	<div class="box2 bg_box">
+		<span class="item"></span>
+	</div>
+	<div class="box3 bg_box">
+		<span class="item"></span>
+	</div>
+	<div class="box4 bg_box">
+		<span class="item"></span>
+	</div>
+	<div class="box5 bg_box">
+		<span class="item"></span>
+	</div>
+	<div class="box6 bg_box">
+		<span class="item"></span>
+	</div>
+	<div class="box7 bg_box">
+		<span class="item"></span>
+		<span class="item"></span>
+	</div>
+</body>
+</html>

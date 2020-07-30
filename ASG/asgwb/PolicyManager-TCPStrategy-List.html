@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="ch">
+<head>
+    <meta charset="UTF-8">
+    <title>Tcp策略管理</title>
+
+    <!--全局通用!-->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/global.css">
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/doT.min.js"></script>
+    <!--全局通用end!-->
+
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv/html5shiv.js"></script>
+    <script src="js/respond/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+<div class="dsm-rightside ">
+    <div class="mainnav">
+        <div class="urlindex">
+            <i class="icon icon-home"></i>
+            <a class="name dsmfontblue" href="home.html">首页</a>
+            <i class="icon icon-right"></i>
+            <a class="name dsmfontblue" href="javascript:void(0);">策略管理</a>
+            <i class="icon icon-curright"></i>
+            <span class="curname">Tcp策略管理</span>
+        </div>
+    </div>
+    <div class="maincontent">
+        <div class="mainbox">
+            <div class="btn-toolbar">
+                <a class="btn btn-primary btn-tool whitebg js_add" ><i class="btnicon icon-toolbar icon-add-blue"></i>新增</a>
+                <a class="btn btn-primary btn-tool whitebg js_del" ><i class="btnicon icon-toolbar icon-del-blue"></i>删除</a>
+
+                <a class="btn btn-primary btn-tool f-r js_effect btn-big" >生效</a>
+                <a class="btn btn-primary btn-tool f-r js_test btn-big" >测试<i class="icon icon-load hidden"></i></a>
+                <span class="effect-tip hidden"></span>
+            </div>
+            <div class="table-view">
+                <table id="datalist" class="table" cellspacing="0" width="100%">
+                    <thead>
+                    <tr>
+                        <th class="w50">
+                            <div class="dsmcheckbox">
+                                <input type="checkbox" value="1" id="t2"  class="js_checkboxAll" data-allcheckfor="uids"  name="">
+                                <label for="t2"></label>
+                            </div>
+                        </th>
+                        <th>策略名称</th>
+                        <th>目标服务器</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>
+                            <div class="dsmcheckbox">
+                                <input type="checkbox" value="1" id="t21" name="uids">
+                                <label for="t21"></label>
+                            </div>
+                        </td>
+                        <td><a href="javascript:void(0);" data-id="1" class="js_edit">CIFS</a></td>
+                        <td>-</td>
+
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="dsmcheckbox">
+                                <input type="checkbox" value="1" id="t22" name="uids">
+                                <label for="t22"></label>
+                            </div>
+                        </td>
+                        <td><a href="javascript:void(0);" data-id="2" class="js_edit">PDM</a></td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="dsmcheckbox">
+                                <input type="checkbox" value="1" id="t23" name="uids">
+                                <label for="t23"></label>
+                            </div>
+                        </td>
+                        <td><a href="javascript:void(0);" data-id="3" class="js_edit">U8</a></td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="dsmcheckbox">
+                                <input type="checkbox" value="1" id="t24" name="uids">
+                                <label for="t24"></label>
+                            </div>
+                        </td>
+                        <td><a href="javascript:void(0);" data-id="4" class="js_edit">TC</a></td>
+                        <td>-</td>
+                    </tr>
+
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!--新增Tcp策略管理-->
+<div id="addForm" class="popForm" style="display: none">
+    <div class="dsmForms">
+        <div class="dsm-form-item">
+            <div class="dsm-inline">
+                <label class="dsm-form-label">策略名称：</label>
+                <div class="dsm-input-block">
+                    <input type="text" autocomplete="off" placeholder="策略名称" class="dsm-input">
+                </div>
+            </div>
+            <div class="dsm-inline">
+                <label class="dsm-form-label">侦听IP地址：</label>
+                <div class="dsm-input-block">
+
+                    <select  class="dsm-select">
+                        <option value="所有">所有</option>
+                        <option value="eth0（192.168.1.1）">eth0（192.168.1.1）</option>
+                        <option value="eth0:1(192.168.1.2)">eth0:1(192.168.1.2)</option>
+                        <option value="eth1（192.169.2.1）">eth1（192.169.2.1）</option>
+                    </select>
+                    <!--<div class="dsm-tip">注：默认表示侦听所有IP</div>-->
+                </div>
+            </div>
+            <div class="dsm-inline">
+                <label class="dsm-form-label">侦听端口号：</label>
+                <div class="dsm-input-block">
+                    <input type="text" autocomplete="off" placeholder="侦听端口号" class="dsm-input">
+
+                </div>
+
+            </div>
+            <div class="dsm-inline">
+                <label class="dsm-form-label">目标服务器：</label>
+                <div class="dsm-input-block">
+                    <select  class="dsm-select">
+                        <option value="应用服务器-某条记录">应用服务器-某条记录</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!--提示-操作失败-->
+    <div class="btn-failTip-close hidden"></div>
+    <div  class="alert-box failTip hidden">
+        <div class="alert-con failTip-content">
+            <i class="alert-con-ico failTip-ico alert-con-ico-fail"></i>
+            <span class="alert-txt failTip-txt"></span>
+            <p class="alert-con-notice"></p>
+
+        </div>
+    </div>
+    <!--提示-操作成功-->
+    <div class="alert-box sucTip hidden">
+        <div class=" alert-con sucTip-content">
+            <i class="alert-con-ico sucTip-ico alert-con-ico-suc"></i>
+            <span class="alert-txt sucTip-txt"></span>
+        </div>
+    </div>
+
+<script type="text/javascript" src="js/site.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        //新增
+        $(document).on('click', '.js_add', function (e) {
+            $(".popForm").attr('id',"addForm");
+            dsmDialog.open({
+                type: 1,
+                area:['500px','460px'],
+                btn:['确定','取消'],
+                title:"新增Tcp策略",
+                content: $('#addForm'),
+                yes: function(index, layero){
+                    dsmDialog.msg('新增成功!');
+                    dsmDialog.close(index);
+                }
+            });
+        });
+        //修改
+        $(document).on('click', '.js_edit', function (e) {
+            edit(this);
+        });
+
+        var chkItem="";//获取当前选中项
+        //删除
+        $(document).on('click', '.js_del', function (e) {
+            chkItem=itemSelected_check("uids");
+            if(chkItem.length==0){
+                dsmDialog.error('请先选择Tcp策略！');
+                return;
+            }
+            showDelModel();
+        });
+
+        //测试
+        $(document).on('click','.js_test',function(e){
+            $(this).children(".icon-load").removeClass("hidden");
+            setTimeout(function () {
+                $(".icon-load").addClass("hidden");
+
+            },1000);
+
+            setTimeout(function () {
+                oprSuccess("测试成功");
+
+            },1000)
+            setTimeout(function () {
+                oprFail("测试出错","m1","错误提示：连接错误连接错误连接错误：第二行错误提示：连接错误连接错误连接错误：第二行错误：第二行");
+            },1000)
+        });
+    });
+    $(document).on('click','.js_effect',function(e){
+        setTimeout(function () {
+            $(".effect-tip").removeClass('hidden').removeClass('success').addClass('error');
+            $(".effect-tip").html("当前策略未生效");
+        },200)
+        $(".effect-tip").addClass('hidden');
+        setTimeout(function () {
+            $(".effect-tip").removeClass('hidden').removeClass('error').addClass('success');
+            $(".effect-tip").html("当前策略已生效");
+        },1000)
+    });
+
+    //删除弹框
+    function showDelModel() {
+        dsmDialog.toComfirm("请确认是否删除当前策略记录！", {
+            btn: ['确定','取消'],
+            title:"删除"
+        }, function(index){
+            //删除操作代码
+            dsmDialog.msg('删除成功！');
+            dsmDialog.close(index);
+        }, function(index){
+            dsmDialog.close(index);
+        });
+    }
+    //修改弹框
+    function edit(obj){
+        var Id=$(obj).data("id");
+        if(Id!=""&&Id!=undefined){
+            $(".popForm").attr('id',"editForm");
+
+        }
+        dsmDialog.open({
+            type: 1,
+            area:['500px','460px'],
+            btn:['确定','取消'],
+            title:"修改Tcp策略",
+            content: $('#editForm'),
+            yes: function(index, layero){
+                dsmDialog.msg('修改成功!');
+                dsmDialog.close(index);
+            }
+        });
+
+    }
+</script>
+</body>
+</html>

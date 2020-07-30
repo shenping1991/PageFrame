@@ -1,0 +1,36 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>点击头像显示详细信息</title>
+    <style type="text/css">
+        #img_userPhoto{position: relative; width:60px;height:60px;border:1px solid #999;}
+        #div_userInfo{position: absolute; top:10px; left:80px; width:240px;height:120px;
+            border:1px solid #999; display: none;}
+    </style>
+    <script type="text/javascript">
+        window.onload=function(){
+            var ouser=document.getElementById('img_userPhoto');
+            var ouserInfo=document.getElementById('div_userInfo');
+            var timer=null;
+            ouser.onmouseover=ouserInfo.onmouseover=function ()
+            {
+                clearTimeout(timer);
+                ouserInfo.style.display='block';
+            }
+            ouser.onmouseout=ouserInfo.onmouseout=function()
+            {
+                timer=setTimeout(function () {
+                    ouserInfo.style.display='none';
+                },500);
+            }
+
+        }
+
+    </script>
+</head>
+<body>
+    <div id="img_userPhoto"></div>
+    <div id="div_userInfo"></div>
+</body>
+</html>

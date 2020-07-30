@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ch">
+<head>
+    <meta charset="UTF-8">
+    <title>系统时间</title>
+
+    <!--全局通用!-->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/global.css">
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/My97DatePicker/WdatePicker.js"></script>
+
+    <!--全局通用end!-->
+
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv/html5shiv.js"></script>
+    <script src="js/respond/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+<div class="dsm-rightside home">
+    <div class="mainnav">
+        <div class="urlindex">
+            <i class="icon icon-home"></i>
+            <a class="name dsmfontblue" href="home.html">首页</a>
+            <i class="icon icon-right"></i>
+            <a class="name dsmfontblue" href="javascript:void(0);">系统管理</a>
+            <i class="icon icon-curright"></i>
+            <span class="curname">系统时间</span>
+        </div>
+    </div>
+    <div class="dsm-banner-from">
+        <i class="icon-time"></i>
+        <span class="banner-titel">当前系统时间：<em class="systime-now" id="getSysTime"></em></span>
+
+    </div>
+    <div class="maincontent">
+        <div class="mainbox clearfix">
+
+            <div class="card-info width100">
+                <div class="carditem">
+
+                    <div class="dsmForms dsmForms-l">
+                        <div class="dsm-form-item">
+                            <div class="dsm-inline">
+                                <div class="dsm-radio-one  w100 ">
+                                    <div class="dsm-radiobox">
+                                        <input type="radio" id="fqlocal_time" name="pickTimeType" value="0" class="dsm-radio" checked>
+                                        <label for="fqlocal_time"></label>
+                                    </div>
+                                    <label class="radiolabel" for="fqlocal_time">本地时间</label>
+                                </div>
+                            </div>
+                            <div class="dsm-inline">
+                                <label class="dsm-form-label">设置日期</label>
+                                <div class="dsm-input-inline">
+                                    <input type="text " autocomplete="off" placeholder="设置日期" class="Wdate dsm-input w350" onclick="WdatePicker()">
+                                </div>
+                            </div>
+                            <div class="dsm-inline">
+                                <label class="dsm-form-label">设置时间</label>
+                                <div class="dsm-input-inline">
+                                    <input type="time" autocomplete="off" placeholder="设置时间" class="dsm-input w350" value="00:00:01">
+                                    <i class="icon-timer-small"></i>
+                                </div>
+                            </div>
+                            <div class="dsm-inline">
+                                <div class="dsm-radio-one  w100 ">
+                                    <div class="dsm-radiobox">
+                                        <input type="radio" id="fqsys_time" name="pickTimeType" value="0" class="dsm-radio" checked>
+                                        <label for="fqsys_time"></label>
+                                    </div>
+                                    <label class="radiolabel" for="fqsys_time">网络时间</label>
+                                </div>
+                            </div>
+
+                            <div class="dsm-inline">
+                                <label class="dsm-form-label">网络时间服务器</label>
+                                <div class="dsm-input-inline">
+                                    <input type="text " autocomplete="off" placeholder="网络时间服务器" class=" dsm-input w350" >
+                                </div>
+                            </div>
+                            <div class="dsm-inline">
+                                <label class="dsm-form-label">同步周期设置</label>
+                                <div class="dsm-input-inline">
+                                    <input id="lockIn_time"  type="text" autocomplete="off" placeholder="同步周期设置" class="dsm-input w200" >
+                                </div>
+                                <div class="desc">天</div>
+                            </div>
+                            <div class="form-btns t-l">
+                                <button type="button" class="btn btn-lg btn-primary js_save">确定</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript" src="js/site.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        getNowTime();//获取系统时间
+        $(function(){
+            setInterval("getNowTime();",1000); //每隔一秒执行一次
+        });
+        $(document).on('click', '.js_save', function (e) {
+            dsmDialog.msg('设置成功');
+        });
+        $(document).on('blur','#lockIn_time',function(e){
+            isNum(this);
+        })
+    })
+    function getNowTime() {
+        var sysTime = new Date();
+        var date = sysTime.toLocaleDateString();
+        var hours = sysTime.getHours();
+        var minutes = sysTime.getMinutes();
+        var seconds = sysTime.getSeconds();
+        $("#getSysTime").html(date+" "+hours+":"+minutes+":"+seconds);
+    }
+
+</script>
+</body>
+</html>

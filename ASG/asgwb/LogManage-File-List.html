@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ch">
+<head>
+    <meta charset="UTF-8">
+    <title>文件日志</title>
+
+    <!--全局通用!-->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/global.css">
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.js"></script>
+
+    <!--全局通用end!-->
+
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv/html5shiv.js"></script>
+    <script src="js/respond/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+<div class="dsm-rightside">
+    <div class="mainnav">
+        <div class="urlindex">
+            <i class="icon icon-home"></i>
+            <a class="name dsmfontblue" href="home.html">首页</a>
+            <i class="icon icon-right"></i>
+            <a class="name dsmfontblue" href="javascript:void(0);">日志管理</a>
+            <i class="icon icon-curright"></i>
+            <span class="curname">文件日志</span>
+        </div>
+    </div>
+    <div class="maincontent">
+        <div class="mainbox">
+            <div class="dsm-searchbar">
+                <div class="filter" id="search">
+                    <div id="fip" class="simulate-list ks-overlay ks-overlay-hidden">
+                        <div class="ks-popup-content">
+                            <input data-selected-desc="IP地址:" data-request="ip" class="fiterpara" type="text" value="">
+                            <button class="subfiter" type="button">确定</button>
+                        </div>
+                    </div>
+                    <div id="foperate_time" class="simulate-list ks-overlay ks-overlay-hidden" >
+                        <div class="ks-popup-content">
+                            <input class="Wdate fiterpara" type="text" data-selected-desc="时间:" data-request="operate_time" value="" onclick="WdatePicker()">-<input class="Wdate fiterpara" type="text" value="" data-request="operate_time" onclick="WdatePicker()">
+                            <button class="subfiter" type="button">确定</button>
+                        </div>
+                    </div>
+                    <div id="fhost" class="simulate-list ks-overlay ks-overlay-hidden">
+                        <div class="ks-popup-content">
+                            <input data-selected-desc="目标主机:" data-request="content" class="fiterpara" type="text" value="">
+                            <button class="subfiter" type="button">确定</button>
+                        </div>
+                    </div>
+                    <div id="ftype" class="simulate-list ks-overlay ks-overlay-hidden">
+                        <div class="ks-popup-content">
+                            <input data-selected-desc="操作类型:" data-request="content" class="fiterpara" type="text" value="">
+                            <button class="subfiter" type="button">确定</button>
+                        </div>
+                    </div>
+
+                    <div id="ffilename" class="simulate-list ks-overlay ks-overlay-hidden">
+                        <div class="ks-popup-content">
+                            <input data-selected-desc="文档名称:" data-request="content" class="fiterpara" type="text" value="">
+                            <button class="subfiter" type="button">确定</button>
+                        </div>
+                    </div>
+
+                    <div class="clearfix">
+                        <dl>
+                            <dt>筛选条件：</dt>
+
+                            <!--<dd><span class="simulate-select" data-sim-obj="fusername" data-sim-z="username"><span class="J_simulate_value">姓名</span><em></em></span></dd>-->
+                            <dd><span class="simulate-select" data-sim-obj="fip" data-sim-z="ip"><span class="J_simulate_value">IP地址</span><em></em></span></dd>
+                            <dd><span class="simulate-select" data-sim-obj="foperate_time" data-sim-z="operate_time"><span class="J_simulate_value">时间</span><em></em></span></dd>
+                            <dd><span class="simulate-select" data-sim-obj="fhost" data-sim-z="host"><span class="J_simulate_value">目标主机</span><em></em></span></dd>
+                            <dd><span class="simulate-select" data-sim-obj="ftype" data-sim-z="type"><span class="J_simulate_value">操作类型</span><em></em></span></dd>
+                            <dd><span class="simulate-select" data-sim-obj="ffilename" data-sim-z="filename"><span class="J_simulate_value">文档名称</span><em></em></span></dd>
+                        </dl>
+                    </div>
+                    <dl class="clearfix filter-selected-list">
+                        <dt>已选条件：</dt>
+                        <button type="button" class="btn btn-primary f-r whitebg js_clearall">清除全部</button>
+                    </dl>
+
+                </div>
+            </div>
+            <div class="btn-toolbar">
+                <button type="button" class="btn btn-primary whitebg js_imp" ><i class="btnicon icon icon-import-blue"></i>导入</button>
+                <button type="button" class="btn btn-primary whitebg js_exp" ><i class="btnicon icon icon-export-blue"></i>导出</button>
+                <button type="button" class="btn btn-primary whitebg js_del" ><i class="btnicon icon icon-del-blue"></i>删除</button>
+            </div>
+            <div class="table-view">
+                <table id="datalist" class="table" cellspacing="0" width="100%">
+                    <thead>
+                    <tr>
+                        <th class="w50">
+                            <div class="dsmcheckbox">
+                                <input type="checkbox" value="1" id="lcjk"  class="js_checkboxAll" data-allcheckfor="fids" name="">
+                                <label for="lcjk"></label>
+                            </div>
+                        </th>
+                        <th class="w20p">IP地址</th>
+                        <th>时间</th>
+                        <th>目标主机</th>
+                        <th>操作类型</th>
+                        <th>文档名称</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    <tr>
+                        <td>
+                            <div class="dsmcheckbox">
+                                <input type="checkbox" value="1" id="m12" name="fids" checked>
+                                <label for="m12"></label>
+                            </div>
+                        </td>
+                        <td>192.168.1.21</td>
+                        <td>2017/03/21 15:22</td>
+                        <td>192.168.1.35</td>
+                        <td>添加用户</td>
+                        <td>test3</td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <div class="dsmcheckbox">
+                                <input type="checkbox" value="1" id="m13" name="fids">
+                                <label for="m13"></label>
+                            </div>
+                        </td>
+                        <td>192.168.1.21</td>
+                        <td>2017/03/21 15:22</td>
+                        <td>192.168.1.35</td>
+                        <td>添加用户</td>
+                        <td>test3</td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <div class="dsmcheckbox">
+                                <input type="checkbox" value="1" id="m14" name="fids">
+                                <label for="m14"></label>
+                            </div>
+                        </td>
+                        <td>192.168.1.21</td>
+                        <td>2017/03/21 15:22</td>
+                        <td>192.168.1.35</td>
+                        <td>添加用户</td>
+                        <td>test3</td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <div class="dsmcheckbox">
+                                <input type="checkbox" value="1" id="m15" name="fids">
+                                <label for="m15"></label>
+                            </div>
+                        </td>
+                        <td>192.168.1.21</td>
+                        <td>2017/03/21 15:22</td>
+                        <td>192.168.1.35</td>
+                        <td>添加用户</td>
+                        <td>test3</td>
+                    </tr>
+
+
+                    </tbody>
+                </table>
+                <div class="pagebox">
+
+				    	<span class="showinfo">
+				    		<span class="lengthinput">
+					    		<select class="page-length">
+									<option>1</option>
+									<option>2</option>
+									<option>3</option>
+									<option>4</option>
+									<option>5</option>
+								</select>
+							</span>
+				    		<span class="lengthinfo">条/页</span>显示
+					    	<span class="start-index">1</span>-
+					    	<span class="end-index">5</span>条记录，共
+					    	<span class="total">5</span>条记录
+				    	</span>
+                    <span class="buttoninfo">
+						    <div class="dsm-laypage" >
+						        <a href="javascript:;" class="dsm-laypage-prev" data-page="7">上一页</a>
+						        <a href="javascript:;" data-page="1">1</a><a href="javascript:;" data-page="2">2</a>
+						        <span class="dsm-laypage-curr"><em class="dsm-laypage-em"></em><em>3</em></span>
+						        <span>…</span>
+						        <a href="javascript:;" data-page="100">100</a>
+						        <a href="javascript:;" class="dsm-laypage-next" data-page="9">下一页</a>
+						        <span class="dsm-laypage-total">跳转到
+						            <input type="number" min="1" value="8" class="dsm-laypage-skip">页
+						            <button type="button" class="dsm-laypage-btn">确定</button>
+						        </span>
+						    </div>
+				    	</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript" src="js/site.js"></script>
+<script src="js/My97DatePicker/WdatePicker.js"></script>
+<script src="js/dsm-search.js"></script>
+<script src="js/selectivizr.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+
+
+
+    });
+
+    $(document).on('click', '.js_checkboxAll', function (e) {
+        itemSelected_check('fids');
+    });
+    $(document).on('click', '.js_del', function (e) {
+        dsmDialog.toComfirm("是否删除选中日志？", {
+            btn: ['确定','取消'],
+            title:"删除日志"
+        }, function(index){
+            //删除操作代码
+
+            dsmDialog.msg('删除成功！');
+            dsmDialog.close(index);
+        }, function(index){
+            dsmDialog.close(index);
+        });
+
+    });
+    //搜索交互回调 每个报表搜索页面必须有这个fun
+    function filter(){
+        //传递参数至后台
+        //...代码
+        //刷新表格
+    }
+</script>
+</body>
+</html>

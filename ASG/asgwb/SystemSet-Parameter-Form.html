@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="ch">
+<head>
+    <meta charset="UTF-8">
+    <title>系统参数设置</title>
+
+    <!--全局通用!-->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/global.css">
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <!--全局通用end!-->
+
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv/html5shiv.js"></script>
+    <script src="js/respond/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body>
+<div class="dsm-rightside">
+    <div class="mainnav">
+        <div class="urlindex">
+            <i class="icon icon-home"></i>
+            <a class="name dsmfontblue" href="home.html">首页</a>
+            <i class="icon icon-right"></i>
+            <a class="name dsmfontblue" href="javascript:void(0);">系统设置</a>
+            <i class="icon icon-curright"></i>
+            <span class="curname">系统参数设置</span>
+        </div>
+    </div>
+    <div class="maincontent">
+
+        <div class="mainbox">
+            <div class="dsm-nav-tabs" >
+                <ul class="nav nav-tabs" role="tablist">
+                    <li class="active"><a href="#basicinfo" data-toggle="tab" aria-expanded="true">基本设置</a></li>
+                    <li class="">
+                        <a href="#safeset"  data-toggle="tab" aria-expanded="false">安全设置</a>
+                    </li>
+                    <li class="">
+                        <a href="#logpolicy"  data-toggle="tab" aria-expanded="false">日志维护策略</a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane fade active in" id="basicinfo" >
+                        <div class="paramerbox">
+                            <div class="dsmForms">
+                                <div class="dsm-form-item">
+                                    <div class="dsm-inline">
+                                        <label class="dsm-form-label">客户端自动刷新策略时间：</label>
+                                        <div class="dsm-input-inline">
+                                            <input type="text" autocomplete="off" placeholder="10" class="dsm-input">
+                                        </div>
+                                        <div class='desc'>分钟</div>
+                                    </div>
+                                    <div class="dsm-inline">
+                                        <label class="dsm-form-label">默认用户故障离网时间：</label>
+                                        <div class="dsm-input-inline">
+                                            <input type="text" autocomplete="off" placeholder="10" class="dsm-input">
+                                        </div>
+                                        <div class='desc'>分钟</div>
+                                    </div>
+                                    <div class="dsm-inline">
+                                        <label class="dsm-form-label">客户端工作模式一选项描述(中文)：</label>
+                                        <div class="dsm-input-block">
+                                            <input type="text" autocomplete="off" placeholder="启动加密模式" value="启动加密模式" class="dsm-input">
+                                        </div>
+                                    </div>
+                                    <div class="dsm-inline">
+                                        <label class="dsm-form-label">客户端工作模式一选项描述(英文)：</label>
+                                        <div class="dsm-input-block">
+                                            <input type="text" autocomplete="off" placeholder="Start the encryption" value='Start the encryption' class="dsm-input">
+                                        </div>
+                                    </div>
+                                    <div class="dsm-inline">
+                                        <label class="dsm-form-label">客户端工作模式二选项描述(中文)：</label>
+                                        <div class="dsm-input-block">
+                                            <input type="text" autocomplete="off" placeholder="停止加密模式" value="停止加密模式" class="dsm-input">
+                                        </div>
+                                    </div>
+                                    <div class="dsm-inline">
+                                        <label class="dsm-form-label">客户端工作模式二选项描述(英文)：</label>
+                                        <div class="dsm-input-block">
+                                            <input type="text" autocomplete="off" placeholder="Stop the encryption" value='Stop the encryption' class="dsm-input">
+                                        </div>
+                                    </div>
+                                    <div class="dsm-inline">
+                                        <label class="dsm-form-label">客户端工作模式一弹框描述(中文)：</label>
+                                        <div class="dsm-input-block">
+                                            <input type="text" autocomplete="off" value="启动加密模式，受控程序产生的文件会自动加密！" class="dsm-input">
+                                        </div>
+                                    </div>
+                                    <div class="dsm-inline">
+                                        <label class="dsm-form-label">客户端工作模式一弹框描述(英文)：</label>
+                                        <div class="dsm-input-block">
+                                            <input type="text" autocomplete="off" value='Start the encryption mode, the generated files will be encrypted automatically' class="dsm-input">
+                                        </div>
+                                    </div>
+                                    <div class="dsm-inline">
+                                        <label class="dsm-form-label">客户端工作模式二弹框描述(中文)：</label>
+                                        <div class="dsm-input-block">
+                                            <input type="text" autocomplete="off" value="停止加密模式，系统将不再自动生成加密文件！" class="dsm-input">
+                                        </div>
+                                    </div>
+                                    <div class="dsm-inline">
+                                        <label class="dsm-form-label">客户端工作模式二弹框描述(英文)：</label>
+                                        <div class="dsm-input-block">
+                                            <input type="text" autocomplete="off" value='Stop encryption mode, the system will no longer automatically generate encrypted files' class="dsm-input">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-btns t-l">
+                                        <button type="button" class="btn btn-lg btn-primary js_savebasicinfo">保存设置</button>
+                                        <a href="Home.html" class="btn btn-lg btn-primary">取消</a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div role="tabpanel" class="tab-pane fade" id="safeset" >
+                        <div class="paramerbox">
+                            <div class="dsm-form-item">
+                                <div class="dsm-inline">
+                                    <label class="dsm-form-label" for="cu1">启用密码强度检测：</label>
+                                    <div class="dsmcheckbox m-t-10p">
+                                        <input type="checkbox" value="0" id="cu1" name="complexpwd">
+                                        <label for="cu1"></label>
+                                    </div>
+                                </div>
+                                <div class="dsm-inline">
+                                    <label class="dsm-form-label" for="cu12">启用控制台账号锁定：</label>
+                                    <div class="dsmcheckbox m-t-10p">
+                                        <input type="checkbox" value="0" id="cu12" name="locksystem">
+                                        <label for="cu12"></label>
+                                    </div>
+                                </div>
+                                <div class="dsm-inline">
+                                    <label class="dsm-form-label" for="cu123">启用安全传输协议：</label>
+                                    <div class="dsmcheckbox m-t-10p">
+                                        <input type="checkbox" value="0"  id="cu123" name="safetrans">
+                                        <label for="cu123"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-btns t-l">
+                                <button type="button" class="btn btn-lg btn-primary js_savesafeset">保存设置</button>
+                                <a href="Home.html" class="btn btn-lg btn-primary">取消</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade" id="logpolicy" >
+                        <div class="paramerbox ">
+                            <div class="dsm-form-item">
+                                <div class="dsm-inline">
+                                    <label class="dsm-form-label" for="cu1auto">启动日志自动删除：</label>
+                                    <div class="dsmcheckbox m-t-10p">
+                                        <input type="checkbox" value="0" id="cu1auto" name="complexpwd">
+                                        <label for="cu1auto"></label>
+                                    </div>
+                                    <label class="dsm-form-label w100">自动删除</label>
+                                    <div class="dsm-input-inline w100">
+                                        <input type="text" autocomplete="off" placeholder="10" class="dsm-input">
+                                    </div>
+                                    <div class="desc">天前的日志</div>
+                                </div>
+                                <div class="dsm-inline">
+                                    <label class="dsm-form-label" for="cu12">维护日志类型：</label>
+                                    <ul class="checkboxlist">
+                                        <li class="clearfix">
+                                            <div class="dsmcheckbox">
+                                                <input type="checkbox" value="1" id="p1" name="">
+                                                <label for="p1"></label>
+                                            </div>
+                                            <label for="p1">文件解密日志</label>
+                                        </li>
+                                        <li class="clearfix">
+                                            <div class="dsmcheckbox">
+                                                <input type="checkbox" value="1" id="p2" name="">
+                                                <label for="p2"></label>
+                                            </div>
+                                            <label for="p2">打印日志</label>
+                                        </li>
+                                        <li class="clearfix">
+                                            <div class="dsmcheckbox">
+                                                <input type="checkbox" value="1" id="p3" name="">
+                                                <label for="p3"></label>
+                                            </div>
+                                            <label for="p3">外发日志</label>
+                                        </li>
+                                        <li class="clearfix">
+                                            <div class="dsmcheckbox">
+                                                <input type="checkbox" value="1" id="p4" name="">
+                                                <label for="p4"></label>
+                                            </div>
+                                            <label for="p4">授权文件日志</label>
+                                        </li>
+                                        <li class="clearfix">
+                                            <div class="dsmcheckbox">
+                                                <input type="checkbox" value="1" id="p5" name="">
+                                                <label for="p5"></label>
+                                            </div>
+                                            <label for="p5">用户登录日志</label>
+                                        </li>
+                                        <li class="clearfix">
+                                            <div class="dsmcheckbox">
+                                                <input type="checkbox" value="1" id="p6" name="">
+                                                <label for="p6"></label>
+                                            </div>
+                                            <label for="p6">管理日志</label>
+                                        </li>
+                                        <li class="clearfix">
+                                            <div class="dsmcheckbox">
+                                                <input type="checkbox" value="1" id="p7" name="">
+                                                <label for="p7"></label>
+                                            </div>
+                                            <label for="p7">客户端卸载日志</label>
+                                        </li>
+
+                                    </ul>
+
+                                </div>
+                            </div>
+                            <div class="form-btns t-l">
+                                <button type="button" class="btn btn-lg btn-primary js_savelogpolicy">保存设置</button>
+                                <a href="Home.html" class="btn btn-lg btn-primary">取消</a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script type="text/javascript" src="js/site.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $(document).on('click', '.js_savebasicinfo', function (e) {
+            dsmDialog.msg('设置成功');
+        });
+        $(document).on('click', '.js_savesafeset', function (e) {
+            dsmDialog.msg('设置成功');
+        });
+        $(document).on('click', '.js_savelogpolicy', function (e) {
+            dsmDialog.msg('设置成功');
+        });
+
+    });
+
+</script>
+</body>
+</html>

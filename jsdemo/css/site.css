@@ -1,0 +1,78 @@
+header,nav,aside,section,footer {
+    /*确保ie8之前的浏览器可以使用*/
+    display: block;
+}
+div,p,ul,li,img,ol{
+    /*margin:0;*/
+    /*paddding:0;*/
+    border:0;
+}
+ul,li,ol{
+    list-style:none;
+}
+a{
+    text-decoration:none;
+}
+body{
+    margin:0 auto;
+    font-family: "Adobe Fan Heiti Std B";
+    font-weight:normal;
+    font-size:14px;
+    color:#333;
+    background:#fff;
+}
+header#header{
+    /*display:-moz-box;*/
+    /*display:-webkit-box;*/
+    -moz-box-pack:center;
+    -webkit-box-pack:center;
+    width:100%;
+    height:70px;
+}
+#header_content{
+    margin-top:10px;
+    display:-moz-box;/*盒模型，div并排*/
+    display:-webkit-box;
+    width:1000px;
+    height:70px;
+    background: blanchedalmond;
+}
+#logo_img{
+    width:600px;
+    height:70px;
+}
+#logo_img img{
+    width:100px;
+    height:70px;
+    background: royalblue;
+}
+#logo_text{
+    width:200px;
+    height:70px;
+    background: cornflowerblue;
+}
+#mark{
+    width:200px;
+    height:70px;
+    background: dodgerblue;
+}
+nav{
+    width:1000px;
+}
+#nav_list{
+    /*width:1000px;*/
+    height:40px;
+    background: lightskyblue;
+}
+#nav_list li{
+
+}
+#nav_list li a{
+    display:inline-block;
+    padding:10px;
+}
+
+
+
+
+
